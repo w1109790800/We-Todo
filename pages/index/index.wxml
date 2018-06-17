@@ -15,7 +15,7 @@
         <image class="wave wave-bg" src="/image/more/wave.png" mode="aspectFill"></image>
       </view>
       <view class="bd">
-        <image class="title2" src="/image/time2.png"></image>
+        <text class="wenzi">💖时间有序，我们在路上💖</text>
 
 
 

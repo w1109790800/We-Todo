@@ -2,6 +2,14 @@
 page {
   background: #F1F1F1;
 }
+.wenzi{
+  font-size: 50rpx;
+  position: fixed;
+  right: 65rpx;
+  top: 120rpx;
+  font-family: Cursive;
+  justify-content: center; 
+}
 .weather-app {
   font-size: 28rpx;
   color: #333;
