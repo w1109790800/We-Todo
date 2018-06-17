@@ -1,72 +1,53 @@
 <view class="container">
-<view class="flex-wrap header">
-
-  
-<image class="add tappable" ontap="addTodo" class="plus" src="../../assets/plus.png"/>
-
-  <input
-    auto-focus
-    placeholder="请在这里添加你要完成的任务😀" 
-    bindinput="updateDraft" 
-    value="{{draft}}" 
-    class="new-todo"/>
-
-</view>
-
-<view class="todo-list">
-
-        
+  <view class="flex-wrap header">
 
 
-<block wx:for="{{todos}}" wx:for-item="todo" wx:key="objectId">
-  <view class="bd">
-    <icon
-      type="{{todo.done ? 'success_circle' : 'circle'}}" 
-      data-id="{{todo.objectId}}" 
-      ontap="toggleDone"
-      class="todo-icon tappable" 
-      size="38"/>
-    <text
-      wx:if="{{todo.objectId != editedTodo.objectId}}"
-      data-id="{{todo.objectId}}" 
-      class="todo-text tappable {{todo.done ? 'done': ''}}"
-      ontap="editTodo">
+    <image class="add tappable" ontap="addTodo" class="plus" src="../../assets/plus.png" />
+
+    <input auto-focus placeholder="请在这里添加你要完成的任务😀" bindinput="updateDraft" value="{{draft}}" class="new-todo" />
+
+  </view>
+
+  <view class="todo-list">
+
+
+
+
+    <block wx:for="{{todos}}" wx:for-item="todo" wx:key="objectId">
+      <view class="bd">
+        <icon type="{{todo.done ? 'success_circle' : 'circle'}}" data-id="{{todo.objectId}}" ontap="toggleDone" class="todo-icon tappable" size="38" />
+        <text wx:if="{{todo.objectId != editedTodo.objectId}}" data-id="{{todo.objectId}}" class="todo-text tappable {{todo.done ? 'done': ''}}" ontap="editTodo">
        {{todo.content}} 
     </text>
-    <input 
-      wx:if="{{todo.objectId == editedTodo.objectId}}" 
-      data-id="{{todo.objectId}}" 
-      value="{{todo.content}}" 
-      auto-focus 
-      bindinput="updateEditedContent" 
-      bindblur="doneEdit" 
-      class="todo-input"/>
+        <input wx:if="{{todo.objectId == editedTodo.objectId}}" data-id="{{todo.objectId}}" value="{{todo.content}}" auto-focus bindinput="updateEditedContent" bindblur="doneEdit" class="todo-input" />
+      </view>
+    </block>
+    <navigator url="../../timer-master/pages/index/index" class="todofq">
+      <p class="text-center large-emoji">🍅</p>番茄工作计时器🍅</navigator>
   </view>
-</block>
-    <navigator url="../../timer-master/pages/index/index" class="todofq">  <p class="text-center large-emoji">🍅</p>番茄工作计时器🍅</navigator>
-</view>
-<block wx:if="{{ todos.length }}">
+  <block wx:if="{{ todos.length }}">
 
-  <navigator url="../setting/setting" class="setting tappable"></navigator>
-  
+    <navigator url="../setting/setting" class="setting tappable"></navigator>
 
 
-</block>
-    <block wx:else>
+
+  </block>
+  <block wx:else>
 
     <view class="empty">
-        <text class="title">祝贺！🎉</text>
-        <text class="content">There's no more work left.</text>
+      <text class="title">祝贺！🎉</text>
+      <text class="content">There's no more work left.</text>
 
     </view>
-      
+
   </block>
-    </view>
-    <view class="footer">
-      <text ontap="removeDone" class="remove-done tappable" wx-if="{{activeTodos.length !== todos.length}}">清除已完成 </text>
-      
-        <navigator url="../user/user" class="navigator user">  <p class="text-center large-emoji">🤔</p>我的账户
-        
-        </navigator>
+</view>
+<view class="footer">
+  <text ontap="removeDone" class="remove-done tappable" wx-if="{{activeTodos.length !== todos.length}}">清除已完成 </text>
 
-    </view>
+  <navigator url="../user/user" class="navigator user">
+    <p class="text-center large-emoji">🤔</p>我的账户
+
+  </navigator>
+
+</view>

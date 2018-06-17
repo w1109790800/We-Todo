@@ -2,43 +2,44 @@
   <view class="form-wrap">
     <view class="flex-wrap input-wrap">
       <text class="label">用户名</text>
-      <input value="{{user.username}}" bindinput="updateUsername" id="username" class="account-info-input"/>
+      <input value="{{user.username}}" bindinput="updateUsername" id="username" class="account-info-input" />
     </view>
     <view class="flex-wrap input-wrap">
       <text class="label">新密码</text>
-      <input value="123456" password bindinput="updatePassword" id="password" class="account-info-input"/>
+      <input value="123456" password bindinput="updatePassword" id="password" class="account-info-input" />
     </view>
   </view>
   <text wx:if="{{error}}" class="error">{{error}}</text>
-  <button class="submit" type="primary" disabled="{{!(username || password)}}" bindtap="save">更新（请牢记密码）  ❗ </button>
-  
+  <button class="submit" type="primary" disabled="{{!(username || password)}}" bindtap="save">更新（请牢记密码） ❗ </button>
+
 
   <text class="hint">通过小程序登录的用户会自动生成一个用户名 默认密码是：123456</text>
   <text class="hint">用户名与密码后可以在 Todo Web网站 端 (http://todo.echo.cool) 登录</text>
   <text class="hint">不论是网页或是安卓客户端将和此微信小程序保持实时同步~</text>
-    <text class="hint">对于程序使用建议，可以点击右下角的客服按扭，我们会尽快回复~</text>
+  <text class="hint">对于程序使用建议，可以点击右下角的客服按扭，我们会尽快回复~</text>
 
-  <text class="tblin_items_txt" selectable="true">{{detail.taokouling||''}}</text> <!-- 复制的对象-->  
+  <text class="tblin_items_txt" selectable="true">{{detail.taokouling||''}}</text>
+  <!-- 复制的对象-->
 
-<view class="tblin_items_btn" bindtap="copyTBL">一键复制安卓App下载地址
+  <view class="tblin_items_btn" bindtap="copyTBL">一键复制安卓App下载地址
 
-</view><!-- 复制操作 -->  
+  </view>
+  <!-- 复制操作 -->
 
-  <text class="tblin_items_txt" selectable="true">{{detail.taokouling||''}}</text> <!-- 复制的对象-->  
-  
-<view class="tblin_items_btn" bindtap="copyTBL2">一键复制网页版（旧版）地址</view><!-- 复制操作 -->  
-<p> </p>
-  <text class="tblin_items_txt" selectable="true">{{detail.taokouling||''}}</text> <!-- 复制的对象-->  
-<view class="tblin_items_btn" bindtap="copyTBL3">一键复制网页版(第二版）地址</view><!-- 复制操作 -->  
-<text class="hint"> By Echo. Beijing Yuying School</text>
-  
+  <text class="tblin_items_txt" selectable="true">{{detail.taokouling||''}}</text>
+  <!-- 复制的对象-->
+
+  <view class="tblin_items_btn" bindtap="copyTBL2">一键复制网页版（旧版）地址</view>
+  <!-- 复制操作 -->
+  <p> </p>
+  <text class="tblin_items_txt" selectable="true">{{detail.taokouling||''}}</text>
+  <!-- 复制的对象-->
+  <view class="tblin_items_btn" bindtap="copyTBL3">一键复制网页版(第二版）地址</view>
+  <!-- 复制操作 -->
+  <text class="hint"> By Echo. Beijing Yuying School</text>
+
   <p class="text-center large-emoji">🎉</p>
   <button class="kf_button" open-type="contact" session-from="weapp">
     <image class="kf_image" src="../../assets/kefu.png"></image>
-    </button>
+  </button>
 </view>
-
-     
-
-
-

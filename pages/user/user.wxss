@@ -1,4 +1,3 @@
-
 .myView {
   font-size: 35rpx;
   margin: 20rpx;
@@ -25,7 +24,8 @@
   width: 100rpx;
   height: 100rpx;
 }
-.kf_button{
+
+.kf_button {
   background-color: rgba(255, 255, 255, 0);
   border: 0px;
   height: 100rpx;
@@ -33,14 +33,17 @@
   bottom: 20rpx;
   position: fixed;
 }
-.kf_button::after{
+
+.kf_button::after {
   border: 0px;
 }
-.kf_image{
+
+.kf_image {
   z-index: 9999;
   width: 100rpx;
   height: 100rpx;
 }
+
 .input-wrap {
   background: #fff;
   border-bottom: 1px solid #eee;
@@ -49,22 +52,32 @@
   height: 46px;
   line-height: 46px;
 }
+
 .label {
   color: #999;
   width: 4.5em;
 }
+
 .account-info-input {
   font-size: 18px;
   line-height: 100%;
   height: 100%;
   width: 100%;
 }
-.container{
-    animation: bd-rise 3s cubic-bezier(0.23,1,0.32,1) .75s forwards;
+
+.container {
+  animation: bd-rise 3s cubic-bezier(0.23, 1, 0.32, 1) 0.75s forwards;
   opacity: 0;
-  
 }
-@keyframes bd-rise{
-  from {opacity: 0; transform: translate3d(0,160rpx,0); }
-  to {opacity: 1; transform: translate3d(0,0,0); }
+
+@keyframes bd-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 160rpx, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }

@@ -240,7 +240,7 @@ Page({
       },
     });
   },
-  nav: function(){
+  nav: function () {
     var _this = this;
     setTimeout(function () {
       _this.setData({
@@ -267,8 +267,8 @@ Page({
         remind: ''
       });
     }, 100);
-    
-  } ,
+
+  },
   onReady: function () {
     var _this = this;
     setTimeout(function () {

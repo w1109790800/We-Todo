@@ -1,20 +1,20 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/todos/todos",
     "pages/user/user",
     "pages/pay/pay",
     "pages/setting/setting",
-     "timer-master/pages/index/index",
-     "timer-master/pages/logs/logs",
-     "timer-master/pages/setting/setting"
+    "timer-master/pages/index/index",
+    "timer-master/pages/logs/logs",
+    "timer-master/pages/setting/setting"
   ],
-  "window":{
+  "window": {
     "enablePullDownRefresh": true,
-    "backgroundTextStyle":"dark",
+    "backgroundTextStyle": "dark",
     "backgroundColor": "#f2f2f2",
     "navigationBarBackgroundColor": "#fbfbfb",
     "navigationBarTitleText": "Todo-List ✅",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }
