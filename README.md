@@ -3,7 +3,7 @@
 <img width="200" src="http://baobaiqiang.oss-cn-beijing.aliyuncs.com/upload/we1.JPG"><img width="200" src="http://baobaiqiang.oss-cn-beijing.aliyuncs.com/upload/we2.JPG"><img width="200" src="http://baobaiqiang.oss-cn-beijing.aliyuncs.com/upload/we3.JPG"><img width="200" src="http://baobaiqiang.oss-cn-beijing.aliyuncs.com/upload/we4.JPG">
 
 
-使用 LeanCloud 存储 SDK 在微信小程序平台上实现的 LeanTodo 应用。
+使用 LeanCloud 存储 SDK 在微信小程序平台上实现的 Todo-List 应用。
 
 
 你可以通过微信扫描以下二维码进入 小程序。
