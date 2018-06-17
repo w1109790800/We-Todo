@@ -6,7 +6,7 @@
 
   <input
     auto-focus
-    placeholder="请在这里添加一个任务😀" 
+    placeholder="请在这里添加你要完成的任务😀" 
     bindinput="updateDraft" 
     value="{{draft}}" 
     class="new-todo"/>

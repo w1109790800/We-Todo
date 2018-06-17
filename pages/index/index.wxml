@@ -17,6 +17,9 @@
 
 
            <button class = "cs_button" type="primary" bindtap="nav">进入Todo-list</button>
+             <button class="kf_button" open-type="contact" session-from="weapp">
+    <image class="kf_image" src="../../assets/kefu.png"></image>
+    </button>
 
                  <text class="footer">本程序由北京市育英学校 信息科技联盟开发</text>
       </view>

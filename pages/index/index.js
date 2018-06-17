@@ -11,7 +11,7 @@ Page({
     }
   },
   data: {
-    remind: '',
+    remind: '加载中',
     help_status: false,
     userid_focus: false,
     passwd_focus: false,

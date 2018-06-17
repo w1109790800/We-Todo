@@ -85,7 +85,9 @@ onShareAppMessage: function () {
   },
   onReady: function() {
     console.log('page ready');
+    
     this.login().then(this.fetchTodos.bind(this)).catch(error => console.error(error.message));
+    
 
 
 
