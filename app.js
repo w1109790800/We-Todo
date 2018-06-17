@@ -1,6 +1,6 @@
 const AV = require('./utils/av-live-query-weapp-min');
-var APP_ID = '*********************-gzGzoHsz';
-var APP_KEY = '****************************';
+var APP_ID = 'xYPeWSujDN3MRiTn04UohQNL-gzGzoHsz';
+var APP_KEY = '2fmHSDiKp3xGuj0dQBevzi8R';
 AV.init({
   appId: APP_ID,
   appKey: APP_KEY,

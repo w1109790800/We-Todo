@@ -80,7 +80,7 @@ Page({
       901: "./image/900.svg",
       999: "./image/900.svg",
     },
-    location: "none",
+    location: "Beijing",
     city: "上地",
     summary: "多云",
     localTemperature: "1",
@@ -150,10 +150,11 @@ Page({
     wx.getLocation({
       type: 'wgs84',
       success: function (res) {
+        console.log(res)
         self.decodingGps(res.longitude, res.latitude)
       },
-      fail: function () {
-        self.add()
+      fail: function (res) {
+        self.decodingGps(116.3, 39.9)
       }
     })
   },
@@ -259,6 +260,7 @@ Page({
     
   } ,
   onReady: function () {
+
     var _this = this;
     setTimeout(function () {
       _this.setData({
