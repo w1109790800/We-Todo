@@ -16,7 +16,7 @@ const defaultTime = {
 
 App({
   globalData: {
-    userInfo: "null"
+    userInfo: ""
   },
   onLaunch: function () {
     let workTime = wx.getStorageSync('workTime')

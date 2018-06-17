@@ -5,7 +5,6 @@
     "pages/user/user",
     "pages/pay/pay",
     "pages/setting/setting",
-     
      "timer-master/pages/index/index",
      "timer-master/pages/logs/logs",
      "timer-master/pages/setting/setting"

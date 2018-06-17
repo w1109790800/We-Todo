@@ -43,7 +43,6 @@ page {
 	padding-left: 10px;
 }
 
-
 .flex-wrap{
   display: flex;
   flex-direction: row;
