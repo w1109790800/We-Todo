@@ -1,3 +1,233 @@
+/**index.wxss**/
+page {
+  background: #F1F1F1;
+}
+.weather-app {
+  font-size: 28rpx;
+  color: #333;
+  position: relative;
+  z-index: 10;
+  padding: 20rpx;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80rpx 30rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+.header .add {
+  position: absolute;
+  top: 30rpx;
+  left: 30rpx;
+  text-align: center;
+  height: 50rpx;
+}
+.header .add image {
+  width: 30rpx;
+  height: 30rpx;
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+.header .temperature {
+  font-size: 120rpx;
+  margin: 30rpx 0;
+  position:relative;
+}
+.header .temperature span {
+  position:absolute;
+  top: 0;
+}
+.body .day,
+.ccc{
+  position: fixed;
+  top: 350rpx ;
+  justify-content: center; 
+}
+.body .details {
+
+  background: #fff;
+  margin-bottom: 20rpx;
+  top : 300 rpx;
+}
+.body .suggestion {
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+.body .suggestion .list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center;
+  border-top:1px solid #F4F4F4;
+}
+.body .suggestion .title {
+  padding: 30rpx;
+  font-weight: bold;
+}
+.body .suggestion .item {
+  position: relative;
+  flex: 0 0 25%;
+}
+.body .suggestion .item .wrap {
+  padding: 30rpx;
+}
+.body .suggestion .item:before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: #F4F4F4;
+}
+
+.body .suggestion .item:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #F4F4F4;
+}
+.body .suggestion .item:nth-child(4n):before {
+  width: 0;
+}
+.body .suggestion .item:nth-last-child(-n+4):after {
+  height: 0;
+}
+
+
+/*.body .suggestion {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+}
+.body .suggestion .item {
+  text-align: center;
+  margin: 0 20rpx;
+}*/
+.body .suggestion .item .icon {
+  margin: 0 0 25rpx;
+}
+.body .suggestion .item .icon image {
+  width: 50rpx;
+  height: 50rpx;
+}
+.body .day .item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+  padding: 30rpx;
+}
+.body .day .item:last-child {
+  border-bottom: 0;
+}
+.body .day image {
+  width: 50rpx;
+  height: 50rpx;
+  vertical-align: middle;
+}
+.body .day .item .text {
+  margin-left: 20rpx;
+}
+.body .day .item .temperature text:first-child {
+  margin-right:10rpx;
+}
+.body .details {
+  padding: 0;
+}
+.body .details .title {
+  padding: 30rpx;
+  position: fixed;
+  right: 800rpx;
+  top: 0;
+  font-weight: bold;
+}
+.body .details .list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-top:1px solid #F4F4F4;
+}
+.body .details .list .item {
+  flex: 0 0 50%;
+  position: relative;
+}
+.body .details .list .wrap {
+  display: flex;
+  padding: 45rpx;
+}
+.body .details .list .item:before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: #F4F4F4;
+}
+
+.body .details .list .item:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #F4F4F4;
+}
+.body .details .list .item:nth-child(2n):before {
+  width: 0;
+}
+.body .details .list .item:nth-last-child(-n+2):after {
+  height: 0;
+}
+.body .details .list .item .column-l {
+  flex: 0 0 80%;
+}
+.body .details .list .item .hd {
+
+  margin-bottom: 200rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+.body .details .list .item .column-r {
+  display: flex;
+  align-items: center;
+}
+.body .details .list .item .icon {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.loding {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+}
+.loding image {
+  width: 200rpx;
+  height: 200rpx;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+
+
+
 /**login.wxss**/
 /**app.wxss**/
 page{
@@ -89,7 +319,7 @@ page{
 
   height: 90rpx;
   position: fixed;
-  top: 350rpx ;
+  top: 230rpx ;
   justify-content: center; 
   margin-left: 245rpx;
 }
@@ -155,12 +385,29 @@ page{
   84% {transform: translate3d(60rpx,-10rpx,0) rotate(0deg); }
   100% {transform: translate3d(-20rpx,-20rpx,20rpx) rotate(0deg); }
 }
+
+
+.title3{
+  font-size: 33rpx;
+  font-family: Cursive;
+  position: absolute;
+  justify-content: center; 
+  top: 130rpx;
+  left: 77%;
+  width: 600rpx;
+  height: 200rpx;
+  margin-left: -300rpx;
+  animation: sway2 12s ease-in-out infinite;
+  opacity: .95;
+}
+
+
 .kf_button{
   background-color: rgba(255, 255, 255, 0);
   border: 0px;
   height: 100rpx;
   right: 0;
-  top: 510rpx;
+  top: 220rpx;
   bottom: 20rpx;
   position: fixed;
 }
@@ -175,8 +422,8 @@ page{
 .title2{
   position: absolute;
     justify-content: center; 
-  top: 30rpx;
-  left: 53%;
+  top: 10rpx;
+  left: 52%;
   width: 600rpx;
   height: 200rpx;
   margin-left: -300rpx;
@@ -412,3 +659,5 @@ form {
 page .wx-video-bar{
   display: none;
 }
+
+

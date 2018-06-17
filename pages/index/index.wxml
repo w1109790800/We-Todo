@@ -5,23 +5,78 @@
   </view>
   <block wx:else>
     <image class="title" src="/image/more/title.png"></image>
+    <view class="title3">今日温度：{{localTemperature}}
+      <span>˚</span>
+    </view>
     <view class="content">
       <view class="hd" style="transform:rotateZ({{angle}}deg);">
-          <image class="logo" src="/image/more/logo.jpg"></image>
-          <image class="wave" src="/image/more/wave.png" mode="aspectFill"></image>
-          <image class="wave wave-bg" src="/image/more/wave.png" mode="aspectFill"></image>
+        <image class="logo" src="/image/more/logo.jpg"></image>
+        <image class="wave" src="/image/more/wave.png" mode="aspectFill"></image>
+        <image class="wave wave-bg" src="/image/more/wave.png" mode="aspectFill"></image>
       </view>
       <view class="bd">
-      <image  class="title2" src="/image/time2.png"></image>
+        <image class="title2" src="/image/time2.png"></image>
 
 
 
-           <button class = "cs_button" type="primary" bindtap="nav">进入Todo-list</button>
-             <button class="kf_button" open-type="contact" session-from="weapp">
-    <image class="kf_image" src="../../assets/kefu.png"></image>
-    </button>
+        <button class="cs_button" type="primary" bindtap="nav">进入Todo-list</button>
+        <view class="ccc">
+          <view class="body">
+            <view class="details">
+              <view class="list">
+                <view class="item">
+                  <view class="wrap">
+                    <view class="column-l">
+                      <view class="bd">风：</view>
+                      <view class="bd">{{detail.windSpeed}} m/s {{detail.windy}}</view>
+                    </view>
+                    <view class="column-r">
+                      <image class="icon" src="{{detailIcon.windy}}"></image>
+                    </view>
+                  </view>
+                </view>
+                <view class="item">
+                  <view class="wrap">
+                    <view class="column-l">
+                      <view class="bd">体感温度：</view>
+                      <view class="bd">{{detail.temperature}}˚</view>
+                    </view>
+                    <view class="column-r">
+                      <image class="icon" src="{{detailIcon.temperature}}"></image>
+                    </view>
+                  </view>
+                </view>
+                <view class="item">
+                  <view class="wrap">
+                    <view class="column-l">
+                      <view class="bd">相对湿度：</view>
+                      <view class="bd">{{detail.humidity}}%</view>
+                    </view>
+                    <view class="column-r">
+                      <image class="icon" src="{{detailIcon.humidity}}"></image>
+                    </view>
+                  </view>
+                </view>
+                <view class="item">
+                  <view class="wrap">
+                    <view class="column-l">
+                      <view class="bd">气压：</view>
+                      <view class="bd">{{detail.barometer}} Pa</view>
+                    </view>
+                    <view class="column-r">
+                      <image class="icon" src="{{detailIcon.barometer}}"></image>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <button class="kf_button" open-type="contact" session-from="weapp">
+          <image class="kf_image" src="../../assets/kefu.png"></image>
+        </button>
 
-                 <text class="footer">本程序由北京市育英学校 信息科技联盟开发</text>
+        <text class="footer">本程序由北京市育英学校 信息科技联盟开发</text>
       </view>
 
     </view>

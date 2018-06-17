@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>5</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="-1.11022302e-14%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFE20F" offset="0%"></stop>
+            <stop stop-color="#FFC800" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="97.7459343%" id="linearGradient-2">
+            <stop stop-color="#EDEDED" stop-opacity="0.8" offset="0%"></stop>
+            <stop stop-color="#EDEDED" stop-opacity="0.9" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="天气图标" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="天气图标_白色背景" transform="translate(-363.000000, -498.000000)">
+            <g id="Group-3" transform="translate(363.000000, 507.000000)">
+                <g id="Group-19-Copy-2">
+                    <path d="M47.2468837,32.9486441 C56.2166046,32.9486441 63.488,25.5728389 63.488,16.4743221 C63.488,7.37580522 56.2166046,0 47.2468837,0 C38.2771629,0 31.0057674,7.37580522 31.0057674,16.4743221 C31.0057674,25.5728389 38.2771629,32.9486441 47.2468837,32.9486441 Z" id="Combined-Shape-Copy-4" fill="url(#linearGradient-1)"></path>
+                    <path d="M49.6741675,22.3230393 C49.6741675,14.4202082 43.2034205,7.99066256 35.2500505,7.99066256 C30.1863617,7.99066256 25.5159587,10.6461585 22.9202721,14.879437 C21.3072097,13.7841555 19.4011087,13.1946474 17.4069611,13.1946474 C12.0058166,13.1946474 7.61231611,17.5604298 7.61231611,22.9270926 C7.61231611,23.5200802 7.6653352,24.1078771 7.77126094,24.6843801 C3.13380511,26.3567921 0,30.7248561 0,35.7371296 C0,42.1179061 5.09028274,46.9299692 11.8394503,46.9299692 L45.7332128,46.9299692 C52.2617017,46.9299692 57.5731691,41.6530303 57.5731691,35.1662165 C57.5733377,30.1280469 54.2621464,25.6267945 49.5426599,24.0258536 C49.6105784,23.4601312 49.6741675,22.8050841 49.6741675,22.3230393 Z" id="Shape-Copy-5" fill-opacity="0.949999988" fill="url(#linearGradient-2)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
