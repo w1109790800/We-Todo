@@ -38,10 +38,12 @@ App({
     }
   },
 
-  globalData: {
-    userInfo: null
-  },
+
   onLaunch: function () {
+    const user = AV.User.current();
+    globalData: {
+      userInfo: user
+    }
     let workTime = wx.getStorageSync('workTime')
     let restTime = wx.getStorageSync('restTime')
     if (!workTime) {

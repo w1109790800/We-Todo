@@ -39,15 +39,7 @@ Page({
   },
   login: function () {
     const user = AV.User.current();
-    wx.getUserInfo({
-      success: ({ userInfo }) => {
-        // 更新当前用户的信息
-        user.set(userInfo).save().then(user => {
-          // 成功，此时可在控制台中看到更新后的用户信息
-          this.data.user = user.toJSON();
-        }).catch(console.error);
-      }
-    });
+
     return AV.Promise.resolve(AV.User.current()).then(user =>
       user ? (user.isAuthenticated().then(authed => authed ? user : null)) : null
     ).then(user => user ? user : AV.User.loginWithWeapp()).catch(error => console.error(error.message));
@@ -154,6 +146,7 @@ Page({
     acl.setPublicWriteAccess(false);
     acl.setReadAccess(AV.User.current(), true);
     acl.setWriteAccess(AV.User.current(), true);
+    const user = AV.User.current();
     new time({
       log: this.data.log,
       name: this.data.log.name,
@@ -161,7 +154,7 @@ Page({
       keepTime: this.data.log.keepTime,
       user: AV.User.current(),
       a: this.data.log.keepTime - this.data.log.endTime,
-      name: getApp().globalData.userInfo.nickName
+      name: user.attributes.nickName
     }).setACL(acl).save().then((time) => {
       this.setTodos([time, ...this.data.log]);
     }).catch(error => console.error(error.message));

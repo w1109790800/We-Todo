@@ -87,6 +87,7 @@ onShareAppMessage: function () {
     this.fetchTodos(user).catch(error => console.error(error.message)).then(wx.stopPullDownRefresh);
   },
   setTodos: function (todos) {
+    const user = AV.User.current();
     const activeTodos = todos.filter(todo => !todo.done);
     this.setData({
       todos,
@@ -106,6 +107,7 @@ onShareAppMessage: function () {
     });
   },
   addTodo: function () {
+    const user = AV.User.current();
     wx.showToast({
       title: '添加中……',
       icon: 'loading'
@@ -123,19 +125,19 @@ onShareAppMessage: function () {
       content: value,
       done: false,
       user: AV.User.current(),
-      name: getApp().globalData.userInfo.nickName
+      name: user.attributes.nickName
     }).setACL(acl).save().then((todo) => {
       this.setTodos([todo, ...this.data.todos]);
     }).catch(error => console.error(error.message));
     this.setData({
       draft: ''
     });
-    console.log(getApp().globalData.userInfo.nickName);
+    console.log(user.attributes.nickName);
     new Done({
       content: value,
       done: false,
       user: AV.User.current(),
-      name: getApp().globalData.userInfo.nickName
+      name: user.attributes.nickName
     }).setACL(acl).save().then((todo) => {
       this.setTodos([todo, ...this.data.todos]);
     }).catch(error => console.error(error.message));

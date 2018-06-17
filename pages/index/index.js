@@ -240,7 +240,7 @@ Page({
       },
     });
   },
-  nav: function () {
+  nav: function(){
     var _this = this;
     setTimeout(function () {
       _this.setData({
@@ -248,17 +248,6 @@ Page({
       });
     }, 1000);
     const user = AV.User.current();
-    wx.login({
-      success: function () {
-        wx.getUserInfo({
-          success: function (res) {
-            getApp().globalData.userInfo = res.userInfo;
-            console.log(getApp().globalData.userInfo);
-          }
-        });
-      }
-    });
-
     wx.navigateTo({
       url: '../todos/todos',
     })
@@ -267,8 +256,8 @@ Page({
         remind: ''
       });
     }, 100);
-
-  },
+    
+  } ,
   onReady: function () {
     var _this = this;
     setTimeout(function () {
