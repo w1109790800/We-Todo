@@ -51,11 +51,9 @@ page {
 page {
   background-color: #f2f2f2;
 }
-
 .tappable:hover {
   opacity: .6;
 }
-
 .container {
   padding: 4px 12px;
 }
