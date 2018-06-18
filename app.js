@@ -15,29 +15,6 @@ const defaultTime = {
 }
 
 App({
-  onLaunch: function () {
-    //调用API从本地缓存中获取数据
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-  },
-
-  getUserInfo: function (cb) {
-    var that = this
-    if (this.globalData.userInfo) {
-      typeof cb == "function" && cb(this.globalData.userInfo)
-    } else {
-      //调用登录接口
-      wx.getUserInfo({
-        withCredentials: false,
-        success: function (res) {
-          that.globalData.userInfo = res.userInfo
-          typeof cb == "function" && cb(that.globalData.userInfo)
-        }
-      })
-    }
-  },
-
 
   onLaunch: function () {
     const user = AV.User.current();
@@ -58,5 +35,75 @@ App({
         data: defaultTime.defaultRestTime
       })
     }
-  }
+    //调用API从本地缓存中获取数据
+    var logs = wx.getStorageSync('logs') || []
+    logs.unshift(Date.now())
+    wx.setStorageSync('logs', logs)
+    wx.setStorageSync('user', user)
+    wx.getStorage({
+      key: 'history',
+      success: (res) => {
+        this.globalData.history = res.data
+      },
+      fail: (res) => {
+        console.log("get storage failed")
+        console.log(res)
+        this.globalData.history = []
+      }
+    })
+
+  },
+  // 权限询问
+  getRecordAuth: function () {
+    wx.getSetting({
+      success(res) {
+        console.log("succ")
+        console.log(res)
+        if (!res.authSetting['scope.record']) {
+          wx.authorize({
+            scope: 'scope.record',
+            success() {
+              // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
+              console.log("succ auth")
+            }, fail() {
+              console.log("fail auth")
+            }
+          })
+        } else {
+          console.log("record has been authed")
+        }
+      }, fail(res) {
+        console.log("fail")
+        console.log(res)
+      }
+    })
+  },
+
+  onHide: function () {
+    wx.stopBackgroundAudio()
+  },
+  globalData: {
+
+    history: [],
+  },
+
+
+  getUserInfo: function (cb) {
+    var that = this
+    if (this.globalData.userInfo) {
+      typeof cb == "function" && cb(this.globalData.userInfo)
+    } else {
+      //调用登录接口
+      wx.getUserInfo({
+        withCredentials: false,
+        success: function (res) {
+          that.globalData.userInfo = res.userInfo
+          typeof cb == "function" && cb(that.globalData.userInfo)
+        }
+      })
+    }
+  },
+
+
+
 })
