@@ -4,6 +4,7 @@ const Done = require('../../model/done');
 const bind = require('../../utils/live-query-binding');
 
 
+
 Page({
   
 onShareAppMessage: function () {

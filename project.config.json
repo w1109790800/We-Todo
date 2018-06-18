@@ -13,7 +13,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.0.9",
 	"appid": "wx08d8f52ad361f6e8",
-	"projectname": "ttest",
+	"projectname": "123456",
 	"isGameTourist": false,
 	"condition": {
 		"search": {
@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 3,
 			"list": [
 				{
 					"id": 1,

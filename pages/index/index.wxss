@@ -6,7 +6,7 @@ page {
   font-size: 50rpx;
   position: fixed;
   right: 65rpx;
-  top: 120rpx;
+  top: 110rpx;
   font-family: Cursive;
   justify-content: center; 
 }
@@ -51,7 +51,7 @@ page {
 .body .day,
 .ccc{
   position: fixed;
-  top: 350rpx ;
+  top: 310rpx ;
   justify-content: center; 
 }
 .body .details {
@@ -251,6 +251,7 @@ page{
 }
 .container {
   position: relative;
+  overflow: hidden;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -327,7 +328,7 @@ page{
 
   height: 90rpx;
   position: fixed;
-  top: 230rpx ;
+  top: 210rpx ;
   justify-content: center; 
   margin-left: 245rpx;
 }
@@ -622,6 +623,7 @@ form {
   padding: 15rpx 40rpx 30rpx;
 }
 .footer {
+  font-family: Cursive;
   position: fixed;
   bottom: 0;
   height: 44px;

@@ -76,7 +76,7 @@
           <image class="kf_image" src="../../assets/kefu.png"></image>
         </button>
 
-        <button class="footer"open-type="contact" session-from="weapp">本程序由北京市育英学校 信息科技联盟开发</button>
+        <button class="footer"open-type="contact" session-from="weapp">本程序由北京市育英学校 WangYuyang开发</button>
       </view>
 
     </view>

@@ -15,7 +15,7 @@
 
     <block wx:for="{{todos}}" wx:for-item="todo" wx:key="objectId">
       <view class="bd">
-        <icon type="{{todo.done ? 'success_circle' : 'circle'}}" data-id="{{todo.objectId}}" ontap="toggleDone" class="todo-icon tappable" size="38" />
+        <icon type="{{todo.done ? 'success_circle' : 'circle'}}" data-id="{{todo.objectId}}" ontap="toggleDone" class="todo-icon tappable" size="34" />
         <text wx:if="{{todo.objectId != editedTodo.objectId}}" data-id="{{todo.objectId}}" class="todo-text tappable {{todo.done ? 'done': ''}}" ontap="editTodo">
        {{todo.content}} 
     </text>
