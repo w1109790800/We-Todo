@@ -6,7 +6,7 @@ page {
   font-size: 50rpx;
   position: fixed;
   right: 65rpx;
-  top: 110rpx;
+  top: 95rpx;
   font-family: Cursive;
   justify-content: center; 
 }
@@ -325,10 +325,9 @@ page{
 }
 .cs_button {
   background-color: #fff;
-
-  height: 90rpx;
+  height: 95rpx;
   position: fixed;
-  top: 210rpx ;
+  top: 200rpx ;
   justify-content: center; 
   margin-left: 245rpx;
 }
@@ -416,7 +415,7 @@ page{
   border: 0px;
   height: 100rpx;
   right: 0;
-  top: 220rpx;
+  top: 200rpx;
   bottom: 20rpx;
   position: fixed;
 }
