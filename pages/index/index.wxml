@@ -26,7 +26,7 @@
                     <view class="icon">
                       <image src="{{ suggestionIcon.air }}"></image>
                     </view>
-                    <view>AQI/PM2.5：</view>
+                    <view>  AQI/PM2.5：</view>
                     <text class="status">{{suggestion.air}}</text>
                   </view>
                 </view>
@@ -35,7 +35,7 @@
                     <view class="icon">
                       <image src="{{ suggestionIcon.comf }}"></image>
                     </view>
-                    <view>舒适度：</view>
+                    <view>  舒适度：</view>
                     <text class="status">{{suggestion.comf}}</text>
                   </view>
                 </view>
@@ -44,7 +44,7 @@
                     <view class="icon">
                       <image src="{{ suggestionIcon.cw }}"></image>
                     </view>
-                    <view>洗车指数：</view>
+                    <view> 洗车指数：</view>
                     <text class="status">{{suggestion.cw}}</text>
                   </view>
                 </view>
@@ -53,7 +53,7 @@
                     <view class="icon">
                       <image src="{{ suggestionIcon.drsg }}"></image>
                     </view>
-                    <view class="b">穿衣指数：</view>
+                    <view class="b"> 穿衣指数：</view>
                       <text class="status">{{suggestion.drsg}}</text>
                     </view>
                   </view>
@@ -62,7 +62,7 @@
                       <view class="icon">
                         <image src="{{ suggestionIcon.flu }}"></image>
                       </view>
-                      <view>感冒指数：</view>
+                      <view> 感冒指数：</view>
                       <text class="status">{{suggestion.flu}}</text>
                     </view>
                   </view>
@@ -71,7 +71,7 @@
                       <view class="icon">
                         <image src="{{ suggestionIcon.sport }}"></image>
                       </view>
-                      <view>运动指数：</view>
+                      <view> 运动指数：</view>
                       <text class="status">{{suggestion.sport}}</text>
                     </view>
                   </view>
@@ -80,7 +80,7 @@
                       <view class="icon">
                         <image src="{{ suggestionIcon.trav }}"></image>
                       </view>
-                      <view>旅游指数：</view>
+                      <view> 旅游指数：</view>
                       <text class="status">{{suggestion.trav}}</text>
                     </view>
                   </view>
@@ -89,7 +89,7 @@
                       <view class="icon">
                         <image src="{{ suggestionIcon.uv }}"></image>
                       </view>
-                      <view>紫外线指数：</view>
+                      <view> 紫外线指数：</view>
                       <text class="status">{{suggestion.uv}}</text>
                     </view>
                   </view>
