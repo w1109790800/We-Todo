@@ -1,4 +1,11 @@
 /**index.wxss**/
+.icon {
+  margin: 0 0 25rpx;
+}
+.icon image {
+  width: 50rpx;
+  height: 50rpx;
+}
 page {
   background: #F1F1F1;
 }
@@ -6,7 +13,7 @@ page {
   font-size: 50rpx;
   position: fixed;
   right: 65rpx;
-  top: 95rpx;
+  top: 80rpx;
   font-family: Cursive;
   justify-content: center; 
 }
@@ -172,7 +179,7 @@ page {
 }
 .body .details .list .wrap {
   display: flex;
-  padding: 45rpx;
+  padding: 25rpx;
 }
 .body .details .list .item:before {
   content: "";
@@ -200,7 +207,7 @@ page {
   height: 0;
 }
 .body .details .list .item .column-l {
-  flex: 0 0 80%;
+  flex: 0 0 70%;
 }
 .body .details .list .item .hd {
 
@@ -327,7 +334,7 @@ page{
   background-color: #fff;
   height: 95rpx;
   position: fixed;
-  top: 200rpx ;
+  top: 190rpx ;
   justify-content: center; 
   margin-left: 245rpx;
 }
