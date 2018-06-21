@@ -1,0 +1,63 @@
+/* countdown_detail.wxss */
+.view_body
+{ 
+  width: 100%;
+  height: 700px;
+  background:url("https://www.wenxingsen.com/image/20170950.jpg") no-repeat;
+  background-size: 100% 100%;
+  text-align: center;
+  color: white;
+  
+}
+
+.title{
+    font-size: 45rpx;
+    padding-top: 350rpx;
+    
+
+}
+
+.day{
+ font-size: 200rpx;
+
+}
+
+.tian
+{
+  margin-top: -20rpx;
+
+
+}
+
+.info{
+  margin-top: 10rpx;
+  font-size: 45rpx;
+
+}
+
+.del{
+  margin-top: 170rpx;
+  font-size: 40rpx;
+  text-decoration: underline;
+  display:inline-block;
+}
+
+.modify{
+  display:inline-block;
+}
+
+.modify-view{
+  margin-top: 30px;
+}
+
+.del-img{
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.modify-img{
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+}

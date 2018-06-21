@@ -1,0 +1,43 @@
+<!--countdown_send.wxml-->
+<input type="text" placeholder="倒数日主题(不大于7字)" 
+value='{{init_title}}'
+name="title" bindinput="input_title" class="sen-input" />
+
+<view class="packer_view">
+  <picker mode="date" value="{{dateValue}}" 
+  start="1980-01-01" 
+  end="2099-12-12" 
+  bindchange="datePickerBindchange">
+    设置目标日: <text class="data_text">{{dateValue}}</text>
+  </picker>
+</view>
+
+<button class="sen-button"
+    bindtap="bindViewTap">
+  确定添加倒数日/正数日
+</button>
+
+<view class="view_tip">
+温馨提示:添加目标日的时候，系统将自动判断是倒数日还是正数日，并智能归类到属于自己的类别，请您放心的添加^_^
+</view>
+
+<view class="public_title">
+  或者【一键添加】热门公共模板
+</view>
+
+<view class="view_list">
+
+  <block wx:for="{{listData}}" wx:key="code">
+    <view class="sen-item" 
+    bindtap="addDetail"
+    data-title="{{item.title}}"
+    data-day="{{item.day}}"
+    data-info="{{item.info}}"
+    data-id="{{item.id}}"
+    data-tip="{{item.tip}}">
+
+      <button class="public-add"> {{item.title}} {{item.info}} 一键添加</button>
+    </view>
+  
+  </block>
+</view>
