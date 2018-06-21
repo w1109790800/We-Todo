@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 6,
 			"list": [
 				{
 					"id": 1,
@@ -72,9 +72,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 6,
 					"name": "day",
-					"pathName": "pages/countdown_edit/countdown_edit",
+					"pathName": "pages/countdown/countdown",
 					"query": ""
 				}
 			]

@@ -1,5 +1,6 @@
 // countdown.js
 //获取应用实例
+const AV = require('../../utils/av-live-query-weapp-min');
 var app = getApp()
 var init = 1;
 Page({
@@ -16,21 +17,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
     wx.setNavigationBarColor({
       frontColor: '#ffffff',
       backgroundColor: '#32b4fa',
     })
-
-
-    var str_openid = wx.getStorageSync("openid");
-    if(str_openid.length>1)
-    {
-      this.OnGetConfig();
-    }
-    
-    
-    
+    const user = AV.User.current();
+    const a = JSON.parse(user._hashedJSON.authData);
+    var str_openid = a.lc_weapp.openid;
+    console.log(str_openid);
   },
 
   /**
@@ -48,17 +42,8 @@ Page({
   onShow: function () {
 
     // 没有用户id 去获取用户id
-    var str_openid = wx.getStorageSync("openid");
-    if(str_openid.length<1)
-    {
-      wx.switchTab({
-        url: '../cindex/cindex',
-      })
-      init = 0;
-      return;
-
-    }
-
+    const user = AV.User.current();
+    var str_openid = user.id;
     var str_dsr_refresh = wx.getStorageSync("dsr_refresh");
     if(str_dsr_refresh == '1')
     {
@@ -273,12 +258,12 @@ Page({
 
       console.log(res.data)
        
-       wx.setStorageSync('background_type', 
-       res.data.item.background_type);
-       wx.setStorageSync('background_image', 
-       res.data.item.background_image);
-       wx.setStorageSync('start_page', 
-       res.data.item.start_page);
+       //wx.setStorageSync('background_type', 
+       //res.data.item.background_type);
+       //wx.setStorageSync('background_image', 
+       //res.data.item.background_image);
+       //wx.setStorageSync('start_page', 
+       //res.data.item.start_page);
 
 
         // 结束-数据返回回来
