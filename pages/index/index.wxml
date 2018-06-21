@@ -16,9 +16,6 @@
       </view>
       <view class="bd">
         <text class="wenzi">💖时间有序，我们在路上💖</text>
-
-
-
         <button class="cs_button" type="primary" bindtap="nav">进入Todo-list</button>
         <view class="ccc">
           <view class="body">
@@ -26,61 +23,89 @@
               <view class="list">
                 <view class="item">
                   <view class="wrap">
-                    <view class="column-l">
-                      <view class="bd">风：</view>
-                      <view class="bd">{{detail.windSpeed}} m/s {{detail.windy}}</view>
+                    <view class="icon">
+                      <image src="{{ suggestionIcon.air }}"></image>
                     </view>
-                    <view class="column-r">
-                      <image class="icon" src="{{detailIcon.windy}}"></image>
-                    </view>
+                    <view>  AQI/PM2.5：</view>
+                    <text class="status">{{suggestion.air}}</text>
                   </view>
                 </view>
                 <view class="item">
                   <view class="wrap">
-                    <view class="column-l">
-                      <view class="bd">体感温度：</view>
-                      <view class="bd">{{detail.temperature}}˚</view>
+                    <view class="icon">
+                      <image src="{{ suggestionIcon.comf }}"></image>
                     </view>
-                    <view class="column-r">
-                      <image class="icon" src="{{detailIcon.temperature}}"></image>
-                    </view>
+                    <view>  舒适度：</view>
+                    <text class="status">{{suggestion.comf}}</text>
                   </view>
                 </view>
                 <view class="item">
                   <view class="wrap">
-                    <view class="column-l">
-                      <view class="bd">相对湿度：</view>
-                      <view class="bd">{{detail.humidity}}%</view>
+                    <view class="icon">
+                      <image src="{{ suggestionIcon.cw }}"></image>
                     </view>
-                    <view class="column-r">
-                      <image class="icon" src="{{detailIcon.humidity}}"></image>
-                    </view>
+                    <view> 洗车指数：</view>
+                    <text class="status">{{suggestion.cw}}</text>
                   </view>
                 </view>
                 <view class="item">
                   <view class="wrap">
-                    <view class="column-l">
-                      <view class="bd">气压：</view>
-                      <view class="bd">{{detail.barometer}} Pa</view>
+                    <view class="icon">
+                      <image src="{{ suggestionIcon.drsg }}"></image>
                     </view>
-                    <view class="column-r">
-                      <image class="icon" src="{{detailIcon.barometer}}"></image>
+                    <view class="b"> 穿衣指数：</view>
+                      <text class="status">{{suggestion.drsg}}</text>
+                    </view>
+                  </view>
+                  <view class="item">
+                    <view class="wrap">
+                      <view class="icon">
+                        <image src="{{ suggestionIcon.flu }}"></image>
+                      </view>
+                      <view> 感冒指数：</view>
+                      <text class="status">{{suggestion.flu}}</text>
+                    </view>
+                  </view>
+                  <view class="item">
+                    <view class="wrap">
+                      <view class="icon">
+                        <image src="{{ suggestionIcon.sport }}"></image>
+                      </view>
+                      <view> 运动指数：</view>
+                      <text class="status">{{suggestion.sport}}</text>
+                    </view>
+                  </view>
+                  <view class="item">
+                    <view class="wrap">
+                      <view class="icon">
+                        <image src="{{ suggestionIcon.trav }}"></image>
+                      </view>
+                      <view> 旅游指数：</view>
+                      <text class="status">{{suggestion.trav}}</text>
+                    </view>
+                  </view>
+                  <view class="item">
+                    <view class="wrap">
+                      <view class="icon">
+                        <image src="{{ suggestionIcon.uv }}"></image>
+                      </view>
+                      <view> 紫外线指数：</view>
+                      <text class="status">{{suggestion.uv}}</text>
                     </view>
                   </view>
                 </view>
               </view>
-            </view>
+   
           </view>
+          <button class="kf_button" open-type="contact" session-from="weapp">
+            <image class="kf_image" src="../../assets/kefu.png"></image>
+          </button>
+
+          <button class="footer" open-type="contact" session-from="weapp">本程序由北京市育英学校 WangYuyang开发</button>
         </view>
-        <button class="kf_button" open-type="contact" session-from="weapp">
-          <image class="kf_image" src="../../assets/kefu.png"></image>
-        </button>
 
-        <button class="footer"open-type="contact" session-from="weapp">本程序由北京市育英学校 WangYuyang开发</button>
       </view>
-
-    </view>
-
+</view>
   </block>
 
-</view>
+  </view>

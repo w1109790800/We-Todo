@@ -1,4 +1,11 @@
 /**index.wxss**/
+.icon {
+  margin: 0 0 25rpx;
+}
+.icon image {
+  width: 50rpx;
+  height: 50rpx;
+}
 page {
   background: #F1F1F1;
 }
@@ -6,7 +13,7 @@ page {
   font-size: 50rpx;
   position: fixed;
   right: 65rpx;
-  top: 110rpx;
+  top: 80rpx;
   font-family: Cursive;
   justify-content: center; 
 }
@@ -51,7 +58,7 @@ page {
 .body .day,
 .ccc{
   position: fixed;
-  top: 310rpx ;
+  top: 270rpx ;
   justify-content: center; 
 }
 .body .details {
@@ -80,7 +87,7 @@ page {
   flex: 0 0 25%;
 }
 .body .suggestion .item .wrap {
-  padding: 30rpx;
+  padding: 20rpx;
 }
 .body .suggestion .item:before {
   content: "";
@@ -172,7 +179,7 @@ page {
 }
 .body .details .list .wrap {
   display: flex;
-  padding: 45rpx;
+  padding: 15rpx;
 }
 .body .details .list .item:before {
   content: "";
@@ -200,7 +207,7 @@ page {
   height: 0;
 }
 .body .details .list .item .column-l {
-  flex: 0 0 80%;
+  flex: 0 0 70%;
 }
 .body .details .list .item .hd {
 
@@ -325,10 +332,9 @@ page{
 }
 .cs_button {
   background-color: #fff;
-
-  height: 90rpx;
+  height: 95rpx;
   position: fixed;
-  top: 210rpx ;
+  top: 160rpx ;
   justify-content: center; 
   margin-left: 245rpx;
 }
@@ -416,7 +422,7 @@ page{
   border: 0px;
   height: 100rpx;
   right: 0;
-  top: 220rpx;
+  top: 170rpx;
   bottom: 20rpx;
   position: fixed;
 }
