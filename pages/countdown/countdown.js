@@ -1,7 +1,7 @@
 // countdown.js
 //获取应用实例
 const AV = require('../../utils/av-live-query-weapp-min');
-const Todo = require('../../model/todo');
+const count = require('../../model/count');
 const Done = require('../../model/done');
 const bind = require('../../utils/live-query-binding');
 

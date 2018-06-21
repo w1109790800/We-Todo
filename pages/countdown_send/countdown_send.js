@@ -1,11 +1,18 @@
 // countdown_send.js
 const AV = require('../../utils/av-live-query-weapp-min');
+const count = require('../../model/count');
 Page({
 
   /**
    * 页面的初始数据
    */
+
   data: {
+    remind: '加载中',
+    todos: [],
+    editedTodo: {},
+    draft: '',
+    editDraft: null,
     get_title:"",
     dateValue: '点击此处进行选择',
     set_type:'dsr',
@@ -133,6 +140,25 @@ Page({
 
     var strusername = wx.getStorageSync("username");
     var stropenid = wx.getStorageSync("openid");
+    const user = AV.User.current();
+    var acl = new AV.ACL();
+    acl.setPublicReadAccess(false);
+    acl.setPublicWriteAccess(false);
+    acl.setReadAccess(AV.User.current(), true);
+    acl.setWriteAccess(AV.User.current(), true);
+    new count({
+      call: '微信小程序',
+      type: 'send_countdown_plus',
+      username: strusername,
+      title: this.data.get_title,
+      info: this.data.dateValue,
+      openid: stropenid,
+    }).setACL(acl).save().then((todo) => {
+
+    }).catch(error => console.error(error.message));
+    this.setData({
+      draft: ''
+    });
 
     // 发送http请求
     wx.request({

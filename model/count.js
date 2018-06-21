@@ -1,5 +1,5 @@
 const AV = require('../utils/av-live-query-weapp-min');
-class Todo extends AV.Object {
+class count extends AV.Object {
   get done() {
     return this.get('done');
   }
@@ -16,10 +16,8 @@ class Todo extends AV.Object {
   set name(value) {
     this.set('name', value);
   }
-  
-
 }
 
-AV.Object.register(Todo, 'Todo');
+AV.Object.register(count, 'count');
+module.exports = count;
 
-module.exports = Todo;
