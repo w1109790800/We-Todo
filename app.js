@@ -18,6 +18,7 @@ App({
 
   onLaunch: function () {
     const user = AV.User.current();
+    console.log(user);
     globalData: {
       userInfo: user
     }

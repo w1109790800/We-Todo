@@ -1,4 +1,5 @@
 // countdown_send.js
+const AV = require('../../utils/av-live-query-weapp-min');
 Page({
 
   /**

@@ -1,6 +1,11 @@
 // countdown.js
 //获取应用实例
 const AV = require('../../utils/av-live-query-weapp-min');
+const Todo = require('../../model/todo');
+const Done = require('../../model/done');
+const bind = require('../../utils/live-query-binding');
+
+
 var app = getApp()
 var init = 1;
 Page({
@@ -12,19 +17,36 @@ Page({
     index_day:'0',
     index_info:'00-0-0'
   },
+  login: function () {
 
+    var _this = this;
+    const user = AV.User.current();
+    const a = JSON.parse(user._hashedJSON.authData);
+    var str_openid = a.lc_weapp.openid;
+    wx.setStorageSync("openid", str_openid);
+    wx.setStorageSync("username", user.attributes.nickName);
+    return AV.Promise.resolve(AV.User.current()).then(user =>
+      user ? (user.isAuthenticated().then(authed => authed ? user : null)) : null
+    ).then(user => user ? user : AV.User.loginWithWeapp()).catch(error => console.error(error.message));
+
+    setTimeout(function () {
+      _this.setData({
+        remind: ''
+      });
+
+    }, 100);
+  },
   /**
    * 生命周期函数--监听页面加载
    */
+
+
   onLoad: function (options) {
     wx.setNavigationBarColor({
       frontColor: '#ffffff',
       backgroundColor: '#32b4fa',
     })
-    const user = AV.User.current();
-    const a = JSON.parse(user._hashedJSON.authData);
-    var str_openid = a.lc_weapp.openid;
-    console.log(str_openid);
+
   },
 
   /**
@@ -43,7 +65,12 @@ Page({
 
     // 没有用户id 去获取用户id
     const user = AV.User.current();
-    var str_openid = user.id;
+    console.log(user);
+    const a = JSON.parse(user._hashedJSON.authData);
+    var str_openid = a.lc_weapp.openid;
+    wx.setStorageSync("openid", str_openid);
+    wx.setStorageSync("username", user.attributes.nickName);
+    console.log(str_openid);
     var str_dsr_refresh = wx.getStorageSync("dsr_refresh");
     if(str_dsr_refresh == '1')
     {
@@ -120,11 +147,14 @@ Page({
   },
 
   OnGetCoundown: function () {
-
+    const user = AV.User.current();
+    const a = JSON.parse(user._hashedJSON.authData);
+    var str_openid = a.lc_weapp.openid;
     // 把this赋值给that
     var that = this;
-    var str_username = wx.getStorageSync("username");
-    var stropenid = wx.getStorageSync("openid");
+    var str_username = user.attributes.nickName;
+    var stropenid = str_openid;
+    console.log(str_username, stropenid);
     // 发送http请求
     wx.request({
       url: 'https://www.wenxingsen.com/json.php',
@@ -135,10 +165,12 @@ Page({
         username: str_username,
         openid: stropenid,
       },
+      
       header: {
         'content-type': 'application/json'
       },
       success: function (res) {
+        
         // 开始-数据返回回来
 
         console.log(res.data)
@@ -211,6 +243,7 @@ Page({
     wx.navigateTo({
       url: '../countdown_send/countdown_send',
     })
+
 
   },
   // 查看倒数日具体
