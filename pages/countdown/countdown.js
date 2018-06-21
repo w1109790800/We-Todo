@@ -155,6 +155,18 @@ Page({
     var str_username = user.attributes.nickName;
     var stropenid = str_openid;
     console.log(str_username, stropenid);
+        var _this = this;
+   // const query = new AV.Query("count")
+     // .equalTo('openid', stropenid)
+      //.descending('createdAt');
+    var query = new AV.Query("count");
+    query.equalTo('openid', stropenid);
+    query.find().then(function (results) {
+      console.log(results);
+      // 如果这样写，第二个条件将覆盖第一个条件，查询只会返回 priority = 1 的结果
+    }, function (error) {
+    });
+    
     // 发送http请求
     wx.request({
       url: 'https://www.wenxingsen.com/json.php',
