@@ -206,9 +206,9 @@ Page({
 
   //事件处理函数
   bindViewTap: function () {
-
+    console.log('complete');
     // 页面跳转
-    wx.switchTab({
+    wx.navigateTo({
       url: '../countdown_send/countdown_send',
     })
 

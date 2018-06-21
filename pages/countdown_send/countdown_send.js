@@ -34,7 +34,7 @@ Page({
     var str_openid = wx.getStorageSync("openid");
     if (str_openid.length < 1) {
       wx.switchTab({
-        url: '../index/index',
+        url: '../countdown/countdown',
       })
       return;
     }
