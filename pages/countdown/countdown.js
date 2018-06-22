@@ -161,8 +161,10 @@ Page({
       //.descending('createdAt');
       
         const query = new AV.Query("count").equalTo('openid', stropenid)
-        query.find().then(result => this.setData({ listData : result })).catch(console.error);;
-    
+
+        query.find().then(result => this.setData({ listData : result })).catch(console.error);
+        console.log(query.find())
+
 
 
     
