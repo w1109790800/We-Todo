@@ -147,6 +147,7 @@ Page({
     acl.setReadAccess(AV.User.current(), true);
     acl.setWriteAccess(AV.User.current(), true);
     new count({
+      data: this.data,
       call: '微信小程序',
       type: 'send_countdown_plus',
       username: strusername,
