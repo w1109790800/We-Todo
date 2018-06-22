@@ -21,6 +21,7 @@ App({
     console.log(user);
     globalData: {
       userInfo: user
+      data: null
     }
     let workTime = wx.getStorageSync('workTime')
     let restTime = wx.getStorageSync('restTime')

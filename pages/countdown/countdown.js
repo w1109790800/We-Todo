@@ -159,13 +159,12 @@ Page({
    // const query = new AV.Query("count")
      // .equalTo('openid', stropenid)
       //.descending('createdAt');
-    var query = new AV.Query("count");
-    query.equalTo('openid', stropenid);
-    query.find().then(function (results) {
-      console.log(results);
-      // 如果这样写，第二个条件将覆盖第一个条件，查询只会返回 priority = 1 的结果
-    }, function (error) {
-    });
+      
+        const query = new AV.Query("count").equalTo('openid', stropenid)
+        query.find().then(result => this.setData({ listData : result })).catch(console.error);;
+    
+
+
     
     // 发送http请求
     wx.request({
@@ -182,14 +181,10 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
+        console.log("res.data",res.data);
+        //that.setData({ listData: res.data.message });
         
-        // 开始-数据返回回来
 
-        console.log(res.data)
-
-        that.setData({ listData: res.data.message });
-
-        // 结束-数据返回回来
       },
       fail: function (res) {
         console.log('submit fail');
