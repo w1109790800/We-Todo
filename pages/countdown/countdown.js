@@ -13,7 +13,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    index_title:"哎呀 没有倒数日",
+    index_title:"哎呀 没有纪念日",
     index_day:'0',
     index_info:'00-0-0'
   },
@@ -83,7 +83,7 @@ Page({
       var that = this;
       that.setData(
         {
-          index_title: "哎呀 没有倒数日",
+          index_title: "哎呀 没有纪念日",
           index_day: '0',
           index_info: '00-0-0'
         }
@@ -145,8 +145,8 @@ Page({
   onShareAppMessage: function () {
 
     return {
-      title: '倒数日&正数日&纪念日',
-      desc: '倒数日&正数日&纪念日&',
+      title: '纪念日&正数日&纪念日',
+      desc: '纪念日&正数日&纪念日&',
       path: '/pages/countdown/countdown'
     }
   
@@ -248,7 +248,7 @@ Page({
 
 
   },
-  // 查看倒数日具体
+  // 查看纪念日具体
   showDetail: function (e)
   {
 

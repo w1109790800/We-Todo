@@ -99,8 +99,8 @@ Page({
   onShareAppMessage: function () {
     
     return {
-      title: '倒数日&正数日&纪念日',
-      desc: '倒数日&正数日&纪念日&',
+      title: '纪念日&正数日&纪念日',
+      desc: '纪念日&正数日&纪念日&',
       path: '/pages/countdown/countdown'
     }
 
@@ -201,7 +201,7 @@ Page({
     })
 
   },
-  // 查看倒数日具体
+  // 查看纪念日具体
   showDetail: function (e)
   {
 

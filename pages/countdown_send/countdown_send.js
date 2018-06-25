@@ -107,7 +107,7 @@ Page({
     // 判断输入
     if (this.data.get_title.length < 1) {
       wx.showToast({
-        title: '请输入倒数日主题',
+        title: '请输入主题',
         icon: 'loading',
         duration: 1000
       });
@@ -116,7 +116,7 @@ Page({
 
     if (this.data.get_title.length > 7) {
       wx.showToast({
-        title: '不建议倒数日过长,7字以内',
+        title: '纪念日过长',
         icon: 'loading',
         duration: 1000
       });
