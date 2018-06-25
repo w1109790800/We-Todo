@@ -1,6 +1,7 @@
 // countdown_send.js
 const AV = require('../../utils/av-live-query-weapp-min');
 const count = require('../../model/count');
+const util = require('../../utils/util.js');
 Page({
 
   /**
@@ -146,12 +147,14 @@ Page({
     acl.setPublicWriteAccess(false);
     acl.setReadAccess(AV.User.current(), true);
     acl.setWriteAccess(AV.User.current(), true);
+    var time = util.formatTime(new Date()).split(" ")[0];  
     new count({
       data: this.data,
       call: '微信小程序',
       type: 'send_countdown_plus',
       username: strusername,
       title: this.data.get_title,
+      time: time,
       info: this.data.dateValue,
       openid: stropenid,
     }).setACL(acl).save().then((todo) => {

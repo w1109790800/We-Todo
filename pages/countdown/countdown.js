@@ -4,7 +4,7 @@ const AV = require('../../utils/av-live-query-weapp-min');
 const count = require('../../model/count');
 const Done = require('../../model/done');
 const bind = require('../../utils/live-query-binding');
-
+const util = require('../../utils/util.js');
 
 var app = getApp()
 var init = 1;
@@ -19,6 +19,7 @@ Page({
   },
   login: function () {
     var _this = this;
+
     const user = AV.User.current();
     return AV.Promise.resolve(AV.User.current()).then(user =>
       user ? (user.isAuthenticated().then(authed => authed ? user : null)) : null
@@ -49,6 +50,8 @@ Page({
       frontColor: '#ffffff',
       backgroundColor: '#32b4fa',
     })
+    var time = util.formatTime(new Date());
+    console.log(time);
 
   },
 
@@ -167,14 +170,14 @@ Page({
 
         //console.log( query.find().then(result => this.setData({ listData: result })).catch(console.error));
         //console.log(query.find())
-
         var _this = this;
         query.find().then(function (results) {
-
+          
           _this.setData({ listData: results });
           console.log("in", results);
 
         }),
+
 
     
     // 发送http请求
