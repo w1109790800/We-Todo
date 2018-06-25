@@ -18,9 +18,12 @@ Page({
     index_info:'00-0-0'
   },
   login: function () {
-
     var _this = this;
     const user = AV.User.current();
+    return AV.Promise.resolve(AV.User.current()).then(user =>
+      user ? (user.isAuthenticated().then(authed => authed ? user : null)) : null
+    ).then(user => user ? user : AV.User.loginWithWeapp()).catch(error => console.error(error.message));
+
     const a = JSON.parse(user._hashedJSON.authData);
     var str_openid = a.lc_weapp.openid;
     wx.setStorageSync("openid", str_openid);
@@ -162,7 +165,7 @@ Page({
       
         const query = new AV.Query("count").equalTo('openid', stropenid)
 
-        query.find().then(result => this.setData({ listData : result })).catch(console.error);
+        query.find().then(result => this.setData({ listData: result })).catch(console.error);
         console.log(query.find())
 
 
