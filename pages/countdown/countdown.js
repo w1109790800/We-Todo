@@ -165,10 +165,16 @@ Page({
       
         const query = new AV.Query("count").equalTo('openid', stropenid)
 
-        query.find().then(result => this.setData({ listData: result })).catch(console.error);
-        console.log(query.find())
+        //console.log( query.find().then(result => this.setData({ listData: result })).catch(console.error));
+        //console.log(query.find())
 
+        var _this = this;
+        query.find().then(function (results) {
 
+          _this.setData({ listData: results });
+          console.log("in", results);
+
+        }),
 
     
     // 发送http请求
