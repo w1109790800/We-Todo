@@ -22,16 +22,12 @@ onShareAppMessage: function () {
     editDraft: null,
   },
   login: function() {
-    
     var _this = this;
     const user = AV.User.current();
-    const a = JSON.parse(user._hashedJSON.authData);
-    var str_openid = a.lc_weapp.openid;
-    wx.setStorageSync("openid", str_openid);
-    wx.setStorageSync("username", user.attributes.nickName);
     return AV.Promise.resolve(AV.User.current()).then(user =>
       user ? (user.isAuthenticated().then(authed => authed ? user : null)) : null
     ).then(user => user ? user : AV.User.loginWithWeapp()).catch(error => console.error(error.message));
+
       
     setTimeout(function () {
       _this.setData({

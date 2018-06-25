@@ -12,12 +12,14 @@ Page({
         remind: ''
       });
     }, 1000);
+    
   },
   onLoad: function () { // 生命周期函数--监听页面加载
     this.getUserLocation()
     wx.showShareMenu({ // 转发
       withShareTicket: true
     })
+    
   },
   onShareAppMessage: function () {
     return {
