@@ -3,7 +3,7 @@
 { 
   width: 100%;
   height: 700px;
-  background:url("https://www.wenxingsen.com/image/20170950.jpg") no-repeat;
+  background:"../image/" no-repeat;
   background-size: 100% 100%;
   text-align: center;
   color: white;

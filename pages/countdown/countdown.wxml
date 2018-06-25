@@ -2,12 +2,12 @@
 <view class="view_top">
 
   <view class="top_left">
-    <view class="top_left_text">{{index_title}}</view>
+    <view class="top_left_text">距离 {{index_title}} 还有</view>
     <view class="top_left_text2">{{index_info}}</view>
   </view>
 
   <view class="top_mid">
-    <view class="top_mid_text">{{index_day}}</view>
+    <view class="top_mid_text">{{index_day}}天</view>
   </view>
 
   <view class="top_right">

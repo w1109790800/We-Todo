@@ -172,41 +172,19 @@ Page({
         //console.log(query.find())
         var _this = this;
         query.find().then(function (results) {
-          
+          for (var i in results) {
+            var start_date = new Date(util.formatTime(new Date()).split(" ")[0].replace(/-/g, "/"));
+            var end_date = new Date(results[i].attributes.info.replace(/-/g, "/"));
+            var days = end_date.getTime() - start_date.getTime();
+            var day = parseInt(days / (1000 * 60 * 60 * 24));
+            results[i].attributes.day = day;
+            console.log(day)
+          };
+
           _this.setData({ listData: results });
           console.log("in", results);
 
-        }),
-
-
-    
-    // 发送http请求
-    wx.request({
-      url: 'https://www.wenxingsen.com/json.php',
-      data: {
-        from: 'weixin',
-        type: 'get_countdown_plus',
-        countdown_type:'dsr',
-        username: str_username,
-        openid: stropenid,
-      },
-      
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        console.log("res.data",res.data);
-        //that.setData({ listData: res.data.message });
-        
-
-      },
-      fail: function (res) {
-        console.log('submit fail');
-      },
-      complete: function (res) {
-        console.log('submit complete');
-      }
-    })
+        }).catch(console.error)
 
 
   },// end of onGetLeave
@@ -218,41 +196,44 @@ Page({
     var str_username = wx.getStorageSync("username");
     var stropenid = wx.getStorageSync("openid");
     // 发送http请求
-    wx.request({
-      url: 'https://www.wenxingsen.com/json.php',
-      data: {
-        from: 'weixin',
-        type: 'get_countdown_index_plus',
-        countdown_type : 'dsr',
-        username: str_username,
-        openid: stropenid,
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        // 开始-数据返回回来
+    const user = AV.User.current();
+    const a = JSON.parse(user._hashedJSON.authData);
+    var str_openid = a.lc_weapp.openid;
+    // 把this赋值给that
+    var that = this;
+    var str_username = user.attributes.nickName;
+    var stropenid = str_openid;
+    console.log(str_username, stropenid);
+    var _this = this;
+    // const query = new AV.Query("count")
+    // .equalTo('openid', stropenid)
+    //.descending('createdAt');
 
-       // console.log(res.data)
+    const query2 = new AV.Query("count").equalTo('openid', stropenid).descending('createdAt')
 
-        that.data.index_title = res.data.message.item0.title;
+    //console.log( query.find().then(result => this.setData({ listData: result })).catch(console.error));
+    //console.log(query.find())
+    var _this = this;
+    query2.find().then(function (results) {
+        var start_date = new Date(util.formatTime(new Date()).split(" ")[0].replace(/-/g, "/"));
+        var end_date = new Date(results[0].attributes.info.replace(/-/g, "/"));
+        var days = end_date.getTime() - start_date.getTime();
+        var day = parseInt(days / (1000 * 60 * 60 * 24));
+        results[0].attributes.day = day;
+        console.log(day)
 
-        that.setData(
-          {
-            index_title: res.data.message.item0.tip,
-            index_day:res.data.message.item0.day,
-            index_info:res.data.message.item0.info
-          }
-        )
-        // 结束-数据返回回来
-      },
-      fail: function (res) {
-        console.log('submit fail');
-      },
-      complete: function (res) {
-        console.log('submit complete');
-      }
-    })
+      console.log("in", results);
+      that.setData(
+        {
+          index_title: results[0].attributes.title,
+          index_day:   day,
+          index_info:  results[0].attributes.info
+        }
+      )
+
+    }).catch(console.error)
+
+
 
 
   },
@@ -290,51 +271,7 @@ Page({
     })
   },
   OnGetConfig :function()
-  {
-
-    var str_username = wx.getStorageSync("username");
-    var stropenid = wx.getStorageSync("openid");
-
-    // 发送http请求
-    wx.request({
-      url: 'https://www.wenxingsen.com/json.php',
-      data: {
-        from: 'weixin',
-        type: 'get_config',
-        username: str_username,
-        openid: stropenid
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        // 开始-数据返回回来
-
-      console.log(res.data)
-       
-       //wx.setStorageSync('background_type', 
-       //res.data.item.background_type);
-       //wx.setStorageSync('background_image', 
-       //res.data.item.background_image);
-       //wx.setStorageSync('start_page', 
-       //res.data.item.start_page);
-
-
-        // 结束-数据返回回来
-      },
-      fail: function (res) {
-        console.log('submit fail');
-      },
-      complete: function (res) {
-        console.log('submit complete');
-      }
-    })
-
-  }
-  //end of OnGetConfig
-
-
-
-
-
+ {
+   
+ }
 })

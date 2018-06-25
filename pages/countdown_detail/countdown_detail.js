@@ -1,6 +1,7 @@
 // countdown_detail.js
 Page({
 
+
   /**
    * 页面的初始数据
    */
@@ -15,6 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
   
     wx.setNavigationBarColor({
       frontColor: '#ffffff',
@@ -67,6 +69,7 @@ Page({
     this.OnLog();
   },
 
+
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -98,6 +101,18 @@ Page({
   /**
    * 用户点击右上角分享
    */
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+
+    return {
+      title: '倒数日&正数日&纪念日',
+      desc: '倒数日&正数日&纪念日&',
+      path: '/pages/countdown/countdown'
+    }
+  },
   onShareAppMessage: function () {
 
 
@@ -111,23 +126,12 @@ Page({
   //事件处理函数
   bindViewTap: function () {
 
-  var that = this;
-
-    wx.showModal({
-      title: '提示',
-      content: '确认删除吗？',
-      success: function (res) {
-        if (res.confirm) {
-          that.OnDel();
-        }
-        else{
-          return;
-        }
-      }
+    wx.showShareMenu({
+      withShareTicket: true
     })
-
-
-  },//end of bindViewTap
+    console.log("S")
+  },
+//end of bindViewTap
   bindViewModify : function(){
     wx.navigateTo({
       url: '../countdown_edit/countdown_edit',
