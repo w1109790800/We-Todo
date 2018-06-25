@@ -3,7 +3,7 @@
 { 
   width: 100%;
   height: 700px;
-  background:"../../image/20170950.jpg" no-repeat;
+  background:"https://oss2.wangyuyang.top/20170950.jpg" no-repeat;
   background-size: 100% 100%;
   text-align: center;
   color: white;
@@ -11,6 +11,7 @@
 }
 
 .title{
+  font-family: Cursive;
     font-size: 45rpx;
     padding-top: 350rpx;
     
@@ -19,12 +20,14 @@
 
 .day{
  font-size: 200rpx;
+ font-family: Cursive;
 
 }
 
 .tian
 {
   margin-top: -20rpx;
+  font-family: Cursive;
 
 
 }
@@ -32,12 +35,14 @@
 .info{
   margin-top: 10rpx;
   font-size: 45rpx;
+  font-family: Cursive;
 
 }
 
 .del{
   margin-top: 170rpx;
   font-size: 40rpx;
+  font-family: Cursive;
   text-decoration: underline;
   display:inline-block;
 }

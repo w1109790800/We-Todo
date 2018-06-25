@@ -24,18 +24,17 @@ Page({
     })
 
 
-    var str_detail_title = wx.getStorageSync("detail_tilte");
+    var str_detail_title = wx.getStorageSync("detail_tilte").split("  ")[1];
     var str_detail_day = wx.getStorageSync("detail_day");
     var str_detail_info = wx.getStorageSync("detail_info");
     var str_detail_tip = wx.getStorageSync("detail_tip");
     var str_detail_background = wx.getStorageSync("detail_background");
-
+    console.log(str_detail_title);
     // 把this赋值给that
     var that = this;
-
     that.setData(
       {
-        detail_title: str_detail_tip,
+        detail_title: str_detail_title,
         detail_day: str_detail_day,
         detail_info: str_detail_info,
         detail_background: str_detail_background
@@ -206,28 +205,6 @@ Page({
     var str_log = strusername +'《'+ str_detail_title  + str_detail_day + "天》";
 
     // 发送http请求
-    wx.request({
-      url: 'https://www.wenxingsen.com/json.php',
-      data: {
-        from: 'weixin',
-        type: 'detail',
-        username: str_log,
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        // 开始-数据返回回来
-
-        // 结束-数据返回回来
-      },
-      fail: function (res) {
-        console.log('submit fail');
-      },
-      complete: function (res) {
-        console.log('submit complete');
-      }
-    })
 
 
   }

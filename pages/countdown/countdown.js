@@ -166,7 +166,7 @@ Page({
      // .equalTo('openid', stropenid)
       //.descending('createdAt');
       
-        const query = new AV.Query("count").equalTo('openid', stropenid)
+        const query = new AV.Query("count").equalTo('openid', stropenid).descending('createdAt')
 
         //console.log( query.find().then(result => this.setData({ listData: result })).catch(console.error));
         //console.log(query.find())
@@ -177,7 +177,17 @@ Page({
             var end_date = new Date(results[i].attributes.info.replace(/-/g, "/"));
             var days = end_date.getTime() - start_date.getTime();
             var day = parseInt(days / (1000 * 60 * 60 * 24));
-            results[i].attributes.day = day;
+            if (day < 0 ){
+              results[i].attributes.day = "已过去"+" " + (-day);
+              results[i].attributes.call = day;
+              results[i].attributes.title = "过去  "+results[i].attributes.title;
+            }
+            else{
+              results[i].attributes.title = "未来  " + results[i].attributes.title
+              results[i].attributes.day =   "还有"+" " + day;
+              results[i].attributes.call = day;
+            }
+            
             console.log(day)
           };
 
@@ -221,7 +231,9 @@ Page({
         var day = parseInt(days / (1000 * 60 * 60 * 24));
         results[0].attributes.day = day;
         console.log(day)
-
+      if(day < 0){
+        day = -day
+      }
       console.log("in", results);
       that.setData(
         {
@@ -256,10 +268,11 @@ Page({
 
     wx.setStorageSync("detail_tilte", data.title);
     wx.setStorageSync("detail_info", data.info);
-    wx.setStorageSync("detail_day", data.day);
+    wx.setStorageSync("detail_day", data.day.split(" ")[1]);
     wx.setStorageSync("detail_id", data.id);
+    wx.setStorageSync("detail_call", data.call);
     wx.setStorageSync("detail_tip", data.tip);
-    
+    console.log(data)
     wx.setStorageSync("detail_background", data.background);
 
     console.log(data.background);
