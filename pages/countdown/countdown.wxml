@@ -18,7 +18,7 @@
 
 <view class="view_list">
   <view class="sen-split"></view>
-  <block wx:for="{{listData}}" >
+  <block wx:for="{{listData}}" wx:key="code">
     <view class="sen-item" 
     bindtap="showDetail"
     data-title="{{item.title}}"

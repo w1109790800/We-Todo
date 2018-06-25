@@ -4,7 +4,7 @@ const AV = require('../../utils/av-live-query-weapp-min');
 const count = require('../../model/count');
 const Done = require('../../model/done');
 const bind = require('../../utils/live-query-binding');
-
+const util = require('../../utils/util.js');
 
 var app = getApp()
 var init = 1;
@@ -20,6 +20,7 @@ Page({
   login: function () {
 
     var _this = this;
+
     const user = AV.User.current();
     const a = JSON.parse(user._hashedJSON.authData);
     var str_openid = a.lc_weapp.openid;
@@ -46,6 +47,8 @@ Page({
       frontColor: '#ffffff',
       backgroundColor: '#32b4fa',
     })
+    var time = util.formatTime(new Date());
+    console.log(time);
 
   },
 
@@ -161,9 +164,18 @@ Page({
       //.descending('createdAt');
       
         const query = new AV.Query("count").equalTo('openid', stropenid)
+        var aaaa;
+        //query.find().then(result => this.setData({ listData: result }) ).catch(console.error);
+        query.find().then(function (results) {
+          results => this.setData({ listData: results });
+          
+          console.log(results);
+          console.log(aaaa);
 
-        query.find().then(result => this.setData({ listData : result })).catch(console.error);
-        console.log(query.find())
+          
+          // results 返回的就是有图片的 Todo 集合
+        }, function (error) {
+          }).catch(console.error);
 
 
 
