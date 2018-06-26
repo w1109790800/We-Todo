@@ -257,6 +257,8 @@ wx.hideLoading()
           a = 5
         if (day > 2000)
           a = 9
+        if (day > 4000)
+          a = 14
       for (var i = 0; i <= day; i+=a ) {
         
         that.setData(
