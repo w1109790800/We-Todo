@@ -1,6 +1,6 @@
 <!--countdown_detail.wxml-->
 
-<view style="  width: 100%;height: 700px;background:url('{{'https://oss2.wangyuyang.top/20170950.jpg'}}') no-repeat;background-size: 100% 100%;text-align: center;color: white;">
+<view style="  width: 100%;height: 700px;background:url('{{detail_background}}') no-repeat;background-size: 100% 100%;text-align: center;color: white;">
 <view class= "con">
   <view class="title">
   {{detail_title}}
@@ -16,13 +16,13 @@
   </view>
 
 <view class='modify-view'>
-<!--
+
   <image class='modify-img' 
   bindtap='bindViewTap'
   
-  src='../../image/complete.png'/>
+  src='../image/modify.png'/>
 
-
+<!--
   
   <image class='del-img' 
   bindtap="bindViewTap"

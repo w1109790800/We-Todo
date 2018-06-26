@@ -1,4 +1,5 @@
 // countdown_detail.js
+const AV = require('../../utils/av-live-query-weapp-min');
 Page({
 
 
@@ -9,7 +10,7 @@ Page({
     detail_title:'title',
     detail_day:'0',
     detail_info:'info',
-    detail_background:'https://www.wenxingsen.com/image/20170950.jpg'
+    detail_background:'https://oss2.wangyuyang.top/20170950.jpg'
   },
 
   /**
@@ -22,25 +23,32 @@ Page({
       frontColor: '#ffffff',
       backgroundColor: '#32b4fa',
     })
-
-
+    var bojid = wx.getStorageSync("objid");
     var str_detail_title = wx.getStorageSync("detail_tilte").split(" ")[1];
     var str_detail_day = wx.getStorageSync("detail_day").replace(/\s+/g, '');
     var str_detail_info = wx.getStorageSync("detail_info").replace(/\s+/g, '');
     var str_detail_tip = wx.getStorageSync("detail_tip").replace(/\s+/g, '');
-    var str_detail_background = wx.getStorageSync("detail_background").replace(/\s+/g, '');
+    var str_detail_background = wx.getStorageSync("detail_background");
     console.log(str_detail_title);
     // 把this赋值给that
     var that = this;
-    
+    if (str_detail_background != ""){
     that.setData(
       {
         detail_title: str_detail_title,
-        
+        detail_background: str_detail_background,
         detail_info: str_detail_info,
-        detail_background: str_detail_background
-      }
-    )
+        
+      })
+    }
+    else{
+      that.setData(
+        {
+          detail_title: str_detail_title,
+          detail_info: str_detail_info,
+
+        })
+    }
     setTimeout(function () {
       //要延时执行的代码
       var a = 2
@@ -146,11 +154,38 @@ Page({
   },
   //事件处理函数
   bindViewTap: function () {
+    var that = this;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        var tempFilePath = res.tempFilePaths[0];
+        new AV.File('file-name', {
+          blob: {
+            uri: tempFilePath,
+          },
+        }).save().then(function (file) {
+          file => console.log(file.url())
+          var bojid = wx.getStorageSync("objid");
+          console.log(bojid);
+          var img = AV.Object.createWithoutData('count', bojid);
+          // 修改属性
+          img.set('url', file.url());
+          img.save();
+          that.setData(
+            {
+             
+              detail_background: file.url(),
+          
 
-    wx.showShareMenu({
-      withShareTicket: true
-    })
+            })
+        }
+          ).catch(console.error);
+      }
+    });
     console.log("S")
+
   },
 //end of bindViewTap
   bindViewModify : function(){
