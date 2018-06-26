@@ -42,9 +42,24 @@ Page({
       })
     }
     else{
+      var a = [
+        "http://baobaiqiang.oss-cn-beijing.aliyuncs.com/234/20180626204855%20(1).jpg ",
+        "http://baobaiqiang.oss-cn-beijing.aliyuncs.com/234/20180626204855%20(2).jpg ",
+        "http://baobaiqiang.oss-cn-beijing.aliyuncs.com/234/20180626204855%20(3).jpg ",
+        "http://baobaiqiang.oss-cn-beijing.aliyuncs.com/234/20180626204855%20(4).jpg ",
+        "http://baobaiqiang.oss-cn-beijing.aliyuncs.com/234/20180626204855%20(5).jpg ",
+        "http://baobaiqiang.oss-cn-beijing.aliyuncs.com/234/20180626204855%20(6).jpg ",
+        "http://baobaiqiang.oss-cn-beijing.aliyuncs.com/234/20180626204855%20(7).jpg ",
+        "http://baobaiqiang.oss-cn-beijing.aliyuncs.com/234/20180626204855%20(8).jpg ",
+        "http://baobaiqiang.oss-cn-beijing.aliyuncs.com/234/20180626204855%20(9).jpg ",
+        "http://baobaiqiang.oss-cn-beijing.aliyuncs.com/234/20180626204855%20(10).jpg ",
+        "http://baobaiqiang.oss-cn-beijing.aliyuncs.com/234/20180626204855%20(11).jpg ",
+]
+      var random = Math.floor(Math.random() * 11); 
       that.setData(
         {
           detail_title: str_detail_title,
+          detail_background: a[random],
           detail_info: str_detail_info,
 
         })
