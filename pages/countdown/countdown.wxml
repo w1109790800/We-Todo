@@ -1,4 +1,5 @@
 <!--countdown.wxml-->
+<view class= "con">
 <view class="view_top">
 
   <view class="top_left">
@@ -42,3 +43,4 @@
 </view>
 
 <view class="view_tip">Tip:纪念日由近到远自动排序</view>
+</view>

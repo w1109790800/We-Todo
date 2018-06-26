@@ -19,7 +19,11 @@ Page({
   },
   login: function () {
     var _this = this;
-
+    setTimeout(function () {
+      _this.setData({
+        remind: '加载中'
+      });
+    }, 1000);
     const user = AV.User.current();
     return AV.Promise.resolve(AV.User.current()).then(user =>
       user ? (user.isAuthenticated().then(authed => authed ? user : null)) : null
@@ -153,6 +157,10 @@ Page({
   },
 
   OnGetCoundown: function () {
+
+    wx.showLoading({
+      title: '加载中',
+    })
     const user = AV.User.current();
     const a = JSON.parse(user._hashedJSON.authData);
     var str_openid = a.lc_weapp.openid;
@@ -178,13 +186,13 @@ Page({
             var days = end_date.getTime() - start_date.getTime();
             var day = parseInt(days / (1000 * 60 * 60 * 24));
             if (day < 0 ){
-              results[i].attributes.day = "已过去"+" " + (-day);
+              results[i].attributes.day = "已过去" +"·"+ (-day);
               results[i].attributes.call = day;
-              results[i].attributes.title = "过去  "+results[i].attributes.title;
+              results[i].attributes.title = "过去 "+results[i].attributes.title;
             }
             else{
-              results[i].attributes.title = "未来  " + results[i].attributes.title
-              results[i].attributes.day =   "还有"+" " + day;
+              results[i].attributes.title = "未来 " + results[i].attributes.title
+              results[i].attributes.day =   "还有·" + day;
               results[i].attributes.call = day;
             }
             
@@ -195,8 +203,7 @@ Page({
           console.log("in", results);
 
         }).catch(console.error)
-
-
+wx.hideLoading()
   },// end of onGetLeave
 
   OnGetCoundownIndex: function () {
@@ -268,14 +275,13 @@ Page({
 
     wx.setStorageSync("detail_tilte", data.title);
     wx.setStorageSync("detail_info", data.info);
-    wx.setStorageSync("detail_day", data.day.split(" ")[1]);
+    wx.setStorageSync("detail_day", data.day.split("·")[1]);
     wx.setStorageSync("detail_id", data.id);
     wx.setStorageSync("detail_call", data.call);
     wx.setStorageSync("detail_tip", data.tip);
     console.log(data)
     wx.setStorageSync("detail_background", data.background);
 
-    console.log(data.background);
 
 
     // 页面跳转

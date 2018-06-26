@@ -1,4 +1,21 @@
 /* countdown_detail.wxss */
+.con{
+
+  animation: bd-rise 3s cubic-bezier(0.23, 1, 0.32, 1) 0.75s forwards;
+  opacity: 0;
+}
+
+@keyframes bd-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 60rpx, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
 .view_body
 { 
   width: 100%;
@@ -21,6 +38,7 @@
 .day{
  font-size: 200rpx;
  font-family: Cursive;
+ text-align: center;
 
 }
 
@@ -28,8 +46,6 @@
 {
   margin-top: -20rpx;
   font-family: Cursive;
-
-
 }
 
 .info{

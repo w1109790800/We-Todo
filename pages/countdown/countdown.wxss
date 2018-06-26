@@ -1,6 +1,22 @@
 /* countdown.wxss */
 
+.con{
 
+  animation: bd-rise 3s cubic-bezier(0.23, 1, 0.32, 1) 0.75s forwards;
+  opacity: 0;
+}
+
+@keyframes bd-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 60rpx, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
 .view_top{
   margin: 20rpx;
   height: 230rpx;
@@ -10,6 +26,20 @@
   margin: 20rpx;
   font-size: 35rpx;
 
+  animation: bd-rise 3s cubic-bezier(0.23, 1, 0.32, 1) 0.75s forwards;
+  opacity: 0;
+}
+
+@keyframes bd-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 60rpx, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .view_bottom{
@@ -60,8 +90,7 @@
 }
 
 .top_mid{
-  font-size: 80rpx;
-  position: fixed;
+  font-size: 70rpx;
   left: 330rpx;
   top:30rpx;
   float: left;
@@ -70,12 +99,15 @@
 
 .top_mid_text{
   font-family: Cursive;
-    padding-top: 50rpx;
+    padding-top: 70rpx;
+    left:330rpx;
+position:absolute;
+
 }
 
 .top_right{
   height: 100%;
-  position: fixed;
+
   left: 600rpx;
   text-align: center;
 }
@@ -83,7 +115,10 @@
 .sen-image{
   padding-top: 60rpx;
   width: 100rpx;
-  height: 100rpx;
+height:100rpx;
+position:absolute;
+left:600rpx;
+
 }
 
 .view_tip{

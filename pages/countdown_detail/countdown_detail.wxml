@@ -1,15 +1,13 @@
 <!--countdown_detail.wxml-->
-<view style="  width: 100%;height: 700px;background:url('{{'https://oss2.wangyuyang.top/20170950.jpg'}}') no-repeat;background-size: 100% 100%;text-align: center;color: white;">
 
+<view style="  width: 100%;height: 700px;background:url('{{'https://oss2.wangyuyang.top/20170950.jpg'}}') no-repeat;background-size: 100% 100%;text-align: center;color: white;">
+<view class= "con">
   <view class="title">
   {{detail_title}}
   </view>
 
 
-  <view class="day">
-
-  {{detail_day}}
-  </view>
+  <view class="day">{{detail_day}}</view>
 
  <view class="tian">天</view>
 
@@ -46,4 +44,5 @@
   </view>
 
 
+</view>
 </view>

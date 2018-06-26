@@ -24,14 +24,15 @@ Page({
     })
 
 
-    var str_detail_title = wx.getStorageSync("detail_tilte").split("  ")[1];
-    var str_detail_day = wx.getStorageSync("detail_day");
-    var str_detail_info = wx.getStorageSync("detail_info");
-    var str_detail_tip = wx.getStorageSync("detail_tip");
-    var str_detail_background = wx.getStorageSync("detail_background");
+    var str_detail_title = wx.getStorageSync("detail_tilte").split(" ")[1];
+    var str_detail_day = wx.getStorageSync("detail_day").replace(/\s+/g, '');
+    var str_detail_info = wx.getStorageSync("detail_info").replace(/\s+/g, '');
+    var str_detail_tip = wx.getStorageSync("detail_tip").replace(/\s+/g, '');
+    var str_detail_background = wx.getStorageSync("detail_background").replace(/\s+/g, '');
     console.log(str_detail_title);
     // 把this赋值给that
     var that = this;
+    
     that.setData(
       {
         detail_title: str_detail_title,
