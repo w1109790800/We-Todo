@@ -54,6 +54,10 @@ Page({
       var a = 2
       if (str_detail_day>1000)
       a = 5
+      if (str_detail_day > 2000)
+        a = 9
+      if (str_detail_day > 4000)
+        a = 14
       for (var i = 0; i <= str_detail_day; i += a) {
 
         that.setData(
