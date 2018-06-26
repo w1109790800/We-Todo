@@ -1,0 +1,46 @@
+<!--countdown.wxml-->
+<view class= "con">
+<view class="view_top">
+
+  <view class="top_left">
+    <view class="top_left_text"> {{index_title}} </view>
+    <view class="top_left_text2">{{index_info}}</view>
+  </view>
+
+  <view class="top_mid">
+    <view class="top_mid_text">{{index_day}}天</view>
+  </view>
+
+  <view class="top_right">
+    <image class="sen-image" src="../../image/time.gif"></image>
+  </view>
+
+</view>
+
+<view class="view_list">
+  <view class="sen-split"></view>
+  <block wx:for="{{listData}}" wx:key="code">
+    <view class="sen-item" 
+    bindtap="showDetail"
+    data-title="{{item.title}}"
+    data-day="{{item.day}}"
+    data-info="{{item.info}}"
+    data-id="{{item.id}}"
+    data-background='{{item.background}}'
+    data-tip="{{item.tip}}">
+    
+      <view class="sen-title"> {{item.title}}</view>
+      <view class="sen-day">{{item.day}}天</view>
+    </view>
+    <view class="sen-split"></view>
+  </block>
+</view>
+
+<view class="view_bottom">
+  <button class="sen-button"
+    bindtap="bindViewTap"
+  >添加纪念日</button>
+</view>
+
+<view class="view_tip">Tip:纪念日由近到远自动排序</view>
+</view>

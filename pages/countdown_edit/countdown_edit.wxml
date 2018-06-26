@@ -1,0 +1,27 @@
+<!--countdown_send.wxml-->
+<input type="text" placeholder="倒数日主题(不大于7字)" 
+value='{{get_title}}'
+name="title" bindinput="input_title" class="sen-input" />
+
+<view class="packer_view">
+  <picker mode="date" value="{{dateValue}}" 
+  start="1980-01-01" 
+  end="2099-12-12" 
+  bindchange="datePickerBindchange">
+    修改目标日: <text class="data_text">{{dateValue}}</text>
+  </picker>
+</view>
+
+<button class="sen-button"
+    bindtap="bindViewTap">
+  确定修改
+</button>
+
+<button class="sen-button"
+    bindtap="bindCancel">
+  取消
+</button>
+
+<view class="view_tip">
+温馨提示:修改目标日的时候，系统将自动判断是倒数日还是正数日，并智能归类到属于自己的类别，请您放心的修改^_^
+</view>

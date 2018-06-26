@@ -17,6 +17,7 @@
       <view class="bd">
         <text class="wenzi">💖时间有序，我们在路上💖</text>
         <button class="cs_button" type="primary" bindtap="nav">进入Todo-list</button>
+        <button class="cs_button2" type="primary" bindtap="nav2">进入  回忆日</button>
         <view class="ccc">
           <view class="body">
             <view class="details">

@@ -1,0 +1,48 @@
+<view class="sen-split-top"></view>
+
+<view class='view_logo'
+bindtap='OnWelcome'>
+  <image class='ico_logo' src='{{userInfo.avatarUrl}}'></image>
+    <view class='ico_logo_text'> {{userInfo.nickName}}</view>
+</view>
+  <view class="sen-split-top"></view>
+
+<view class='view_set'>
+  <view class="sen-split"></view>
+<view class='set_item'
+  bindtap='bindViewTap'>
+  <image class='ico' src='../image/leave.png'></image>
+  <view class='ico_text'>给开发者留言 提建议</view>
+
+</view>
+
+  <view class="sen-split-top"></view>
+
+<view class='set_item'
+bindtap='OnBackground'>
+  <image class='ico' src='../image/background.png'></image>
+  <view class='ico_text'>默认背景设置-{{str_background_type}}</view>
+</view>
+
+  <view class="sen-split"></view>
+<view class='set_item'
+  bindtap='OnStart' >
+  <image class='ico' src='../image/start.png'></image>
+  <view class='ico_text'>启动页面设置-{{str_start_page}}</view>
+</view>
+
+<view class="sen-split-top"></view>
+
+<view class='set_item'
+bindtap='OnAbout'>
+  <image class='ico' src='../image/about.png'></image>
+  <view class='ico_text'>关于我爱倒数日</view>
+</view>
+
+<view class='fill'>
+
+</view>
+
+ 
+
+</view>

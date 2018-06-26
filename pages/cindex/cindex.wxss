@@ -1,0 +1,61 @@
+/**index.wxss**/
+
+.view_logo{
+  height: 80px;
+}
+
+.ico_logo{
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
+  width: 60px;
+  height: 60px;
+  float: left;
+}
+
+.set_item{
+  background: white;
+  height: 40px;
+}
+
+.ico{
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-right: 10px;
+  width: 30px;
+  height: 30px;
+  float: left;
+}
+
+.ico_text{
+  padding-top: 7px;
+  font-size: 16px;
+}
+
+.view_set{
+  background: #ececec;
+}
+
+.sen-split
+{
+  background: #ececec;
+  height: 5rpx;
+}
+
+.sen-split-top
+{
+  background: #ececec;
+  height: 20px;
+}
+
+.ico_logo_text{
+    padding-top: 30px;
+    font-size: 16px;
+}
+
+
+.fill
+{
+  background: #ececec;
+  height: 400px;
+}

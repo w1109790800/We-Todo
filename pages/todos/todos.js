@@ -22,12 +22,12 @@ onShareAppMessage: function () {
     editDraft: null,
   },
   login: function() {
-    
     var _this = this;
     const user = AV.User.current();
     return AV.Promise.resolve(AV.User.current()).then(user =>
       user ? (user.isAuthenticated().then(authed => authed ? user : null)) : null
     ).then(user => user ? user : AV.User.loginWithWeapp()).catch(error => console.error(error.message));
+
       
     setTimeout(function () {
       _this.setData({

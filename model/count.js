@@ -1,14 +1,22 @@
-function formatTime(time, format) {
-  let temp = '0000000000' + time
-  let len = format.length
-  return temp.substr(-len)
+const AV = require('../utils/av-live-query-weapp-min');
+class count extends AV.Object {
+  get done() {
+    return this.get('done');
+  }
+  set done(value) {
+    this.set('done', value);
+  }
+
+  get content() {
+    return this.get('content');
+  }
+  set content(value) {
+    this.set('content', value);
+  }
+  set name(value) {
+    this.set('name', value);
+  }
 }
-
-module.exports = {
-  formatTime: formatTime
-}
-
-
 
 function formatTime(date) {
   var year = date.getFullYear()
@@ -18,7 +26,6 @@ function formatTime(date) {
   var hour = date.getHours()
   var minute = date.getMinutes()
   var second = date.getSeconds()
-
 
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
@@ -30,4 +37,8 @@ function formatNumber(n) {
 
 module.exports = {
   formatTime: formatTime
-}
+}  
+
+AV.Object.register(count, 'count');
+module.exports = count;
+

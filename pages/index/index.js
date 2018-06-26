@@ -12,12 +12,14 @@ Page({
         remind: ''
       });
     }, 1000);
+    
   },
   onLoad: function () { // 生命周期函数--监听页面加载
     this.getUserLocation()
     wx.showShareMenu({ // 转发
       withShareTicket: true
     })
+    
   },
   onShareAppMessage: function () {
     return {
@@ -248,6 +250,7 @@ Page({
         remind: '加载中'
       });
     }, 1000);
+
     const user = AV.User.current();
     wx.navigateTo({
       url: '../todos/todos',
@@ -259,6 +262,25 @@ Page({
     }, 100);
     
   } ,
+  nav2: function () {
+    var _this = this;
+    setTimeout(function () {
+      _this.setData({
+        remind: '加载中'
+      });
+    }, 1000);
+
+    const user = AV.User.current();
+    wx.navigateTo({
+      url: '../countdown/countdown',
+    })
+    setTimeout(function () {
+      _this.setData({
+        remind: ''
+      });
+    }, 100);
+
+  },
   onReady: function () {
 
     var _this = this;
