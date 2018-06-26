@@ -1,8 +1,9 @@
 <!--countdown.wxml-->
+<view class= "con">
 <view class="view_top">
 
   <view class="top_left">
-    <view class="top_left_text">距离 {{index_title}} 还有</view>
+    <view class="top_left_text"> {{index_title}} </view>
     <view class="top_left_text2">{{index_info}}</view>
   </view>
 
@@ -11,7 +12,7 @@
   </view>
 
   <view class="top_right">
-    <image class="sen-image" src="../image/dayico.png"></image>
+    <image class="sen-image" src="../../image/time.gif"></image>
   </view>
 
 </view>
@@ -42,3 +43,4 @@
 </view>
 
 <view class="view_tip">Tip:纪念日由近到远自动排序</view>
+</view>

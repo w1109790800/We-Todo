@@ -19,7 +19,11 @@ Page({
   },
   login: function () {
     var _this = this;
-
+    setTimeout(function () {
+      _this.setData({
+        remind: '加载中'
+      });
+    }, 1000);
     const user = AV.User.current();
     return AV.Promise.resolve(AV.User.current()).then(user =>
       user ? (user.isAuthenticated().then(authed => authed ? user : null)) : null
@@ -153,6 +157,10 @@ Page({
   },
 
   OnGetCoundown: function () {
+
+    wx.showLoading({
+      title: '加载中',
+    })
     const user = AV.User.current();
     const a = JSON.parse(user._hashedJSON.authData);
     var str_openid = a.lc_weapp.openid;
@@ -166,7 +174,7 @@ Page({
      // .equalTo('openid', stropenid)
       //.descending('createdAt');
       
-        const query = new AV.Query("count").equalTo('openid', stropenid)
+        const query = new AV.Query("count").equalTo('openid', stropenid).descending('createdAt')
 
         //console.log( query.find().then(result => this.setData({ listData: result })).catch(console.error));
         //console.log(query.find())
@@ -177,7 +185,17 @@ Page({
             var end_date = new Date(results[i].attributes.info.replace(/-/g, "/"));
             var days = end_date.getTime() - start_date.getTime();
             var day = parseInt(days / (1000 * 60 * 60 * 24));
-            results[i].attributes.day = day;
+            if (day < 0 ){
+              results[i].attributes.day = "已过去" +"·"+ (-day);
+              results[i].attributes.call = day;
+              results[i].attributes.title = "过去 "+results[i].attributes.title;
+            }
+            else{
+              results[i].attributes.title = "未来 " + results[i].attributes.title
+              results[i].attributes.day =   "还有·" + day;
+              results[i].attributes.call = day;
+            }
+            
             console.log(day)
           };
 
@@ -185,8 +203,7 @@ Page({
           console.log("in", results);
 
         }).catch(console.error)
-
-
+wx.hideLoading()
   },// end of onGetLeave
 
   OnGetCoundownIndex: function () {
@@ -221,16 +238,37 @@ Page({
         var day = parseInt(days / (1000 * 60 * 60 * 24));
         results[0].attributes.day = day;
         console.log(day)
-
+      if(day < 0){
+        day = -day
+      }
       console.log("in", results);
       that.setData(
         {
           index_title: results[0].attributes.title,
-          index_day:   day,
           index_info:  results[0].attributes.info
         }
-      )
+      );
+      setTimeout(function () {
+        //要延时执行的代码
+        var a = 2
+        if (day > 1000)
+          a = 5
+        if (day > 2000)
+          a = 9
+      for (var i = 0; i <= day; i+=a ) {
+        
+        that.setData(
+          {
+            index_day: i,
+          })
 
+      };
+      that.setData(
+        {
+          index_day: day,
+        })
+
+      }, 800)
     }).catch(console.error)
 
 
@@ -256,13 +294,13 @@ Page({
 
     wx.setStorageSync("detail_tilte", data.title);
     wx.setStorageSync("detail_info", data.info);
-    wx.setStorageSync("detail_day", data.day);
+    wx.setStorageSync("detail_day", data.day.split("·")[1]);
     wx.setStorageSync("detail_id", data.id);
+    wx.setStorageSync("detail_call", data.call);
     wx.setStorageSync("detail_tip", data.tip);
-    
+    console.log(data)
     wx.setStorageSync("detail_background", data.background);
 
-    console.log(data.background);
 
 
     // 页面跳转

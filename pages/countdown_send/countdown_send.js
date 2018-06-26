@@ -164,69 +164,15 @@ Page({
       draft: ''
     });
 
-    // 发送http请求
-    wx.request({
-      url: 'https://www.wenxingsen.com/json.php',
-      data: {
-        call: '微信小程序',
-        type: 'send_countdown_plus',
-        username: strusername,
-        title: this.data.get_title,
-        info: this.data.dateValue,
-        openid: stropenid,
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        // 开始-数据返回回来
-
-        console.log(res.data)
-
         that.setData(
           {
-            set_type:res.data,
+            
             init_title:''
           }
         )
-
-        // 延时一点时间 返回留给数据库一点时间
-        setTimeout(function () {
-          
-          if (that.data.set_type.indexOf('dsr')>0)
-          {
-            wx.switchTab({
-              url: '../countdown/countdown',
-            })
-          }
-          else{
-
-            wx.switchTab({
-              url: '../countdown_plus/countdown_plus',
-            })
-          }
-
-          that.setData(
-            {
-              dateValue: '点击此处进行选择',
-            }
-          )
-          
-
-        }
-          , 100);
-
-
-        // 结束-数据返回回来
-      },
-      fail: function (res) {
-        console.log('submit fail');
-      },
-      complete: function (res) {
-        console.log('submit complete');
-      }
-    })
-
+        wx.navigateTo({
+          url: '../countdown/countdown',
+        })
 
   },
   //end of 
@@ -238,38 +184,6 @@ Page({
   // 获取公共模板
   OnGetPublic: function()
   {
-    // 把this赋值给that
-    var that = this;
-    var str_username = wx.getStorageSync("username");
-    var stropenid = wx.getStorageSync("openid");
-    // 发送http请求
-    wx.request({
-      url: 'https://www.wenxingsen.com/json.php',
-      data: {
-        from: 'weixin',
-        type: 'get_countdown_public',
-        countdown_type: 'dsr',
-        username: str_username,
-        openid: stropenid,
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        // 开始-数据返回回来
-        console.log(res.data)
-        that.setData({ listData: res.data.message });
-        // 结束-数据返回回来
-      },
-      fail: function (res) {
-        console.log('submit fail');
-      },
-      complete: function (res) {
-        console.log('submit complete');
-      }
-    })
-
-
   },// end of onGetLeave
 
   OnGetCoundownIndex: function () {
@@ -279,42 +193,7 @@ Page({
     var str_username = wx.getStorageSync("username");
     var stropenid = wx.getStorageSync("openid");
     // 发送http请求
-    wx.request({
-      url: 'https://www.wenxingsen.com/json.php',
-      data: {
-        from: 'weixin',
-        type: 'get_countdown_index_plus',
-        countdown_type: 'dsr',
-        username: str_username,
-        openid: stropenid,
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        // 开始-数据返回回来
-
-        // console.log(res.data)
-
-        that.data.index_title = res.data.message.item0.title;
-
-        that.setData(
-          {
-            index_title: res.data.message.item0.tip,
-            index_day: res.data.message.item0.day,
-            index_info: res.data.message.item0.info
-          }
-        )
-        // 结束-数据返回回来
-      },
-      fail: function (res) {
-        console.log('submit fail');
-      },
-      complete: function (res) {
-        console.log('submit complete');
-      }
-    })
-
+  
 
 
   }, 
@@ -336,66 +215,12 @@ Page({
     var str_username = wx.getStorageSync("username");
     var stropenid = wx.getStorageSync("openid");
 
-    // 发送http请求
-    wx.request({
-      url: 'https://www.wenxingsen.com/json.php',
-      data: {
-        call: '微信小程序',
-        type: 'send_countdown_plus',
-        username: str_username,
-        title: strTitle,
-        info: strInfo,
-        openid: stropenid,
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        // 开始-数据返回回来
-
-        console.log(res.data)
-
-        that.setData(
-          {
-            set_type: res.data
-          }
-        )
+    // 
 
         // 延时一点时间 返回留给数据库一点时间
-        setTimeout(function () {
-
-          if (that.data.set_type.indexOf('dsr') > 0) {
-            wx.switchTab({
-              url: '../countdown/countdown',
-            })
-          }
-          else {
-
-            wx.switchTab({
-              url: '../countdown_plus/countdown_plus',
-            })
-          }
-
-          that.setData(
-            {
-              dateValue: '点击此处进行选择',
-            }
-          )
-
-
-        }
-          , 100);
-
-
+ 
         // 结束-数据返回回来
-      },
-      fail: function (res) {
-        console.log('submit fail');
-      },
-      complete: function (res) {
-        console.log('submit complete');
-      }
-    })
+
 
 
   }

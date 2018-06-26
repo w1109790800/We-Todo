@@ -1,6 +1,22 @@
 /* countdown.wxss */
 
+.con{
 
+  animation: bd-rise 3s cubic-bezier(0.23, 1, 0.32, 1) 0.75s forwards;
+  opacity: 0;
+}
+
+@keyframes bd-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 60rpx, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
 .view_top{
   margin: 20rpx;
   height: 230rpx;
@@ -8,8 +24,22 @@
 
 .view_list{
   margin: 20rpx;
-  font-size: 45rpx;
+  font-size: 35rpx;
 
+  animation: bd-rise 3s cubic-bezier(0.23, 1, 0.32, 1) 0.75s forwards;
+  opacity: 0;
+}
+
+@keyframes bd-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 60rpx, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .view_bottom{
@@ -18,13 +48,15 @@
 
 .sen-title{
   background-color: #ffffff;
-  width:60%;
+  font-family: Cursive;
+  width:50%;
   float: left;
   padding: 10rpx;
 
 }
 .sen-day{
   color: #ffffff;
+  font-family: Cursive;
   background: #4696fa;
   text-align: center;
   padding: 10rpx;
@@ -46,39 +78,53 @@
 .top_left{
     font-size: 35rpx;
     float: left;
+    font-family: Cursive;
     width: 50%;
     height: 100%;
     text-align: center;
 }
 
 .top_left_text{
+  font-family: Cursive;
   padding-top: 80rpx;
 }
 
 .top_mid{
-  font-size: 100rpx;
+  font-size: 70rpx;
+  left: 330rpx;
+  top:30rpx;
   float: left;
   height: 100%;
 }
 
 .top_mid_text{
-    padding-top: 50rpx;
+  font-family: Cursive;
+    padding-top: 70rpx;
+    left:330rpx;
+position:absolute;
+
 }
 
 .top_right{
   height: 100%;
+
+  left: 600rpx;
   text-align: center;
 }
 
 .sen-image{
   padding-top: 60rpx;
   width: 100rpx;
-  height: 100rpx;
+height:100rpx;
+position:absolute;
+left:600rpx;
+
 }
 
 .view_tip{
   width:100%;
   text-align: center;
   color: gainsboro;
+  font-family: Cursive;
   font-size: 30rpx;
 }
