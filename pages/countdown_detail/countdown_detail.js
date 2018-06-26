@@ -36,11 +36,32 @@ Page({
     that.setData(
       {
         detail_title: str_detail_title,
-        detail_day: str_detail_day,
+        
         detail_info: str_detail_info,
         detail_background: str_detail_background
       }
     )
+    setTimeout(function () {
+      //要延时执行的代码
+      var a = 2
+      if (str_detail_day>1000)
+      a = 5
+      for (var i = 0; i <= str_detail_day; i += a) {
+
+        that.setData(
+          {
+            detail_day: i,
+          })
+
+      };
+      that.setData(
+        {
+          detail_day: str_detail_day,
+        })
+
+    }, 780)
+
+
 
   },
 

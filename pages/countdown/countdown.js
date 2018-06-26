@@ -245,11 +245,30 @@ wx.hideLoading()
       that.setData(
         {
           index_title: results[0].attributes.title,
-          index_day:   day,
           index_info:  results[0].attributes.info
         }
-      )
+      );
+      setTimeout(function () {
+        //要延时执行的代码
+        var a = 2
+        if (day > 1000)
+          a = 5
+        if (day > 2000)
+          a = 9
+      for (var i = 0; i <= day; i+=a ) {
+        
+        that.setData(
+          {
+            index_day: i,
+          })
 
+      };
+      that.setData(
+        {
+          index_day: day,
+        })
+
+      }, 800)
     }).catch(console.error)
 
 

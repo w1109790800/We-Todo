@@ -336,7 +336,7 @@ page{
   position: fixed;
   top: 160rpx ;
   justify-content: center; 
-  margin-left: 120rpx;
+  margin-left: 90rpx;
 }
 .cs_button2 {
   background-color: #fff;
@@ -344,7 +344,7 @@ page{
   position: fixed;
   top: 160rpx ;
   justify-content: center; 
-  margin-left: 380rpx;
+  margin-left: 360rpx;
 }
 .kf_button{
   background-color: rgba(255, 255, 255, 0);

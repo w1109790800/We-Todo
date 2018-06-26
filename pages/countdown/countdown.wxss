@@ -49,7 +49,7 @@
 .sen-title{
   background-color: #ffffff;
   font-family: Cursive;
-  width:60%;
+  width:50%;
   float: left;
   padding: 10rpx;
 

@@ -17,9 +17,7 @@ name="title" bindinput="input_title" class="sen-input" />
   确定添加倒数日/正数日
 </button>
 
-<view class="view_tip">
-温馨提示:添加目标日的时候，系统将自动判断是倒数日还是正数日，并智能归类到属于自己的类别，请您放心的添加^_^
-</view>
+
 <!--
 <view class="public_title">
   或者【一键添加】热门公共模板
