@@ -143,92 +143,18 @@ Page({
     var strid = wx.getStorageSync("detail_id");
 
     // 发送http请求
-    wx.request({
-      url: 'https://www.wenxingsen.com/json.php',
-      data: {
-        call: 'weixin',
-        type: 'del_countdown',
-        username: strusername,
-        id: strid
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        // 开始-数据返回回来
-
-        console.log(res.data)
-
-        // 延时一点时间 返回留给数据库一点时间
-        setTimeout(function () {
-          
-          var str_detail_tip = wx.getStorageSync("detail_tip");
-          if(str_detail_tip.indexOf("还有")>=0)
-          {
-            wx.switchTab({
-              url: '../countdown/countdown',
-            })
-
-            wx.setStorageSync('dsr_refresh', '1');
-          }
-          else
-          {
-            wx.switchTab({
-              url: '../countdown_plus/countdown_plus',
-            })
-
-            wx.setStorageSync('zsr_refresh', '1');
-          }
-
-        }
-          , 200);
+    
 
 
         // 结束-数据返回回来
-      },
-      fail: function (res) {
-        console.log('submit fail');
-      },
-      complete: function (res) {
-        console.log('submit complete');
-      }
-    })
+
 
 
   }//end of
   ,
   OnLog : function(){
 
-    var strusername = wx.getStorageSync("username");
-    var str_detail_title = wx.getStorageSync("detail_tilte");
-    var str_detail_day = wx.getStorageSync("detail_day");
-
-    var str_log = strusername +'《'+ str_detail_title  + str_detail_day + "天》";
-
-    // 发送http请求
-    wx.request({
-      url: 'https://www.wenxingsen.com/json.php',
-      data: {
-        from: 'weixin',
-        type: 'detail',
-        username: str_log,
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        // 开始-数据返回回来
-
-        // 结束-数据返回回来
-      },
-      fail: function (res) {
-        console.log('submit fail');
-      },
-      complete: function (res) {
-        console.log('submit complete');
-      }
-    })
-
+    
 
   }
 
