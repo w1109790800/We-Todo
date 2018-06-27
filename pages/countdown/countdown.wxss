@@ -51,15 +51,19 @@
   font-family: Cursive;
   width:50%;
   float: left;
-  padding: 10rpx;
+  font-size:38rpx;
+
+  padding: 25rpx;
 
 }
 .sen-day{
   color: #ffffff;
   font-family: Cursive;
+  font-size:38rpx;
+
   background: #4696fa;
   text-align: center;
-  padding: 10rpx;
+  padding: 25rpx;
 }
 
 

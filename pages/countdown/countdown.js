@@ -181,6 +181,7 @@ Page({
         var _this = this;
         query.find().then(function (results) {
           for (var i in results) {
+            results[i].attributes.openid = results[i].id;
             var start_date = new Date(util.formatTime(new Date()).split(" ")[0].replace(/-/g, "/"));
             var end_date = new Date(results[i].attributes.info.replace(/-/g, "/"));
             var days = end_date.getTime() - start_date.getTime();
@@ -194,6 +195,7 @@ Page({
               results[i].attributes.title = "未来 " + results[i].attributes.title
               results[i].attributes.day =   "还有·" + day;
               results[i].attributes.call = day;
+              
             }
             
             console.log(day)
@@ -255,6 +257,8 @@ wx.hideLoading()
           a = 5
         if (day > 2000)
           a = 9
+        if (day > 4000)
+          a = 14
       for (var i = 0; i <= day; i+=a ) {
         
         that.setData(
@@ -291,7 +295,7 @@ wx.hideLoading()
   {
 
     var data = e.currentTarget.dataset;
-
+    wx.setStorageSync("objid", data.id);
     wx.setStorageSync("detail_tilte", data.title);
     wx.setStorageSync("detail_info", data.info);
     wx.setStorageSync("detail_day", data.day.split("·")[1]);

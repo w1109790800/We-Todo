@@ -1,5 +1,6 @@
 <!--countdown.wxml-->
 <view class= "con">
+
 <view class="view_top">
 
   <view class="top_left">
@@ -25,8 +26,8 @@
     data-title="{{item.title}}"
     data-day="{{item.day}}"
     data-info="{{item.info}}"
-    data-id="{{item.id}}"
-    data-background='{{item.background}}'
+    data-id="{{item.openid}}"
+    data-background='{{item.url}}'
     data-tip="{{item.tip}}">
     
       <view class="sen-title"> {{item.title}}</view>
