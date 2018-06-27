@@ -198,7 +198,7 @@ Page({
               
             }
             
-            console.log(day)
+            
           };
 
           _this.setData({ listData: results });

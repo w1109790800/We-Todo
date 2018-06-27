@@ -1,4 +1,11 @@
 /* countdown_detail.wxss */
+.one{
+  width: 100%;height: 700px;         
+  background:  detail_background  no-repeat;
+  background-size: 100% 100%;
+  text-align: center;
+  color: white;
+}
 .con{
 
   animation: bd-rise 3s cubic-bezier(0.23, 1, 0.32, 1) 0.75s forwards;
@@ -20,7 +27,7 @@
 { 
   width: 100%;
   height: 700px;
-  background:"https://oss2.wangyuyang.top/20170950.jpg" no-repeat;
+       background:"https://oss2.wangyuyang.top/20170950.jpg" no-repeat;
   background-size: 100% 100%;
   text-align: center;
   color: white;
