@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    imageUrl: "http://baobaiqiang.oss-cn-beijing.aliyuncs.com/234/qr.jpg",
     detail_title:'title',
     detail_day:'0',
     detail_info:'info',
