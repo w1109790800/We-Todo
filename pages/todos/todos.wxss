@@ -51,6 +51,7 @@
 
 .bd {
   font-size: 18px;
+   font-family: Cursive;
   height: 30px;
   padding: 10px 12px;
   overflow: hidden;
