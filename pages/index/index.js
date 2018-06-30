@@ -279,6 +279,24 @@ Page({
         remind: ''
       });
     }, 100);
+  },
+    nav3: function () {
+      var _this = this;
+      setTimeout(function () {
+        _this.setData({
+          remind: '加载中'
+        });
+      }, 1000);
+
+      const user = AV.User.current();
+      wx.navigateTo({
+        url: '../up/up',
+      })
+      setTimeout(function () {
+        _this.setData({
+          remind: ''
+        });
+      }, 100);
 
   },
   onReady: function () {

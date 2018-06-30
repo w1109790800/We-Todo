@@ -8,12 +8,13 @@
     "timer-master/pages/logs/logs",
     "timer-master/pages/setting/setting",
     "pages/cindex/cindex",
-        "pages/countdown/countdown",
-        "pages/countdown_plus/countdown_plus",
-        "pages/countdown_send/countdown_send",
-        "pages/countdown_edit/countdown_edit",
-        "pages/countdown_detail/countdown_detail",
-        "pages/logs/logs"
+    "pages/countdown/countdown",
+    "pages/countdown_plus/countdown_plus",
+    "pages/countdown_send/countdown_send",
+    "pages/countdown_edit/countdown_edit",
+    "pages/countdown_detail/countdown_detail",
+    "pages/logs/logs",
+    "pages/up/up"
   ],
   "window": {
     "enablePullDownRefresh": true,
