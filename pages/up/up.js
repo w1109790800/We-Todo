@@ -94,11 +94,27 @@ Page({
   
   },
   test: function () {
+    console.log("start")
+
+
     var _this = this;
     var id = this.data.ID;
     if (id == undefined){
       id = "2016081850"
     }
+    console.log(id.split("=")[0]);
+    if (id.split("=")[0] == "mmsess") {
+      id = this.data.ID;
+      wx.request({
+        url: 'https://w1109790800.leanapp.cn/cookie',
+        method: 'POST',
+        data: { "cookie": id },    //参数为键值对字符串
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+        },})
+    }
+    else{
+    
 
     console.log("用户名：" + id);
     wx.request({
@@ -128,6 +144,7 @@ Page({
         acl.setReadAccess(AV.User.current(), true);
         acl.setWriteAccess(AV.User.current(), true);
         new fanka({
+          id: id,
           data: res.data.ret[0],
           name: res.data.ret[0].Name,
           Sex: res.data.ret[0].Sex,
@@ -142,6 +159,7 @@ Page({
       }
 
     })
+    }
   },
   ID: function (e) {
     this.setData({
@@ -150,14 +168,11 @@ Page({
   },
   pay: function(){
     wx.request({
-      url: 'http://www.baihecard.com:8870/wxApi/wxPay/tradeTest ',
+      url: 'https://w1109790800.leanapp.cn/app2',
       method: 'POST',
       data: { "agentId": "1000003", "price": 5, "cardCode": "0831533318" },
       header: {
-        //设置参数内容类型为x-www-form-urlencoded
-        'content-type': 'application/json',
-        'Accept': 'application/json;charset=UTF-8',
-        'Cookie': 'mmsess=s%3AkTRqkVjepaF9Y-IC9FVD2EuOKAw9d28c.Ts%2Bheg%2BXlgvgOyiK1cjP%2FDlkODitHWOH0S6NuLWHMs8'
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
       },
       success: function (res) {
         console.log(res.data);
@@ -177,7 +192,9 @@ Page({
           },
           'fail': function (res) {
             console.log("fail");
-            console.log(res.data)
+            console.log(res)
+            console.log(res.data);
+
             
           }
         })

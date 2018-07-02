@@ -27,7 +27,7 @@
                     <view class="icon">
                       <image src="{{ suggestionIcon.air }}"></image>
                     </view>
-                    <view>  AQI/PM2.5：</view>
+                    <view bindtap="nav4">  AQI/PM2.5：</view>
                     <text class="status">{{suggestion.air}}</text>
                   </view>
                 </view>

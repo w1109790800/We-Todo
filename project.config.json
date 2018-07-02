@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": -1,
 			"list": [
 				{
 					"id": 1,
@@ -81,6 +81,18 @@
 					"id": 7,
 					"name": "up",
 					"pathName": "pages/up/up",
+					"query": ""
+				},
+				{
+					"id": 8,
+					"name": "club",
+					"pathName": "pages/club/new_club/new_club",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "car",
+					"pathName": "pages/car_recog/car_recog",
 					"query": ""
 				}
 			]

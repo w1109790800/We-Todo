@@ -14,7 +14,10 @@
     "pages/countdown_edit/countdown_edit",
     "pages/countdown_detail/countdown_detail",
     "pages/logs/logs",
-    "pages/up/up"
+    "pages/up/up",
+    "pages/club/club",
+    "pages/club/new_club/new_club",
+    "pages/car_recog/car_recog"
   ],
   "window": {
     "enablePullDownRefresh": true,
