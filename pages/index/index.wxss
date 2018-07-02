@@ -258,6 +258,7 @@ page{
 }
 .container {
   position: relative;
+  
   overflow: hidden;
   flex: 1;
   display: flex;
