@@ -12,14 +12,14 @@ Page({
         remind: ''
       });
     }, 1000);
-    
+
   },
   onLoad: function () { // 生命周期函数--监听页面加载
     this.getUserLocation()
     wx.showShareMenu({ // 转发
       withShareTicket: true
     })
-    
+
   },
   onShareAppMessage: function () {
     return {
@@ -243,7 +243,7 @@ Page({
       },
     });
   },
-  nav: function(){
+  nav: function () {
     var _this = this;
     setTimeout(function () {
       _this.setData({
@@ -260,8 +260,8 @@ Page({
         remind: ''
       });
     }, 100);
-    
-  } ,
+
+  },
   nav2: function () {
     var _this = this;
     setTimeout(function () {
@@ -280,42 +280,42 @@ Page({
       });
     }, 100);
   },
-    nav3: function () {
-      var _this = this;
-      setTimeout(function () {
-        _this.setData({
-          remind: '加载中'
-        });
-      }, 1000);
+  nav3: function () {
+    var _this = this;
+    setTimeout(function () {
+      _this.setData({
+        remind: '加载中'
+      });
+    }, 1000);
 
-      const user = AV.User.current();
-      wx.navigateTo({
-        url: '../up/up',
-      })
-      setTimeout(function () {
-        _this.setData({
-          remind: ''
-        });
-      }, 100);
+    const user = AV.User.current();
+    wx.navigateTo({
+      url: '../up/up',
+    })
+    setTimeout(function () {
+      _this.setData({
+        remind: ''
+      });
+    }, 100);
 
   },
-    nav4: function () {
-      var _this = this;
-      setTimeout(function () {
-        _this.setData({
-          remind: '加载中'
-        });
-      }, 1000);
+  nav4: function () {
+    var _this = this;
+    setTimeout(function () {
+      _this.setData({
+        remind: '加载中'
+      });
+    }, 1000);
 
-      const user = AV.User.current();
-      wx.navigateTo({
-        url: '../car_recog/car_recog',
-      })
-      setTimeout(function () {
-        _this.setData({
-          remind: ''
-        });
-      }, 100);
+    const user = AV.User.current();
+    wx.navigateTo({
+      url: '../car_recog/car_recog',
+    })
+    setTimeout(function () {
+      _this.setData({
+        remind: ''
+      });
+    }, 100);
 
     },
     nav_face: function () {
