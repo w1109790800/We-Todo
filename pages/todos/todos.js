@@ -122,6 +122,9 @@ onShareAppMessage: function () {
     acl.setPublicWriteAccess(false);
     acl.setReadAccess(AV.User.current(), true);
     acl.setWriteAccess(AV.User.current(), true);
+    if (App.globalData.userinfo != null){
+      user.attributes.nickName = App.globalData.userinfo;
+    }
     new Todo({
       content: value,
       done: false,

@@ -94,6 +94,12 @@
 					"name": "car",
 					"pathName": "pages/car_recog/car_recog",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "face",
+					"pathName": "pages/face/face",
+					"query": ""
 				}
 			]
 		}
