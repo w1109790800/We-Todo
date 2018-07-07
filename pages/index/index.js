@@ -337,6 +337,25 @@ Page({
       }, 100);
 
     },
+    nav_count_people: function () {
+      var _this = this;
+      setTimeout(function () {
+        _this.setData({
+          remind: '加载中'
+        });
+      }, 1000);
+
+      const user = AV.User.current();
+      wx.navigateTo({
+        url: '../count_people/count_people',
+      })
+      setTimeout(function () {
+        _this.setData({
+          remind: ''
+        });
+      }, 100);
+
+    },
   onReady: function () {
 
     var _this = this;

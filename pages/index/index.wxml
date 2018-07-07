@@ -45,7 +45,7 @@
                     <view class="icon">
                       <image src="{{ suggestionIcon.cw }}"></image>
                     </view>
-                    <view> 洗车指数：</view>
+                    <view bindtap='nav_count_people'> 洗车指数：</view>
                     <text class="status">{{suggestion.cw}}</text>
                   </view>
                 </view>

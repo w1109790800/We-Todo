@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 11,
 			"list": [
 				{
 					"id": 1,
@@ -99,6 +99,12 @@
 					"id": -1,
 					"name": "face",
 					"pathName": "pages/face/face",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "/count_people",
+					"pathName": "pages/count_people/count_people",
 					"query": ""
 				}
 			]
