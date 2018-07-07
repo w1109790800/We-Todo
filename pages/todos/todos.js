@@ -117,6 +117,8 @@ onShareAppMessage: function () {
     if (!value) {
       return;
     }
+
+    value = value+"  2018";
     var acl = new AV.ACL();
     acl.setPublicReadAccess(false);
     acl.setPublicWriteAccess(false);
@@ -126,7 +128,7 @@ onShareAppMessage: function () {
       content: value,
       done: false,
       user: AV.User.current(),
-      name: user.attributes.nickName
+      name: user.attributes.nickName    
     }).setACL(acl).save().then((todo) => {
       this.setTodos([todo, ...this.data.todos]);
     }).catch(error => console.error(error.message));
@@ -134,6 +136,7 @@ onShareAppMessage: function () {
       draft: ''
     });
     console.log(user.attributes.nickName);
+    //console.log("fdfd");
     new Done({
       content: value,
       done: false,
@@ -204,10 +207,12 @@ onShareAppMessage: function () {
     this.setData({
       editedTodo: {},
     });
+    
     if (editDraft === null) return;
     const currentTodo = todos.filter(todo => todo.id === id)[0];
     if (editDraft === currentTodo.content) return;
     currentTodo.content = editDraft;
+    
     currentTodo.save().then(() => {
       this.setTodos(todos);
     }).catch(error => console.error(error.message));
