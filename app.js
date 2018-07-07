@@ -17,6 +17,13 @@ const defaultTime = {
 App({
 
   onLaunch: function () {
+    wx.getUserInfo({
+      withCredentials: false,
+      success: function (res) {
+        App.globalData.userinfo = res.data;
+        console.log(App.globalData.userinfo)
+      }
+    })
     var _this = this;
     const user = AV.User.current();
     return AV.Promise.resolve(AV.User.current()).then(user =>

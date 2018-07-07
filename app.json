@@ -17,7 +17,8 @@
     "pages/up/up",
     "pages/club/club",
     "pages/club/new_club/new_club",
-    "pages/car_recog/car_recog"
+    "pages/car_recog/car_recog",
+    "pages/face/face"
   ],
   "window": {
     "enablePullDownRefresh": true,

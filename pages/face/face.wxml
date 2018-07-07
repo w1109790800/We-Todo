@@ -1,0 +1,16 @@
+  <button class="cs_button2" type="primary" bindtap="test">获取</button>
+  <view class="view_list">
+  <view class="sen-split"></view>
+     <image class="image_frame" src="{{imgurl}}" mode="aspectFill"> 
+</image>
+  <block wx:for="{{listData}}">
+
+      <view class="sen-title">年龄： {{item.age}} </view>
+      <view class="sen-title">美丽度： {{item.beauty}}</view>
+      <view class="sen-title">表情： {{item.expression.type}}</view>
+      <view class="sen-title">脸型： {{item.face_shape.type}}</view>
+      <view class="sen-title">性别： {{item.gender.type}}</view>
+      <view class="sen-title"></view>
+    <view class="sen-split"></view>
+  </block>
+</view>
