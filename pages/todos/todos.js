@@ -4,6 +4,7 @@ const Done = require('../../model/done');
 const bind = require('../../utils/live-query-binding');
 
 
+
 Page({
   
 onShareAppMessage: function () {
@@ -21,29 +22,12 @@ onShareAppMessage: function () {
     editDraft: null,
   },
   login: function() {
-    
     var _this = this;
     const user = AV.User.current();
-    wx.login({
-      success: function (res) {
-          // success  
-    var d = user;//这里存储了appid、secret、token串  
-    var l = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + d.appId + '&secret=' + d.appSecret + '&js_code=' + res.code + '&grant_type=authorization_code';
-    wx.request({
-      url: l,
-      data: {},
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
-      // header: {}, // 设置请求的 header  
-      success: function (res) {
-        var obj = {};
-        obj.openid = res.data.openid;
-        obj.expires_in = Date.now() + res.data.expires_in;}
-    });
-      }
-      });
     return AV.Promise.resolve(AV.User.current()).then(user =>
       user ? (user.isAuthenticated().then(authed => authed ? user : null)) : null
     ).then(user => user ? user : AV.User.loginWithWeapp()).catch(error => console.error(error.message));
+
       
     setTimeout(function () {
       _this.setData({
@@ -104,6 +88,7 @@ onShareAppMessage: function () {
     this.fetchTodos(user).catch(error => console.error(error.message)).then(wx.stopPullDownRefresh);
   },
   setTodos: function (todos) {
+    const user = AV.User.current();
     const activeTodos = todos.filter(todo => !todo.done);
     this.setData({
       todos,
@@ -123,6 +108,7 @@ onShareAppMessage: function () {
     });
   },
   addTodo: function () {
+    const user = AV.User.current();
     wx.showToast({
       title: '添加中……',
       icon: 'loading'
@@ -131,28 +117,34 @@ onShareAppMessage: function () {
     if (!value) {
       return;
     }
+
+    value = value+"  2018";
     var acl = new AV.ACL();
     acl.setPublicReadAccess(false);
     acl.setPublicWriteAccess(false);
     acl.setReadAccess(AV.User.current(), true);
     acl.setWriteAccess(AV.User.current(), true);
+    if (App.globalData.userinfo != null){
+      user.attributes.nickName = App.globalData.userinfo;
+    }
     new Todo({
       content: value,
       done: false,
       user: AV.User.current(),
-      name: getApp().globalData.userInfo.nickName
+      name: user.attributes.nickName    
     }).setACL(acl).save().then((todo) => {
       this.setTodos([todo, ...this.data.todos]);
     }).catch(error => console.error(error.message));
     this.setData({
       draft: ''
     });
-    console.log(getApp().globalData.userInfo.nickName);
+    console.log(user.attributes.nickName);
+    //console.log("fdfd");
     new Done({
       content: value,
       done: false,
       user: AV.User.current(),
-      name: getApp().globalData.userInfo.nickName
+      name: user.attributes.nickName
     }).setACL(acl).save().then((todo) => {
       this.setTodos([todo, ...this.data.todos]);
     }).catch(error => console.error(error.message));
@@ -218,10 +210,12 @@ onShareAppMessage: function () {
     this.setData({
       editedTodo: {},
     });
+    
     if (editDraft === null) return;
     const currentTodo = todos.filter(todo => todo.id === id)[0];
     if (editDraft === currentTodo.content) return;
     currentTodo.content = editDraft;
+    
     currentTodo.save().then(() => {
       this.setTodos(todos);
     }).catch(error => console.error(error.message));

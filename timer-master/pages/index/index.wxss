@@ -14,7 +14,7 @@
   align-items: center;
   text-align: center;
   background-color: #3197ed;
-  transition: all .5s;
+  transition: all 0.5s;
   z-index: 1;
   padding: 10px 0;
 }
@@ -27,7 +27,7 @@
   width: 150px;
   height: 150px;
   text-align: center;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .timer_progress {
@@ -36,7 +36,7 @@
   width: 75px;
   height: 150px;
   overflow: hidden;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .timer_progress_mask {
@@ -46,7 +46,7 @@
   bottom: 0;
   right: 0;
   border: 3px solid #1589eb;
-  opacity: .5;
+  opacity: 0.5;
   border-radius: 50%;
 }
 
@@ -65,7 +65,7 @@
   height: 150px;
   border: 3px solid transparent;
   border-radius: 50%;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .timer_circle--left {
@@ -82,13 +82,14 @@
   transform: rotate(-45deg);
 }
 
-.timer_time-right {}
+.timer_time-right {
+}
 
 .timer_time {
   font-size: 40px;
   color: #fff;
   font-weight: lighter;
-  transition: font-size .3s;
+  transition: font-size 0.3s;
 }
 
 .timer_taskName {
@@ -121,7 +122,7 @@
   align-items: center;
   flex: 1;
   padding-top: 40px;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .timer .timer_ctrl {
@@ -135,12 +136,12 @@
   height: 80px;
   margin: 0 20px;
   border-radius: 50%;
-  transition: all .7s;
+  transition: all 0.7s;
   background-color: #48c23d;
 }
 
-.timer .timer_ctrl text {}
-
+.timer .timer_ctrl text {
+}
 
 /*runing style*/
 
@@ -176,13 +177,12 @@
 }
 
 .timer--runing .timer_ctrl {
-  background-color: #208DEA;
+  background-color: #208dea;
   height: 30px;
   margin-bottom: 30px;
   border: 1px dashed #dedede;
   border-radius: 20px;
 }
-
 
 .footer {
   position: fixed;
@@ -192,7 +192,7 @@
   line-height: 44px;
   color: #666;
   border-top: 1px solid #eee;
-  background: #FFF;
+  background: #fff;
   font-size: 16px;
   text-align: center;
 }

@@ -1,0 +1,34 @@
+/* countdown_send.wxss */
+.sen-input
+{
+    width: 90%;
+    margin: 30rpx;
+    padding: 10rpx;
+    background: #ffffff;
+    border: 1px solid #aaaaaa;
+    font-size: 40rpx;
+}
+
+.packer_view{
+  margin: 30rpx;
+   font-size: 40rpx;
+}
+
+
+.sen-button
+{
+  margin: 30rpx;
+  color: #ffffff;
+  background: #4696fa;
+
+}
+
+
+.data_text{
+    text-decoration: underline;
+}
+
+.view_tip{
+    margin: 30rpx;
+    color: gray;
+}

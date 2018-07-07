@@ -1,5 +1,4 @@
 const AV = require('../utils/av-live-query-weapp-min');
-
 class Todo extends AV.Object {
   get done() {
     return this.get('done');

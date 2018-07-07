@@ -5,27 +5,108 @@
   </view>
   <block wx:else>
     <image class="title" src="/image/more/title.png"></image>
+    <view class="title3">今日温度：{{localTemperature}}
+      <span>˚</span>
+    </view>
     <view class="content">
       <view class="hd" style="transform:rotateZ({{angle}}deg);">
-          <image class="logo" src="/image/more/logo.jpg"></image>
-          <image class="wave" src="/image/more/wave.png" mode="aspectFill"></image>
-          <image class="wave wave-bg" src="/image/more/wave.png" mode="aspectFill"></image>
+        <image class="logo" src="/image/more/logo.jpg"></image>
+        <image class="wave" src="/image/more/wave.png" mode="aspectFill"></image>
+        <image class="wave wave-bg" src="/image/more/wave.png" mode="aspectFill"></image>
       </view>
       <view class="bd">
-      <image  class="title2" src="/image/time2.png"></image>
+        <text class="wenzi">💖时间有序，我们在路上💖</text>
+        <button class="cs_button" type="primary" bindtap="nav">进入Todo-list</button>
+        <button class="cs_button2" type="primary" bindtap="nav2">进入  回忆日</button>
+        <view class="ccc">
+          <view class="body">
+            <view class="details">
+              <view class="list">
+                <view class="item">
+                  <view class="wrap">
+                    <view class="icon">
+                      <image src="{{ suggestionIcon.air }}"></image>
+                    </view>
+                    <view bindtap="nav4">  AQI/PM2.5：</view>
+                    <text class="status">{{suggestion.air}}</text>
+                  </view>
+                </view>
+                <view class="item">
+                  <view class="wrap">
+                    <view class="icon">
+                      <image src="{{ suggestionIcon.comf }}"></image>
+                    </view>
+                    <view bindtap="nav3"  >  舒适度：</view>
+                    <text class="status">{{suggestion.comf}}</text>
+                  </view>
+                </view>
+                <view class="item">
+                  <view class="wrap">
+                    <view class="icon">
+                      <image src="{{ suggestionIcon.cw }}"></image>
+                    </view>
+                    <view bindtap='nav_count_people'> 洗车指数：</view>
+                    <text class="status">{{suggestion.cw}}</text>
+                  </view>
+                </view>
+                <view class="item">
+                  <view class="wrap">
+                    <view class="icon">
+                      <image src="{{ suggestionIcon.drsg }}"></image>
+                    </view>
+                    <view class="b"> 穿衣指数：</view>
+                      <text class="status">{{suggestion.drsg}}</text>
+                    </view>
+                  </view>
+                  <view class="item">
+                    <view class="wrap">
+                      <view class="icon">
+                        <image src="{{ suggestionIcon.flu }}"></image>
+                      </view>
+                      <view> 感冒指数：</view>
+                      <text class="status">{{suggestion.flu}}</text>
+                    </view>
+                  </view>
+                  <view class="item">
+                    <view class="wrap">
+                      <view class="icon">
+                        <image src="{{ suggestionIcon.sport }}"></image>
+                      </view>
+                      <view> 运动指数：</view>
+                      <text class="status">{{suggestion.sport}}</text>
+                    </view>
+                  </view>
+                  <view class="item">
+                    <view class="wrap">
+                      <view class="icon">
+                        <image src="{{ suggestionIcon.trav }}"></image>
+                      </view>
+                      <view> 旅游指数：</view>
+                      <text class="status">{{suggestion.trav}}</text>
+                    </view>
+                  </view>
+                  <view class="item">
+                    <view class="wrap">
+                      <view class="icon">
+                        <image src="{{ suggestionIcon.uv }}"></image>
+                      </view>
+                      <view bindtap="nav_face">紫外线指数</view>
+                      <text class="status">{{suggestion.uv}}</text>
+                    </view>
+                  </view>
+                </view>
+              </view>
+   
+          </view>
+          <button class="kf_button" open-type="contact" session-from="weapp">
+            <image class="kf_image" src="../../assets/kefu.png"></image>
+          </button>
 
+          <button class="footer" open-type="contact" session-from="weapp">北京市育英学校   WangYuyang</button>
+        </view>
 
-
-           <button class = "cs_button" type="primary" bindtap="nav">进入Todo-list</button>
-             <button class="kf_button" open-type="contact" session-from="weapp">
-    <image class="kf_image" src="../../assets/kefu.png"></image>
-    </button>
-
-                 <text class="footer">本程序由北京市育英学校 信息科技联盟开发</text>
       </view>
-
-    </view>
-
+</view>
   </block>
 
-</view>
+  </view>

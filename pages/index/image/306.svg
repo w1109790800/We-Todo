@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>14</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="97.7459343%" id="linearGradient-1">
+            <stop stop-color="#EDEDED" stop-opacity="0.8" offset="0%"></stop>
+            <stop stop-color="#EDEDED" stop-opacity="0.9" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="天气图标" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="天气图标_白色背景" transform="translate(-363.000000, -1294.000000)">
+            <g id="Group-22" transform="translate(365.000000, 1298.000000)">
+                <path d="M51.3538945,14.6050035 C51.3538945,6.5518468 44.6643399,0 36.4420275,0 C31.2071105,0 26.3787783,2.70600805 23.6953188,7.01981095 C22.0277109,5.90369524 20.0571552,5.30297366 17.9955757,5.30297366 C12.4117921,5.30297366 7.86972581,9.75180086 7.86972581,15.2205469 C7.86972581,15.8248141 7.92453774,16.423792 8.03404535,17.0112611 C3.23977441,18.7154852 0,23.1666374 0,28.2742531 C0,34.776403 5.26241014,39.68 12.2398001,39.68 L47.2796768,39.68 C54.0289259,39.68 59.52,34.3026845 59.52,27.6924802 C59.5201744,22.5584759 56.0970154,17.9716018 51.21794,16.3402083 C51.2881551,15.7637248 51.3538945,15.0962176 51.3538945,14.6050035 Z" id="Shape-Copy-9" fill="url(#linearGradient-1)"></path>
+                <path d="M11.5,45.5 L7.23036457,55.4624827" id="Line" stroke="#9FD2FF" stroke-width="3" stroke-linecap="round"></path>
+                <path d="M23.2696354,45.5 L19,55.4624827" id="Line" stroke="#9FD2FF" stroke-width="3" stroke-linecap="round"></path>
+                <path d="M35.2696354,45.5 L31,55.4624827" id="Line" stroke="#9FD2FF" stroke-width="3" stroke-linecap="round"></path>
+                <path d="M47.5,45.5 L43.2303646,55.4624827" id="Line" stroke="#9FD2FF" stroke-width="3" stroke-linecap="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>

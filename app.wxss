@@ -1,18 +1,16 @@
 /**app.wxss**/
 
-
-
 canvas {
   box-sizing: border-box;
 }
+
 page {
   height: 100%;
 }
 
 .hide {
-  display: none!important;
+  display: none !important;
 }
-
 
 .container {
   height: 100%;
@@ -24,26 +22,27 @@ page {
   border-radius: 3px;
   padding: 5px 10px;
 }
-.nodata{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
+
+.nodata {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
-.nodata_img{
-	display: block;
-	width: 45px;
-	height: 45px;
+.nodata_img {
+  display: block;
+  width: 45px;
+  height: 45px;
 }
 
-.nodata_text{
-	color:#dedede;
-	font-size: 12px;
-	padding-left: 10px;
+.nodata_text {
+  color: #dedede;
+  font-size: 12px;
+  padding-left: 10px;
 }
 
-.flex-wrap{
+.flex-wrap {
   display: flex;
   flex-direction: row;
 }
@@ -51,33 +50,32 @@ page {
 page {
   background-color: #f2f2f2;
 }
+
 .tappable:hover {
-  opacity: .6;
+  opacity: 0.6;
 }
+
 .container {
   padding: 4px 12px;
 }
+
 .form-wrap {
   border-top: 1px solid #eee;
   margin: 12px 0;
 }
 
-.hint,
-.error {
+.hint, .error {
   display: block;
   margin: 8px 0;
   color: #888;
   font-size: 14px;
 }
+
 .error {
   color: #e64240;
 }
 
-
-
 /**app.wxss**/
-
-
 
 .remind-box {
   flex: 1;
@@ -87,40 +85,44 @@ page {
   justify-content: center;
   padding-bottom: 300rpx;
 }
+
 .remind-img {
   width: 250rpx;
   height: 250rpx;
   padding-bottom: 25rpx;
 }
+
 .remind-text {
   font-size: 12pt;
   line-height: 150%;
 }
 
-.fix_tip{
-    position: fixed;
-    bottom: 50rpx;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    opacity: 0;
-    transform: translate3d(0, 80rpx, 0);
-    transition: all .5s cubic-bezier(0.19, 1, 0.22, 1)
-}
-.fix_tip.active{
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-}
-.fix_tip text{
-    font-size: 9pt;
-    line-height: 100%;
-    padding: 10rpx 20rpx;
-    border-radius: 10rpx;
-    background: rgba(66,66,66,.6);
-    color: #fff;
+.fix_tip {
+  position: fixed;
+  bottom: 50rpx;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  transform: translate3d(0, 80rpx, 0);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.lanshan-studio{
+.fix_tip.active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.fix_tip text {
+  font-size: 9pt;
+  line-height: 100%;
+  padding: 10rpx 20rpx;
+  border-radius: 10rpx;
+  background: rgba(66, 66, 66, 0.6);
+  color: #fff;
+}
+
+.lanshan-studio {
   position: absolute;
   left: 0;
   right: 0;

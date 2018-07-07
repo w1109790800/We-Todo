@@ -1,20 +1,32 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/todos/todos",
     "pages/user/user",
     "pages/pay/pay",
-    "pages/setting/setting",
-     "timer-master/pages/index/index",
-     "timer-master/pages/logs/logs",
-     "timer-master/pages/setting/setting"
+    "timer-master/pages/index/index",
+    "timer-master/pages/logs/logs",
+    "timer-master/pages/setting/setting",
+    "pages/cindex/cindex",
+    "pages/countdown/countdown",
+    "pages/countdown_plus/countdown_plus",
+    "pages/countdown_send/countdown_send",
+    "pages/countdown_edit/countdown_edit",
+    "pages/countdown_detail/countdown_detail",
+    "pages/logs/logs",
+    "pages/up/up",
+    "pages/club/club",
+    "pages/club/new_club/new_club",
+    "pages/car_recog/car_recog",
+    "pages/face/face",
+    "pages/count_people/count_people"
   ],
-  "window":{
+  "window": {
     "enablePullDownRefresh": true,
-    "backgroundTextStyle":"dark",
+    "backgroundTextStyle": "dark",
     "backgroundColor": "#f2f2f2",
     "navigationBarBackgroundColor": "#fbfbfb",
     "navigationBarTitleText": "Todo-List ✅",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }

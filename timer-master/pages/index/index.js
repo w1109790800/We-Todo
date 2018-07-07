@@ -39,15 +39,7 @@ Page({
   },
   login: function () {
     const user = AV.User.current();
-    wx.getUserInfo({
-      success: ({ userInfo }) => {
-        // 更新当前用户的信息
-        user.set(userInfo).save().then(user => {
-          // 成功，此时可在控制台中看到更新后的用户信息
-          this.data.user = user.toJSON();
-        }).catch(console.error);
-      }
-    });
+
     return AV.Promise.resolve(AV.User.current()).then(user =>
       user ? (user.isAuthenticated().then(authed => authed ? user : null)) : null
     ).then(user => user ? user : AV.User.loginWithWeapp()).catch(error => console.error(error.message));
@@ -55,7 +47,7 @@ Page({
 
 
   },
-  onReady: function(){
+  onReady: function () {
     wx.showModal({
       title: '番茄工作法',
       content: ' 番茄工作法是简单易行的时间管理方法，是由弗朗西斯科·西里洛于1992年创立的一种相对于GTD更微观的时间管理方法。使用番茄工作法，选择一个待完成的任务，将番茄时间设为25分钟，专注工作，中途不允许做任何与该任务无关的事，直到番茄时钟响起，然后在纸上画一个X短暂休息一下（5分钟就行），每4个番茄时段多休息一会儿',
@@ -69,7 +61,7 @@ Page({
     })
 
   },
-  onShow: function() {
+  onShow: function () {
     const user = AV.User.current();
     const query = new AV.Query(time)
       .equalTo('user', AV.Object.createWithoutData('User', user.id))
@@ -82,7 +74,7 @@ Page({
       restTime: restTime,
       remainTimeText: workTime + ':00'
     })
-    
+
   },
   copyTBL: function (e) {
     var self = this;
@@ -112,16 +104,16 @@ Page({
     });
     return todos;
   },
-  startTimer: function(e) {
+  startTimer: function (e) {
     let startTime = Date.now()
     let isRuning = this.data.isRuning
     let timerType = e.target.dataset.type
     let showTime = this.data[timerType + 'Time']
     let keepTime = showTime * 60 * 1000
     let logName = this.logName || defaultLogName[timerType]
-    
+
     if (!isRuning) {
-      this.timer = setInterval((function() {
+      this.timer = setInterval((function () {
         this.updateTimer()
         this.startNameAnimation()
       }).bind(this), 1000)
@@ -148,20 +140,21 @@ Page({
     }
 
     this.saveLog(this.data.log)
-    var value = this.data.log 
+    var value = this.data.log
     var acl = new AV.ACL();
     acl.setPublicReadAccess(false);
     acl.setPublicWriteAccess(false);
     acl.setReadAccess(AV.User.current(), true);
     acl.setWriteAccess(AV.User.current(), true);
+    const user = AV.User.current();
     new time({
-      log: this.data.log  ,
+      log: this.data.log,
       name: this.data.log.name,
       startTime: Date.now(),
       keepTime: this.data.log.keepTime,
       user: AV.User.current(),
       a: this.data.log.keepTime - this.data.log.endTime,
-      name: getApp().globalData.userInfo.nickName
+      name: user.attributes.nickName
     }).setACL(acl).save().then((time) => {
       this.setTodos([time, ...this.data.log]);
     }).catch(error => console.error(error.message));
@@ -170,7 +163,7 @@ Page({
     });
   },
 
-  startNameAnimation: function() {
+  startNameAnimation: function () {
     let animation = wx.createAnimation({
       duration: 450
     })
@@ -181,7 +174,7 @@ Page({
     })
   },
 
-  stopTimer: function() {
+  stopTimer: function () {
     // reset circle progress
     this.setData({
       leftDeg: initDeg.left,
@@ -192,8 +185,8 @@ Page({
     this.timer && clearInterval(this.timer)
   },
 
-  updateTimer: function() {
-    
+  updateTimer: function () {
+
     let log = this.data.log
     let now = Date.now()
     let remainingTime = Math.round((log.endTime - now) / 1000)
@@ -216,21 +209,21 @@ Page({
         title: '番茄工作法',
         content: ' 恭喜您完成了一个新的番茄时间，快点击右上角三个圆点分享吧~',
         success: function (res) {
-          
-            console.log('确定')
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(false);
-            acl.setPublicWriteAccess(false);
-            acl.setReadAccess(AV.User.current(), true);
-            acl.setWriteAccess(AV.User.current(), true);
-            new time({
-              done: true ,
-              user: AV.User.current(),
-              name: getApp().globalData.userInfo.nickName
-            }).setACL(acl).save().then((time) => {
-              this.setTodos([time, ...this.data]);
-            }).catch(error => console.error(error.message));
-          
+
+          console.log('确定')
+          var acl = new AV.ACL();
+          acl.setPublicReadAccess(false);
+          acl.setPublicWriteAccess(false);
+          acl.setReadAccess(AV.User.current(), true);
+          acl.setWriteAccess(AV.User.current(), true);
+          new time({
+            done: true,
+            user: AV.User.current(),
+            name: getApp().globalData.userInfo.nickName
+          }).setACL(acl).save().then((time) => {
+            this.setTodos([time, ...this.data]);
+          }).catch(error => console.error(error.message));
+
         }
       })
       this.stopTimer()
@@ -253,11 +246,11 @@ Page({
     }
   },
 
-  changeLogName: function(e) {
+  changeLogName: function (e) {
     this.logName = e.detail.value
   },
 
-  saveLog: function(log) {
+  saveLog: function (log) {
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(log)
     wx.setStorageSync('logs', logs)

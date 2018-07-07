@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>9</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="81.4884681%" y2="67.3146131%" id="linearGradient-1">
+            <stop stop-color="#F3F3F3" stop-opacity="0.8" offset="0%"></stop>
+            <stop stop-color="#E1E1E1" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="61.6984292%" y1="0%" x2="54.4923027%" y2="64.5135801%" id="linearGradient-2">
+            <stop stop-color="#F5F5F5" offset="0%"></stop>
+            <stop stop-color="#F4F4F4" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="天气图标" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="天气图标_白色背景" transform="translate(-363.000000, -848.000000)">
+            <g id="Group-6" transform="translate(363.000000, 858.000000)">
+                <path d="M55.2894875,15.5786704 C55.2894875,6.98863659 48.1539625,0 39.383496,0 C33.7995845,0 28.6493635,2.88640859 25.7870067,7.48779834 C24.0082249,6.29727493 21.9062989,5.65650524 19.7072807,5.65650524 C13.7512449,5.65650524 8.9063742,10.4019209 8.9063742,16.2352501 C8.9063742,16.8798018 8.96484025,17.5187114 9.08164837,18.1453451 C3.96775937,19.9631843 0.512,24.7110799 0.512,30.1592033 C0.512,37.0948299 6.12523748,42.3253333 13.5677867,42.3253333 L50.9436552,42.3253333 C58.1428543,42.3253333 64,36.5895301 64,29.5386456 C64.000186,24.0623743 60.3488164,19.1697086 55.1444694,17.4295555 C55.2193654,16.8146398 55.2894875,16.1026321 55.2894875,15.5786704 Z" id="Shape-Copy-5" fill="url(#linearGradient-1)"></path>
+                <path d="M51.2,42.6666667 C58.2692448,42.6666667 64,36.9359115 64,29.8666667 C64,22.7974219 58.2692448,17.0666667 51.2,17.0666667 C44.1307552,17.0666667 38.4,22.7974219 38.4,29.8666667 C38.4,36.9359115 44.1307552,42.6666667 51.2,42.6666667 Z" id="Oval-33" fill="url(#linearGradient-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

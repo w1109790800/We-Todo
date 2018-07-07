@@ -1,0 +1,85 @@
+/* countdown.wxss */
+
+
+.view_top{
+  margin: 20rpx;
+  height: 230rpx;
+}
+
+.view_list{
+  margin: 20rpx;
+  font-size: 45rpx;
+
+}
+
+.view_bottom{
+  margin: 20rpx;
+}
+
+.sen-title{
+  background-color: #ffffff;
+  width:60%;
+  float: left;
+  padding: 10rpx;
+
+}
+.sen-day{
+  color: #ffffff;
+  background: #12b670;
+  text-align: center;
+  padding: 10rpx;
+}
+
+
+.sen-split
+{
+  background: #eeeeee;
+  height: 5rpx;
+}
+
+.sen-button
+{
+  color: #32b4fa;
+  font-size: 30rpx;
+}
+
+.top_left{
+    font-size: 35rpx;
+    float: left;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+}
+
+.top_left_text{
+  padding-top: 80rpx;
+}
+
+.top_mid{
+  font-size: 100rpx;
+  float: left;
+  height: 100%;
+}
+
+.top_mid_text{
+    padding-top: 50rpx;
+}
+
+.top_right{
+  height: 100%;
+  text-align: center;
+}
+
+.sen-image{
+  padding-top: 60rpx;
+  width: 100rpx;
+  height: 100rpx;
+}
+
+
+.view_tip{
+  width:100%;
+  text-align: center;
+  color: gainsboro;
+  font-size: 30rpx;
+}
