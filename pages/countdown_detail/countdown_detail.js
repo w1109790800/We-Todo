@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    imageUrl: "http://baobaiqiang.oss-cn-beijing.aliyuncs.com/234/qr.jpg",
     detail_title:'title',
     detail_day:'0',
     detail_info:'info',
@@ -54,8 +55,29 @@ Page({
         "http://oss2.wangyuyang.top/234/20180626204855%20(9).jpg ",
         "http://oss2.wangyuyang.top/234/20180626204855%20(10).jpg ",
         "http://oss2.wangyuyang.top/234/20180626204855%20(11).jpg ",
+        "http://oss2.wangyuyang.top/234/20180626204855%20(12).jpg ",
+        "http://oss2.wangyuyang.top/234/20180626204855%20(13).jpg ",
+        "http://oss2.wangyuyang.top/234/20180626204855%20(14).jpg ",
+        "http://oss2.wangyuyang.top/234/20180626204855%20(15).jpg ",
+        "http://oss2.wangyuyang.top/234/20180626204855%20(16).jpg ",
+        "http://oss2.wangyuyang.top/234/20180626204855%20(17).jpg ",
+        "http://oss2.wangyuyang.top/234/20180626204855%20(18).jpg ",
+        "http://oss2.wangyuyang.top/234/20180626204855%20(19).jpg ",
+        "http://oss2.wangyuyang.top/234/20180626204855%20(20).jpg ",
+        "http://oss2.wangyuyang.top/234/20180626204855%20(21).jpg ",
+        "http://oss2.wangyuyang.top/234/20180626204855%20(22).jpg ",
+        "http://oss2.wangyuyang.top/234/20180626204855%20(23).jpg ",
+        "http://oss2.wangyuyang.top/234/20180626204855%20(24).jpg ",
+        "http://oss2.wangyuyang.top/234/20180626204855%20(25).jpg ",
+        "http://oss2.wangyuyang.top/234/20180626204855%20(26).jpg ",
+        "http://oss2.wangyuyang.top/234/20180626204855%20(27).jpg ",
+        "http://oss2.wangyuyang.top/234/20180626204855%20(28).jpg ",
+        "http://oss2.wangyuyang.top/234/20180626204855%20(29).jpg ",
+        "http://oss2.wangyuyang.top/234/20180626204855%20(30).jpg ",
+        "http://oss2.wangyuyang.top/234/20180626204855%20(31).jpg ",
 ]
-      var random = Math.floor(Math.random() * 11); 
+      var random = Math.floor(Math.random() * 30); 
+      console.log(random);
       that.setData(
         {
           detail_title: str_detail_title,

@@ -27,7 +27,7 @@
                     <view class="icon">
                       <image src="{{ suggestionIcon.air }}"></image>
                     </view>
-                    <view>  AQI/PM2.5：</view>
+                    <view bindtap="nav4">  AQI/PM2.5：</view>
                     <text class="status">{{suggestion.air}}</text>
                   </view>
                 </view>
@@ -36,7 +36,7 @@
                     <view class="icon">
                       <image src="{{ suggestionIcon.comf }}"></image>
                     </view>
-                    <view>  舒适度：</view>
+                    <view bindtap="nav3"  >  舒适度：</view>
                     <text class="status">{{suggestion.comf}}</text>
                   </view>
                 </view>
@@ -90,7 +90,7 @@
                       <view class="icon">
                         <image src="{{ suggestionIcon.uv }}"></image>
                       </view>
-                      <view> 紫外线指数：</view>
+                      <view >紫外线指数</view>
                       <text class="status">{{suggestion.uv}}</text>
                     </view>
                   </view>
@@ -102,7 +102,7 @@
             <image class="kf_image" src="../../assets/kefu.png"></image>
           </button>
 
-          <button class="footer" open-type="contact" session-from="weapp">本程序由北京市育英学校 WangYuyang开发</button>
+          <button class="footer" open-type="contact" session-from="weapp">北京市育英学校   WangYuyang</button>
         </view>
 
       </view>
