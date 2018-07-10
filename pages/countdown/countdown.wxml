@@ -1,4 +1,6 @@
 <!--countdown.wxml-->
+
+<view class="warp" style="background-image: url('http://oss2.wangyuyang.top/234/20180626204855%20(7).jpg')">
 <view class= "con">
 
 <view class="view_top">
@@ -44,4 +46,5 @@
 </view>
 
 <view class="view_tip">Tip:纪念日由近到远自动排序</view>
+</view>
 </view>
