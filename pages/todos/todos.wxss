@@ -237,31 +237,31 @@
 
 @keyframes sway {
   0% {
-    transform: translate3d(0, 0rpx, 0) rotate(-15deg);
+    transform: translate3d(0, 0rpx, 0) rotate(-500deg);
   }
 
   17% {
-    transform: translate3d(0, 0rpx, 0) rotate(15deg);
+    transform: translate3d(0, 0rpx, 0) rotate(1deg);
   }
 
   34% {
-    transform: translate3d(0, 0rpx, 0) rotate(-10deg);
+    transform: translate3d(0, 0rpx, 0) rotate(-1deg);
   }
 
   50% {
-    transform: translate3d(0, 0rpx, 0) rotate(10deg);
+    transform: translate3d(0, 0rpx, 0) rotate(1deg);
   }
 
   67% {
-    transform: translate3d(0, 0rpx, 0) rotate(-15deg);
+    transform: translate3d(0, 0rpx, 0) rotate(-1deg);
   }
 
   84% {
-    transform: translate3d(0, 0rpx, 0) rotate(10deg);
+    transform: translate3d(0, 0rpx, 0) rotate(1deg);
   }
 
   100% {
-    transform: translate3d(0, 0rpx, 0) rotate(-15deg);
+    transform: translate3d(0, 0rpx, 0) rotate(-10000005deg);
   }
 }
 
