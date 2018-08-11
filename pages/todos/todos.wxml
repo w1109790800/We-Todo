@@ -1,9 +1,11 @@
 <view class="container">
   <view class="flex-wrap header">
 
-
-    <image class="add tappable" ontap="addTodo" class="plus" src="../../assets/plus.png" />
-
+<form bindsubmit='addTodo' report-submit>
+<view>
+<button form-type='submit'  class="plus"  ><image mode = "widthFix" src='../../assets/plus.png'></image></button>
+    </view>
+</form>
     <input auto-focus placeholder="请在这里添加你要完成的任务😀" bindinput="updateDraft" value="{{draft}}" class="new-todo" />
 
   </view>

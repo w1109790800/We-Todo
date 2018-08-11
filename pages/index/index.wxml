@@ -45,7 +45,7 @@
                     <view class="icon">
                       <image src="{{ suggestionIcon.cw }}"></image>
                     </view>
-                    <view> 洗车指数：</view>
+                    <view bindtap='nav_count_people'> 洗车指数：</view>
                     <text class="status">{{suggestion.cw}}</text>
                   </view>
                 </view>
@@ -90,7 +90,7 @@
                       <view class="icon">
                         <image src="{{ suggestionIcon.uv }}"></image>
                       </view>
-                      <view >紫外线指数</view>
+                      <view bindtap="nav_face">紫外线指数</view>
                       <text class="status">{{suggestion.uv}}</text>
                     </view>
                   </view>
@@ -102,7 +102,7 @@
             <image class="kf_image" src="../../assets/kefu.png"></image>
           </button>
 
-          <button class="footer" open-type="contact" session-from="weapp">北京市育英学校   WangYuyang</button>
+          <button class="footer" bindtap='nav_page'>北京市育英学校   WangYuyang</button>
         </view>
 
       </view>

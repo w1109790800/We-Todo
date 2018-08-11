@@ -12,14 +12,26 @@ Page({
         remind: ''
       });
     }, 1000);
-    
+
   },
   onLoad: function () { // 生命周期函数--监听页面加载
+    AV.login
     this.getUserLocation()
     wx.showShareMenu({ // 转发
       withShareTicket: true
     })
+    wx.request({
+      url: 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx08d8f52ad361f6e8&secret=b635b95d8bda0e8dcb8cb9a989bdc4f0',
+      success: function (res) {
+        console.log(res.data.access_token)
+        app.globalData.access_token = res.data.access_token
+        console.log(app.globalData.access_token);
+
+      }
+    })
+
     
+
   },
   onShareAppMessage: function () {
     return {
@@ -243,7 +255,7 @@ Page({
       },
     });
   },
-  nav: function(){
+  nav: function () {
     var _this = this;
     setTimeout(function () {
       _this.setData({
@@ -260,8 +272,8 @@ Page({
         remind: ''
       });
     }, 100);
-    
-  } ,
+
+  },
   nav2: function () {
     var _this = this;
     setTimeout(function () {
@@ -280,7 +292,45 @@ Page({
       });
     }, 100);
   },
-    nav3: function () {
+  nav3: function () {
+    var _this = this;
+    setTimeout(function () {
+      _this.setData({
+        remind: '加载中'
+      });
+    }, 1000);
+
+    const user = AV.User.current();
+    wx.navigateTo({
+      url: '../up/up',
+    })
+    setTimeout(function () {
+      _this.setData({
+        remind: ''
+      });
+    }, 100);
+
+  },
+  nav4: function () {
+    var _this = this;
+    setTimeout(function () {
+      _this.setData({
+        remind: '加载中'
+      });
+    }, 1000);
+
+    const user = AV.User.current();
+    wx.navigateTo({
+      url: '../car_recog/car_recog',
+    })
+    setTimeout(function () {
+      _this.setData({
+        remind: ''
+      });
+    }, 100);
+
+    },
+    nav_face: function () {
       var _this = this;
       setTimeout(function () {
         _this.setData({
@@ -290,7 +340,7 @@ Page({
 
       const user = AV.User.current();
       wx.navigateTo({
-        url: '../up/up',
+        url: '../face/face',
       })
       setTimeout(function () {
         _this.setData({
@@ -298,8 +348,8 @@ Page({
         });
       }, 100);
 
-  },
-    nav4: function () {
+    },
+    nav_count_people: function () {
       var _this = this;
       setTimeout(function () {
         _this.setData({
@@ -309,7 +359,26 @@ Page({
 
       const user = AV.User.current();
       wx.navigateTo({
-        url: '../car_recog/car_recog',
+        url: '../count_people/count_people',
+      })
+      setTimeout(function () {
+        _this.setData({
+          remind: ''
+        });
+      }, 100);
+
+    },
+    nav_page: function () {
+      var _this = this;
+      setTimeout(function () {
+        _this.setData({
+          remind: '加载中'
+        });
+      }, 1000);
+
+      const user = AV.User.current();
+      wx.navigateTo({
+        url: '../nav/nav',
       })
       setTimeout(function () {
         _this.setData({

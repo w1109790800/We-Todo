@@ -1,6 +1,5 @@
-// pages/car_recog/car_recog.js
+// pages/count_people/count_people.js
 const AV = require('../../utils/av-live-query-weapp-min');
-const car_recog = require('../../model/car_recog');
 Page({
 
   /**
@@ -65,7 +64,6 @@ Page({
   onShareAppMessage: function () {
   
   },
-
   test: function () {
     var _this = this;
     var that = this;
@@ -74,9 +72,6 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function (res) {
-        wx.showLoading({
-          title: 'loading',
-        })
         var tempFilePath = res.tempFilePaths[0];
         new AV.File('file-name', {
           blob: {
@@ -96,17 +91,32 @@ Page({
               imgurl: file.url(),
             })
           console.log("RE");
+          wx.showLoading({
+            title: 'loading',
+          })
           wx.request({
-            url: 'https://w1109790800.leanapp.cn/recog_car',
+            url: 'https://api-cn.faceplusplus.com/facepp/beta/beautify',
             method: 'POST',
-            data: { "url": file.url() }, 
+            data: { 
+              "api_key": "J8KVbu9ZTqysCqYfyoHkY4xhCN0bXek0",
+              "api_secret": "hjhnnnLWcqGyE9UjJQs_iAE0lOjcCYd-",
+              "image_url": file.url() 
+              },
             header: {
               'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
-            },   
+            },
             success: function (res) {
-              console.log(res.data.result)
-              _this.setData({ listData: res.data.result });
-             wx.hideLoading() 
+              console.log(res.data)
+              _this.setData({ listData: res.data });
+              var array = wx.base64ToArrayBuffer(res.data.result);
+              var base64 = wx.arrayBufferToBase64(array);
+              _this.setData({ imageData: 'data:image/jpeg;base64,' + base64 });
+              wx.hideLoading();
+              
+              
+
+
+
             }
           })
 
@@ -116,5 +126,19 @@ Page({
 
     });
 
+  },
+  //图片点击事件
+  imgYu: function (event) {
+    var src = event.currentTarget.dataset.src;//获取data-src
+    var imgList = event.currentTarget.dataset.list;//获取data-list
+    //图片预览
+    wx.previewImage({
+      current: src, // 当前显示图片的http链接
+      urls: imgList // 需要预览的图片http链接列表
+    })
   }
+
+
+
+
 })

@@ -15,6 +15,8 @@ onShareAppMessage: function () {
     }
   },
   data: {
+    formid: null,
+    formdata: null,
     remind: '加载中',
     todos: [],
     editedTodo: {},
@@ -107,7 +109,16 @@ onShareAppMessage: function () {
       draft: value
     });
   },
-  addTodo: function () {
+  formid:function (res){
+    console.log(res)
+    this.data.formdata = res
+    this.data.formid = res.detail.formId
+  },
+  addTodo: function (res) {
+    console.log(res)
+    this.data.formdata = res
+    this.data.formid = res.detail.formId
+    AV.login
     const user = AV.User.current();
     wx.showToast({
       title: '添加中……',
@@ -117,6 +128,8 @@ onShareAppMessage: function () {
     if (!value) {
       return;
     }
+
+    value = value+"  2018";
     var acl = new AV.ACL();
     acl.setPublicReadAccess(false);
     acl.setPublicWriteAccess(false);
@@ -126,7 +139,9 @@ onShareAppMessage: function () {
       content: value,
       done: false,
       user: AV.User.current(),
-      name: user.attributes.nickName
+      formid: this.data.formid,
+      formdata: this.data.formdata,
+      name: user.attributes.nickName    
     }).setACL(acl).save().then((todo) => {
       this.setTodos([todo, ...this.data.todos]);
     }).catch(error => console.error(error.message));
@@ -134,10 +149,13 @@ onShareAppMessage: function () {
       draft: ''
     });
     console.log(user.attributes.nickName);
+    //console.log("fdfd");
     new Done({
       content: value,
       done: false,
       user: AV.User.current(),
+      formid: this.data.formid,
+      formdata: this.data.formdata,
       name: user.attributes.nickName
     }).setACL(acl).save().then((todo) => {
       this.setTodos([todo, ...this.data.todos]);
@@ -204,10 +222,12 @@ onShareAppMessage: function () {
     this.setData({
       editedTodo: {},
     });
+    
     if (editDraft === null) return;
     const currentTodo = todos.filter(todo => todo.id === id)[0];
     if (editDraft === currentTodo.content) return;
     currentTodo.content = editDraft;
+    
     currentTodo.save().then(() => {
       this.setTodos(todos);
     }).catch(error => console.error(error.message));
