@@ -1,12 +1,12 @@
 <!--pages/car_recog/car_recog.wxml-->
-  <button class="cs_button2" type="primary" bindtap="test">提交人流识别</button>
+  <button class="cs_button2" type="primary" bindtap="test">提交美化</button>
 <view class="view_list">
   <view class="sen-split"></view>
-        <view class="sen-title">人体数目: {{listData.person_num}}  </view>
 
      <image class="image_frame" src="{{imgurl}}" mode="aspectFill"> 
 </image>
-      <image class="image_frame" src="{{imageData}}" mode="aspectFill"> 
+      <image bindtap="imgYu" class="image_frame" src="{{imageData}}" 
+      data-src =  "{{imageData}}" data-list="{{imageData}}" mode="aspectFill"> 
 </image>
 
 

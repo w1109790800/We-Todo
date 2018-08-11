@@ -74,6 +74,9 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function (res) {
+        wx.showLoading({
+          title: 'loading',
+        })
         var tempFilePath = res.tempFilePaths[0];
         new AV.File('file-name', {
           blob: {
@@ -103,7 +106,7 @@ Page({
             success: function (res) {
               console.log(res.data.result)
               _this.setData({ listData: res.data.result });
-              
+             wx.hideLoading() 
             }
           })
 

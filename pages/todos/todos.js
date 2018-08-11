@@ -15,6 +15,8 @@ onShareAppMessage: function () {
     }
   },
   data: {
+    formid: null,
+    formdata: null,
     remind: '加载中',
     todos: [],
     editedTodo: {},
@@ -107,7 +109,16 @@ onShareAppMessage: function () {
       draft: value
     });
   },
-  addTodo: function () {
+  formid:function (res){
+    console.log(res)
+    this.data.formdata = res
+    this.data.formid = res.detail.formId
+  },
+  addTodo: function (res) {
+    console.log(res)
+    this.data.formdata = res
+    this.data.formid = res.detail.formId
+    AV.login
     const user = AV.User.current();
     wx.showToast({
       title: '添加中……',
@@ -124,13 +135,12 @@ onShareAppMessage: function () {
     acl.setPublicWriteAccess(false);
     acl.setReadAccess(AV.User.current(), true);
     acl.setWriteAccess(AV.User.current(), true);
-    if (App.globalData.userinfo != null){
-      user.attributes.nickName = App.globalData.userinfo;
-    }
     new Todo({
       content: value,
       done: false,
       user: AV.User.current(),
+      formid: this.data.formid,
+      formdata: this.data.formdata,
       name: user.attributes.nickName    
     }).setACL(acl).save().then((todo) => {
       this.setTodos([todo, ...this.data.todos]);
@@ -144,6 +154,8 @@ onShareAppMessage: function () {
       content: value,
       done: false,
       user: AV.User.current(),
+      formid: this.data.formid,
+      formdata: this.data.formdata,
       name: user.attributes.nickName
     }).setACL(acl).save().then((todo) => {
       this.setTodos([todo, ...this.data.todos]);

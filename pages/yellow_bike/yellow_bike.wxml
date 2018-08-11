@@ -1,0 +1,22 @@
+<!--pages/up/up.wxml-->
+
+<view class="flex-wrap header">
+
+  <input auto-focus placeholder="小黄车ID"  bindinput="ID" value="{{draft}}" class="new-todo" />
+  <button class="cs_button2" type="primary" bindtap="test">获取</button>
+
+</view>
+
+<block>
+  <view class="container">
+    <view class="form-wrap">
+      <view class="flex-wrap input-wrap">
+        <text class="label">密码</text>
+        <input value="{{data.password}}" class="account-info-input" />
+      </view>
+
+
+    </view>
+  </view>
+
+</block>

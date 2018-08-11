@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 11,
+			"current": 14,
 			"list": [
 				{
 					"id": 1,
@@ -106,6 +106,23 @@
 					"name": "/count_people",
 					"pathName": "pages/count_people/count_people",
 					"query": ""
+				},
+				{
+					"id": 12,
+					"name": "face++",
+					"pathName": "pages/face++/face++",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "Detect_Scene",
+					"pathName": "pages/Detect_Scene/Detect_Scene",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "yellow",
+					"pathName": "pages/yellow_bike/yellow_bike"
 				}
 			]
 		}

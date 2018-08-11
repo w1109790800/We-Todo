@@ -40,6 +40,9 @@ Page({
               imgurl: file.url(),
             })
           console.log("RE");
+          wx.showLoading({
+            title: 'loading',
+          })
           wx.request({
             url: 'https://w1109790800.leanapp.cn/count',
             method: 'POST',
@@ -53,6 +56,7 @@ Page({
               var array = wx.base64ToArrayBuffer(res.data.image);
               var base64 = wx.arrayBufferToBase64(array); 
               _this.setData({ imageData: 'data:image/jpeg;base64,' + base64  });
+              wx.hideLoading();
               
 
             }
@@ -61,7 +65,7 @@ Page({
         }
           ).catch(console.error);
       }
-
+      
     });
 
   },

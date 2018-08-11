@@ -19,7 +19,11 @@
     "pages/club/new_club/new_club",
     "pages/car_recog/car_recog",
     "pages/face/face",
-    "pages/count_people/count_people"
+    "pages/count_people/count_people",
+    "pages/face++/face++",
+    "pages/nav/nav",
+    "pages/Detect_Scene/Detect_Scene",
+    "pages/yellow_bike/yellow_bike"
   ],
   "window": {
     "enablePullDownRefresh": true,
