@@ -2,7 +2,7 @@ const AV = require('../../utils/av-live-query-weapp-min');
 const Todo = require('../../model/todo');
 const Done = require('../../model/done');
 const bind = require('../../utils/live-query-binding');
-
+const app = getApp()
 
 
 Page({
@@ -40,6 +40,7 @@ onShareAppMessage: function () {
   },
 
   fetchTodos: function (user) {
+    
     wx.showToast({
       title: '加载中',
       icon: 'loading'
@@ -126,10 +127,13 @@ onShareAppMessage: function () {
     });
     var value = this.data.draft && this.data.draft.trim()
     if (!value) {
+      wx.showToast({
+        title: '您没有输入哦~',
+      })
       return;
     }
 
-    value = value+"  2018";
+    value = value;
     var acl = new AV.ACL();
     acl.setPublicReadAccess(false);
     acl.setPublicWriteAccess(false);
@@ -140,8 +144,12 @@ onShareAppMessage: function () {
       done: false,
       user: AV.User.current(),
       formid: this.data.formid,
+      openid: user.attributes.authData.lc_weapp.openid,
+      sent:0,
       formdata: this.data.formdata,
-      name: user.attributes.nickName    
+      name: user.attributes.nickName,
+      name2: app.globalData.userinfo.nickName, 
+      userdata: app.globalData.userdata,   
     }).setACL(acl).save().then((todo) => {
       this.setTodos([todo, ...this.data.todos]);
     }).catch(error => console.error(error.message));
@@ -153,16 +161,19 @@ onShareAppMessage: function () {
     new Done({
       content: value,
       done: false,
+      sent:0,
       user: AV.User.current(),
       formid: this.data.formid,
+      openid: user.attributes.authData.lc_weapp.openid,
       formdata: this.data.formdata,
-      name: user.attributes.nickName
-    }).setACL(acl).save().then((todo) => {
-      this.setTodos([todo, ...this.data.todos]);
-    }).catch(error => console.error(error.message));
-    this.setData({
-      draft: ''
-    });
+      name: user.attributes.nickName,
+      name2: app.globalData.userinfo.nickName,
+      userdata: app.globalData.userdata,
+    }).setACL(acl).save()//.then((todo) => {
+      //this.setTodos([todo, ...this.data.todos]);
+    //})
+    .catch(error => console.error(error.message));
+
     wx.hideToast();
   },
 

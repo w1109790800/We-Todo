@@ -1,7 +1,7 @@
 const util = require('../../utils/util.js');
 const AV = require('../../../utils/av-live-query-weapp-min.js');
 const time = require('time.js');
-
+const app = getApp()
 const defaultLogName = {
   work: '工作',
   rest: '休息'
@@ -33,6 +33,7 @@ Page({
     timerType: 'work',
     log: {},
     completed: false,
+    remainTimeText: 25 + ':00',
     isRuning: false,
     leftDeg: initDeg.left,
     rightDeg: initDeg.right
@@ -72,7 +73,7 @@ Page({
     this.setData({
       workTime: workTime,
       restTime: restTime,
-      remainTimeText: workTime + ':00'
+      remainTimeText: 25 + ':00'
     })
 
   },
@@ -104,14 +105,19 @@ Page({
     });
     return todos;
   },
-  startTimer: function (e) {
+  startTimer: function (res) {
+    console.log(res)
+    var e = "rest"
+    if(res.type == "submit"){
+      e = "start"
+    }
     let startTime = Date.now()
     let isRuning = this.data.isRuning
-    let timerType = e.target.dataset.type
-    let showTime = this.data[timerType + 'Time']
-    let keepTime = showTime * 60 * 1000
+    let timerType = e
+    let showTime = 25
+    let keepTime = showTime * 60 * 1000 
     let logName = this.logName || defaultLogName[timerType]
-
+    console.log(showTime)
     if (!isRuning) {
       this.timer = setInterval((function () {
         this.updateTimer()
@@ -154,6 +160,13 @@ Page({
       keepTime: this.data.log.keepTime,
       user: AV.User.current(),
       a: this.data.log.keepTime - this.data.log.endTime,
+      name: user.attributes.nickName,
+      user: AV.User.current(),
+      username: app.globalData.userinfo.nickName,
+      formid: res.detail.formId,
+      openid: user.attributes.authData.lc_weapp.openid,
+      sent: 0,
+      formdata: this.data.formdata,
       name: user.attributes.nickName
     }).setACL(acl).save().then((time) => {
       this.setTodos([time, ...this.data.log]);
@@ -219,7 +232,14 @@ Page({
           new time({
             done: true,
             user: AV.User.current(),
-            name: getApp().globalData.userInfo.nickName
+            name: getApp().globalData.userInfo.nickName,
+            user: AV.User.current(),
+            username: app.globalData.userinfo.nickName,
+            formid: this.data.formid,
+            openid: user.attributes.authData.lc_weapp.openid,
+            sent: 0,
+            formdata: res.detail.formId,
+            name: user.attributes.nickName
           }).setACL(acl).save().then((time) => {
             this.setTodos([time, ...this.data]);
           }).catch(error => console.error(error.message));
