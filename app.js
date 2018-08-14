@@ -30,6 +30,8 @@ App({
       success: function (res) {
         if (res.data != undefined){
           app.globalData.userinfo = res.data;
+          app.globalData.userInfo = res.data;
+
           console.log(globalData.userinfo)
         }
       }

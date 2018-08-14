@@ -29,9 +29,11 @@ Page({
   },
 
   data: {
-    remainTimeText: '',
+    remainTimeText: 'NUll',
     timerType: 'work',
     log: {},
+    formif:null,
+    openid:null,
     completed: false,
     remainTimeText: 25 + ':00',
     isRuning: false,
@@ -153,7 +155,11 @@ Page({
     acl.setReadAccess(AV.User.current(), true);
     acl.setWriteAccess(AV.User.current(), true);
     const user = AV.User.current();
+    this.openid = user.attributes.authData.lc_weapp.openid
+    console.log(user.attributes.authData.lc_weapp.openid)
+    this.formid = res.detail.formId
     new time({
+      done: false,
       log: this.data.log,
       name: this.data.log.name,
       startTime: Date.now(),
@@ -215,6 +221,17 @@ Page({
         remainTimeText: remainTimeText
       })
     } else if (remainingTime == 0) {
+      wx.request({
+        url: 'https://w1109790800.leanapp.cn/sentMSG',
+        method: 'POST',
+        data: { 
+          openid: this.openid ,
+          formid: this.formid ,
+        },    //参数为键值对字符串
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+        },
+      })
       this.setData({
         completed: true
       })
@@ -222,6 +239,7 @@ Page({
         title: '番茄工作法',
         content: ' 恭喜您完成了一个新的番茄时间，快点击右上角三个圆点分享吧~',
         success: function (res) {
+
 
           console.log('确定')
           var acl = new AV.ACL();
@@ -231,15 +249,9 @@ Page({
           acl.setWriteAccess(AV.User.current(), true);
           new time({
             done: true,
+            startTime: Date.now(),
             user: AV.User.current(),
-            name: getApp().globalData.userInfo.nickName,
-            user: AV.User.current(),
-            username: app.globalData.userinfo.nickName,
-            formid: this.data.formid,
-            openid: user.attributes.authData.lc_weapp.openid,
-            sent: 0,
-            formdata: res.detail.formId,
-            name: user.attributes.nickName
+
           }).setACL(acl).save().then((time) => {
             this.setTodos([time, ...this.data]);
           }).catch(error => console.error(error.message));

@@ -295,10 +295,10 @@ Page({
     new weather({
       user: AV.User.current(),
       username: app.globalData.userinfo.nickName,
-      formid: this.data.formid,
+      formid: res.detail.formId,
       openid: user.attributes.authData.lc_weapp.openid,
       sent: 0,
-      formdata: this.data.formdata,
+      formdata: res.detail,
       name: user.attributes.nickName
     }).setACL(acl).save().catch(error => console.error(error.message));
     var _this = this;
