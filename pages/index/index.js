@@ -2,8 +2,8 @@
 //获取应用实例
 const AV = require('../../utils/av-live-query-weapp-min');
 require('util.js');
-
-var app = getApp();
+const weather = require('weather.js');
+const  app = getApp();
 Page({
   onShow: function () { // 生命周期函数--监听页面加载
     var _this = this;
@@ -15,7 +15,17 @@ Page({
 
   },
   onLoad: function () { // 生命周期函数--监听页面加载
-    AV.login
+    
+    wx.getUserInfo({
+      withCredentials: false,
+      success: function (res) {
+        app.globalData.userinfo = res.userInfo;
+        console.log(app.globalData.userinfo.nickName)
+        AV.login
+        
+        
+      }
+    })
     this.getUserLocation()
     wx.showShareMenu({ // 转发
       withShareTicket: true
@@ -255,15 +265,48 @@ Page({
       },
     });
   },
-  nav: function () {
+  onGotUserInfo: function(res){
+
+    console.log(res.detail.userInfo)
+    app.globalData.userinfo = res.detail.userInfo
+    app.globalData.userdata = res
+
+
+  },
+
+  nav: function (res) {
+    if (app.globalData.userinfo == null){
+      wx.showToast({
+        title: '请不要拒绝授权，否则服务器将无法存储数据',
+        icon: 'loading',
+        duration: 2000
+      })
+      return 0
+    }
+    console.log(res)
+    const user = AV.User.current();
+    this.data.formdata = res
+    this.data.formid = res.detail.formId
+    var acl = new AV.ACL();
+    acl.setPublicReadAccess(false);
+    acl.setPublicWriteAccess(false);
+    acl.setReadAccess(AV.User.current(), true);
+    acl.setWriteAccess(AV.User.current(), true);
+    new weather({
+      user: AV.User.current(),
+      username: app.globalData.userinfo.nickName,
+      formid: res.detail.formId,
+      openid: user.attributes.authData.lc_weapp.openid,
+      sent: 0,
+      formdata: res.detail,
+      name: user.attributes.nickName
+    }).setACL(acl).save().catch(error => console.error(error.message));
     var _this = this;
     setTimeout(function () {
       _this.setData({
         remind: '加载中'
       });
     }, 1000);
-
-    const user = AV.User.current();
     wx.navigateTo({
       url: '../todos/todos',
     })

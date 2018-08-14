@@ -17,6 +17,7 @@ const defaultTime = {
 App({
 
   globalData: {
+    userdata:null,
     userInfo: null,
     access_token: null
 
@@ -28,7 +29,9 @@ App({
       withCredentials: false,
       success: function (res) {
         if (res.data != undefined){
-          App.globalData.userinfo = res.data;
+          app.globalData.userinfo = res.data;
+          app.globalData.userInfo = res.data;
+
           console.log(globalData.userinfo)
         }
       }
