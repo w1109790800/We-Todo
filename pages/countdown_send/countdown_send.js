@@ -114,7 +114,7 @@ Page({
       return;
     }
 
-    if (this.data.get_title.length > 7) {
+    if (this.data.get_title.length > 15) {
       wx.showToast({
         title: '纪念日过长',
         icon: 'loading',
