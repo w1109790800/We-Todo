@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -13,7 +13,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.0.9",
 	"appid": "wx08d8f52ad361f6e8",
-	"projectname": "1234567855",
+	"projectname": "1234567",
 	"isGameTourist": false,
 	"condition": {
 		"search": {
@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 14,
 			"list": [
 				{
 					"id": 1,
@@ -58,6 +58,71 @@
 					"name": "todo",
 					"pathName": "pages/todos/todos",
 					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "day",
+					"pathName": "pages/countdown_detail/countdown_detail",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "plus",
+					"pathName": "pages/countdown_plus/countdown_plus",
+					"query": ""
+				},
+				{
+					"id": 6,
+					"name": "day",
+					"pathName": "pages/countdown/countdown",
+					"query": ""
+				},
+				{
+					"id": 7,
+					"name": "up",
+					"pathName": "pages/up/up",
+					"query": ""
+				},
+				{
+					"id": 8,
+					"name": "club",
+					"pathName": "pages/club/new_club/new_club",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "car",
+					"pathName": "pages/car_recog/car_recog",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "face",
+					"pathName": "pages/face/face",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "/count_people",
+					"pathName": "pages/count_people/count_people",
+					"query": ""
+				},
+				{
+					"id": 12,
+					"name": "face++",
+					"pathName": "pages/face++/face++",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "Detect_Scene",
+					"pathName": "pages/Detect_Scene/Detect_Scene",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "yellow",
+					"pathName": "pages/yellow_bike/yellow_bike"
 				}
 			]
 		}

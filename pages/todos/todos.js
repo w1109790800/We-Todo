@@ -2,7 +2,7 @@ const AV = require('../../utils/av-live-query-weapp-min');
 const Todo = require('../../model/todo');
 const Done = require('../../model/done');
 const bind = require('../../utils/live-query-binding');
-
+const app = getApp()
 
 
 Page({
@@ -15,6 +15,8 @@ onShareAppMessage: function () {
     }
   },
   data: {
+    formid: null,
+    formdata: null,
     remind: '加载中',
     todos: [],
     editedTodo: {},
@@ -22,12 +24,12 @@ onShareAppMessage: function () {
     editDraft: null,
   },
   login: function() {
-    
     var _this = this;
     const user = AV.User.current();
     return AV.Promise.resolve(AV.User.current()).then(user =>
       user ? (user.isAuthenticated().then(authed => authed ? user : null)) : null
     ).then(user => user ? user : AV.User.loginWithWeapp()).catch(error => console.error(error.message));
+
       
     setTimeout(function () {
       _this.setData({
@@ -38,6 +40,7 @@ onShareAppMessage: function () {
   },
 
   fetchTodos: function (user) {
+    
     wx.showToast({
       title: '加载中',
       icon: 'loading'
@@ -107,7 +110,16 @@ onShareAppMessage: function () {
       draft: value
     });
   },
-  addTodo: function () {
+  formid:function (res){
+    console.log(res)
+    this.data.formdata = res
+    this.data.formid = res.detail.formId
+  },
+  addTodo: function (res) {
+    console.log(res)
+    this.data.formdata = res
+    this.data.formid = res.detail.formId
+    AV.login
     const user = AV.User.current();
     wx.showToast({
       title: '添加中……',
@@ -115,8 +127,13 @@ onShareAppMessage: function () {
     });
     var value = this.data.draft && this.data.draft.trim()
     if (!value) {
+      wx.showToast({
+        title: '您没有输入哦~',
+      })
       return;
     }
+
+    value = value;
     var acl = new AV.ACL();
     acl.setPublicReadAccess(false);
     acl.setPublicWriteAccess(false);
@@ -126,7 +143,13 @@ onShareAppMessage: function () {
       content: value,
       done: false,
       user: AV.User.current(),
-      name: user.attributes.nickName
+      formid: res.detail.formId,
+      openid: user.attributes.authData.lc_weapp.openid,
+      sent:0,
+      formdata: res.detail,
+      name: user.attributes.nickName,
+      name2: app.globalData.userinfo.nickName, 
+      userdata: app.globalData.userdata,   
     }).setACL(acl).save().then((todo) => {
       this.setTodos([todo, ...this.data.todos]);
     }).catch(error => console.error(error.message));
@@ -134,17 +157,23 @@ onShareAppMessage: function () {
       draft: ''
     });
     console.log(user.attributes.nickName);
+    //console.log("fdfd");
     new Done({
       content: value,
       done: false,
+      sent:0,
       user: AV.User.current(),
-      name: user.attributes.nickName
-    }).setACL(acl).save().then((todo) => {
-      this.setTodos([todo, ...this.data.todos]);
-    }).catch(error => console.error(error.message));
-    this.setData({
-      draft: ''
-    });
+      formid: res.detail.formId,
+      openid: user.attributes.authData.lc_weapp.openid,
+      formdata: res.detail,
+      name: user.attributes.nickName,
+      name2: app.globalData.userinfo.nickName,
+      userdata: app.globalData.userdata,
+    }).setACL(acl).save()//.then((todo) => {
+      //this.setTodos([todo, ...this.data.todos]);
+    //})
+    .catch(error => console.error(error.message));
+
     wx.hideToast();
   },
 
@@ -204,10 +233,12 @@ onShareAppMessage: function () {
     this.setData({
       editedTodo: {},
     });
+    
     if (editDraft === null) return;
     const currentTodo = todos.filter(todo => todo.id === id)[0];
     if (editDraft === currentTodo.content) return;
     currentTodo.content = editDraft;
+    
     currentTodo.save().then(() => {
       this.setTodos(todos);
     }).catch(error => console.error(error.message));

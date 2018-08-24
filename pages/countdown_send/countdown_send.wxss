@@ -1,0 +1,58 @@
+/* countdown_send.wxss */
+.sen-input
+{
+    width: 90%;
+    margin: 30rpx;
+    padding: 10rpx;
+    background: #ffffff;
+    border: 1px solid #aaaaaa;
+    font-size: 40rpx;
+}
+
+.packer_view{
+  margin: 30rpx;
+   font-size: 40rpx;
+}
+
+
+.sen-button
+{
+  margin: 30rpx;
+  color: #ffffff;
+  background: #4696fa;
+
+}
+
+
+.data_text{
+    text-decoration: underline;
+}
+
+.view_tip{
+    margin: 30rpx;
+    color: gray;
+}
+
+.public_title{
+  background-color: #ffffff;
+  margin-left: 30rpx;
+  padding: 10rpx;
+  margin-top: 120rpx;
+  color: #32b4fa;
+}
+
+.public-add{
+  margin: 10rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  color: #32b4fa;
+  font-size: 30rpx;
+  text-align: left;
+}
+
+
+.sen-split
+{
+  background: #eeeeee;
+  height: 5rpx;
+}

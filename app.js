@@ -6,7 +6,7 @@ AV.init({
   appKey: APP_KEY,
 });
 
-
+const app = getApp()
 
 //app.js
 const defaultTime = {
@@ -16,10 +16,36 @@ const defaultTime = {
 
 App({
 
+  globalData: {
+    userdata:null,
+    userInfo: null,
+    access_token: null
+
+  },
+
   onLaunch: function () {
+
+    wx.getUserInfo({
+      withCredentials: false,
+      success: function (res) {
+        if (res.data != undefined){
+          app.globalData.userinfo = res.data;
+          app.globalData.userInfo = res.data;
+
+          console.log(globalData.userinfo)
+        }
+      }
+    })
+    var _this = this;
     const user = AV.User.current();
+    return AV.Promise.resolve(AV.User.current()).then(user =>
+      user ? (user.isAuthenticated().then(authed => authed ? user : null)) : null
+    ).then(user => user ? user : AV.User.loginWithWeapp()).catch(error => console.error(error.message));
+
+    console.log(user);
     globalData: {
       userInfo: user
+      data: null
     }
     let workTime = wx.getStorageSync('workTime')
     let restTime = wx.getStorageSync('restTime')
@@ -88,21 +114,9 @@ App({
   },
 
 
-  getUserInfo: function (cb) {
-    var that = this
-    if (this.globalData.userInfo) {
-      typeof cb == "function" && cb(this.globalData.userInfo)
-    } else {
-      //调用登录接口
-      wx.getUserInfo({
-        withCredentials: false,
-        success: function (res) {
-          that.globalData.userInfo = res.userInfo
-          typeof cb == "function" && cb(that.globalData.userInfo)
-        }
-      })
-    }
-  },
+
+
+
 
 
 

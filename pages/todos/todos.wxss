@@ -51,6 +51,7 @@
 
 .bd {
   font-size: 18px;
+   font-family: Cursive;
   height: 30px;
   padding: 10px 12px;
   overflow: hidden;
@@ -227,9 +228,52 @@
 }
 
 .header .plus {
+  display: flex;
   width: 61rpx;
   height: 61rpx;
+  padding: 0;
   margin-right: 10rpx;
+    background-size: 61rpx 61rpx;
+    background-repeat:no-repeat;
+  border:none;
+  animation: sway 10s ease-in-out infinite;
+  opacity: 0.95;
+}
+
+@keyframes sway {
+  0% {
+    transform: translate3d(0, 0rpx, 0) rotate(-500deg);
+  }
+
+  17% {
+    transform: translate3d(0, 0rpx, 0) rotate(1deg);
+  }
+
+  34% {
+    transform: translate3d(0, 0rpx, 0) rotate(-1deg);
+  }
+
+  50% {
+    transform: translate3d(0, 0rpx, 0) rotate(1deg);
+  }
+
+  67% {
+    transform: translate3d(0, 0rpx, 0) rotate(-1deg);
+  }
+
+  84% {
+    transform: translate3d(0, 0rpx, 0) rotate(1deg);
+  }
+
+  100% {
+    transform: translate3d(0, 0rpx, 0) rotate(-10000005deg);
+  }
+}
+
+.header .plus2 {
+  display: flex;
+  width: 61rpx;
+  height: 61rpx;
   animation: sway 10s ease-in-out infinite;
   opacity: 0.95;
 }
@@ -263,6 +307,7 @@
     transform: translate3d(0, 0rpx, 0) rotate(-15deg);
   }
 }
+
 
 .header .new-todo {
   flex: 1;

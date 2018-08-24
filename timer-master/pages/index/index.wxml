@@ -16,8 +16,9 @@
   </view>
 
   <view class="timer_footer">
-    <view bindtap="startTimer" data-type="work" class="timer_ctrl {{isRuning && timerType == 'rest' ? 'hide' : ''}}">{{isRuning ? '完成': '工作'}}</view>
-
+  <form bindsubmit='startTimer' report-submit >
+    <button form-type='submit' data-type="work" class="timer_ctrl {{isRuning && timerType == 'rest' ? 'hide' : ''}}">{{isRuning ? '完成': '工作'}}</button>
+</form>
     <view bindtap="startTimer" data-type="rest" class="timer_ctrl {{isRuning && timerType == 'work' ? 'hide' : ''}}">{{isRuning ? '完成': '休息'}}</view>
 
   </view>

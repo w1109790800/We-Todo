@@ -1,0 +1,28 @@
+<!--pages/club/new_club/new_club.wxml-->
+
+<block>
+  <view class="container">
+    <view class="form-wrap">
+      <view class="flex-wrap input-wrap">
+        <text class="label">社团名称</text>
+        <input value="{{user.Name}}" class="account-info-input" />
+      </view>
+        <view class="flex-wrap input-wrap">
+        <text class="label">活动地点</text>
+        <input value="{{user.Sex}}" class="account-info-input" />
+      </view>
+      <view class="flex-wrap input-wrap">
+        <text class="label">活动时间</text>
+        <input value="{{user.ID}}" class="account-info-input" />
+      </view>
+            <view class="flex-wrap input-wrap">
+        <text class="label">社长联系方式</text>
+        <input value="{{user.CardCode}}" class="account-info-input" />
+      </view>
+
+
+    </view>
+  </view>
+
+</block>
+  <button class="cs_button2" type="primary" bindtap="pay">pay</button>

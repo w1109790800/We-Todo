@@ -1,7 +1,7 @@
 const util = require('../../utils/util.js');
 const AV = require('../../../utils/av-live-query-weapp-min.js');
 const time = require('time.js');
-
+const app = getApp()
 const defaultLogName = {
   work: '工作',
   rest: '休息'
@@ -29,10 +29,13 @@ Page({
   },
 
   data: {
-    remainTimeText: '',
+    remainTimeText: 'NUll',
     timerType: 'work',
     log: {},
+    formif:null,
+    openid:null,
     completed: false,
+    remainTimeText: 25 + ':00',
     isRuning: false,
     leftDeg: initDeg.left,
     rightDeg: initDeg.right
@@ -72,7 +75,7 @@ Page({
     this.setData({
       workTime: workTime,
       restTime: restTime,
-      remainTimeText: workTime + ':00'
+      remainTimeText: 25 + ':00'
     })
 
   },
@@ -104,14 +107,19 @@ Page({
     });
     return todos;
   },
-  startTimer: function (e) {
+  startTimer: function (res) {
+    console.log(res)
+    var e = "rest"
+    if(res.type == "submit"){
+      e = "start"
+    }
     let startTime = Date.now()
     let isRuning = this.data.isRuning
-    let timerType = e.target.dataset.type
-    let showTime = this.data[timerType + 'Time']
-    let keepTime = showTime * 60 * 1000
+    let timerType = e
+    let showTime = 25
+    let keepTime = showTime * 60 * 1000 
     let logName = this.logName || defaultLogName[timerType]
-
+    console.log(showTime)
     if (!isRuning) {
       this.timer = setInterval((function () {
         this.updateTimer()
@@ -147,13 +155,24 @@ Page({
     acl.setReadAccess(AV.User.current(), true);
     acl.setWriteAccess(AV.User.current(), true);
     const user = AV.User.current();
+    this.openid = user.attributes.authData.lc_weapp.openid
+    console.log(user.attributes.authData.lc_weapp.openid)
+    this.formid = res.detail.formId
     new time({
+      done: false,
       log: this.data.log,
       name: this.data.log.name,
       startTime: Date.now(),
       keepTime: this.data.log.keepTime,
       user: AV.User.current(),
       a: this.data.log.keepTime - this.data.log.endTime,
+      name: user.attributes.nickName,
+      user: AV.User.current(),
+      username: app.globalData.userinfo.nickName,
+      formid: res.detail.formId,
+      openid: user.attributes.authData.lc_weapp.openid,
+      sent: 0,
+      formdata: this.data.formdata,
       name: user.attributes.nickName
     }).setACL(acl).save().then((time) => {
       this.setTodos([time, ...this.data.log]);
@@ -202,6 +221,17 @@ Page({
         remainTimeText: remainTimeText
       })
     } else if (remainingTime == 0) {
+      wx.request({
+        url: 'https://w1109790800.leanapp.cn/sentMSG',
+        method: 'POST',
+        data: { 
+          openid: this.openid ,
+          formid: this.formid ,
+        },    //参数为键值对字符串
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+        },
+      })
       this.setData({
         completed: true
       })
@@ -209,6 +239,7 @@ Page({
         title: '番茄工作法',
         content: ' 恭喜您完成了一个新的番茄时间，快点击右上角三个圆点分享吧~',
         success: function (res) {
+
 
           console.log('确定')
           var acl = new AV.ACL();
@@ -218,8 +249,9 @@ Page({
           acl.setWriteAccess(AV.User.current(), true);
           new time({
             done: true,
+            startTime: Date.now(),
             user: AV.User.current(),
-            name: getApp().globalData.userInfo.nickName
+
           }).setACL(acl).save().then((time) => {
             this.setTodos([time, ...this.data]);
           }).catch(error => console.error(error.message));

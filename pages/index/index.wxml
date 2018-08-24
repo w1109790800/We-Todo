@@ -16,7 +16,12 @@
       </view>
       <view class="bd">
         <text class="wenzi">💖时间有序，我们在路上💖</text>
-        <button class="cs_button" type="primary" bindtap="nav">进入Todo-list</button>
+        <form bindsubmit='nav' report-submit>
+        <view>
+        <button form-type='submit' open-type='getUserInfo' bindgetuserinfo="onGotUserInfo" class="cs_button" type="primary" >进入Todo-list</button>
+        </view>
+        </form>
+        <button class="cs_button2" type="primary" bindtap="nav2">进入  回忆日</button>
         <view class="ccc">
           <view class="body">
             <view class="details">
@@ -26,7 +31,7 @@
                     <view class="icon">
                       <image src="{{ suggestionIcon.air }}"></image>
                     </view>
-                    <view>  AQI/PM2.5：</view>
+                    <view bindtap="nav4">  AQI/PM2.5：</view>
                     <text class="status">{{suggestion.air}}</text>
                   </view>
                 </view>
@@ -35,7 +40,7 @@
                     <view class="icon">
                       <image src="{{ suggestionIcon.comf }}"></image>
                     </view>
-                    <view>  舒适度：</view>
+                    <view bindtap="nav3"  >  舒适度：</view>
                     <text class="status">{{suggestion.comf}}</text>
                   </view>
                 </view>
@@ -44,7 +49,7 @@
                     <view class="icon">
                       <image src="{{ suggestionIcon.cw }}"></image>
                     </view>
-                    <view> 洗车指数：</view>
+                    <view bindtap='nav_count_people'> 洗车指数：</view>
                     <text class="status">{{suggestion.cw}}</text>
                   </view>
                 </view>
@@ -89,7 +94,7 @@
                       <view class="icon">
                         <image src="{{ suggestionIcon.uv }}"></image>
                       </view>
-                      <view> 紫外线指数：</view>
+                      <view bindtap="nav_face">紫外线指数</view>
                       <text class="status">{{suggestion.uv}}</text>
                     </view>
                   </view>
@@ -101,7 +106,7 @@
             <image class="kf_image" src="../../assets/kefu.png"></image>
           </button>
 
-          <button class="footer" open-type="contact" session-from="weapp">本程序由北京市育英学校 WangYuyang开发</button>
+          <button class="footer" bindtap='nav_page'>北京市育英学校   WangYuyang</button>
         </view>
 
       </view>

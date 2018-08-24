@@ -1,0 +1,14 @@
+<!--pages/car_recog/car_recog.wxml-->
+  <button class="cs_button2" type="primary" bindtap="test">提交汽车识别</button>
+<view class="view_list">
+  <view class="sen-split"></view>
+     <image class="image_frame" src="{{imgurl}}" mode="aspectFill"> 
+</image>
+  <block wx:for="{{listData}}">
+
+      <view class="sen-title">车型： {{item.name}}  {{item.year}}</view>
+      <view class="sen-title">置信度： {{item.score*100}}</view>
+      <view class="sen-title"></view>
+    <view class="sen-split"></view>
+  </block>
+</view>
