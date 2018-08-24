@@ -42,7 +42,7 @@
 <view class="view_bottom">
   <button class="sen-button"
     bindtap="bindViewTap"
-  >添加纪念日</button>
+  >添加回忆日</button>
 </view>
 
 <view class="view_tip">Tip:纪念日由近到远自动排序</view>

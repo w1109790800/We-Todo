@@ -14,7 +14,7 @@ name="title" bindinput="input_title" class="sen-input" />
 
 <button class="sen-button"
     bindtap="bindViewTap">
-  确定添加倒数日/正数日
+  确定添加回忆日
 </button>
 
 

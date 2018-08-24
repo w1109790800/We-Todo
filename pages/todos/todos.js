@@ -132,7 +132,9 @@ onShareAppMessage: function () {
       })
       return;
     }
-
+    this.setData({
+      content: value
+    });
     value = value;
     var acl = new AV.ACL();
     acl.setPublicReadAccess(false);
