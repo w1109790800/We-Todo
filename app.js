@@ -83,7 +83,7 @@ App({
   getRecordAuth: function () {
     wx.getSetting({
       success(res) {
-        console.log("succ")
+        console.log("success")
         console.log(res)
         if (!res.authSetting['scope.record']) {
           wx.authorize({
