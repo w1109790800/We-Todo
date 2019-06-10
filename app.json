@@ -32,5 +32,6 @@
     "navigationBarBackgroundColor": "#fbfbfb",
     "navigationBarTitleText": "Todo-List ✅",
     "navigationBarTextStyle": "black"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
