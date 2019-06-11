@@ -106,7 +106,7 @@
             <image class="kf_image" src="../../assets/kefu.png"></image>
           </button>
 
-          <button class="footer" bindtap='nav_page'>北京市育英学校   WangYuyang</button>
+          <button class="footer" bindtap='nav_page'>作者：WangYuyang</button>
         </view>
 
       </view>

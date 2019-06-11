@@ -8,10 +8,12 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": true,
+		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.9",
+	"libVersion": "2.7.1",
 	"appid": "wx08d8f52ad361f6e8",
 	"projectname": "we-todo",
 	"isGameTourist": false,
