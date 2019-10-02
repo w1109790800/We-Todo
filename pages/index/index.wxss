@@ -333,7 +333,7 @@ page{
 }
 .cs_button {
   background-color: #fff;
-  height: 95rpx;
+  
   position: fixed;
   top: 160rpx ;
   justify-content: center; 
@@ -341,7 +341,7 @@ page{
 }
 .cs_button2 {
   background-color: #fff;
-  height: 95rpx;
+  
   position: fixed;
   top: 160rpx ;
   justify-content: center; 

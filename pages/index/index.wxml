@@ -94,7 +94,7 @@
                       <view class="icon">
                         <image src="{{ suggestionIcon.uv }}"></image>
                       </view>
-                      <view bindtap="nav_face">紫外线指数</view>
+                      <view bindtap="nav_face">紫外线指数： </view>
                       <text class="status">{{suggestion.uv}}</text>
                     </view>
                   </view>
