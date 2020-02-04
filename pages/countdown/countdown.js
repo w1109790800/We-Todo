@@ -202,7 +202,7 @@ Page({
           };
 
           _this.setData({ listData: results });
-          console.log("in", results);
+          //console.log("in", results);
 
         }).catch(console.error)
 wx.hideLoading()
@@ -222,7 +222,7 @@ wx.hideLoading()
     var that = this;
     var str_username = user.attributes.nickName;
     var stropenid = str_openid;
-    console.log(str_username, stropenid);
+    //console.log(str_username, stropenid);
     var _this = this;
     // const query = new AV.Query("count")
     // .equalTo('openid', stropenid)
@@ -243,7 +243,7 @@ wx.hideLoading()
       if(day < 0){
         day = -day
       }
-      console.log("in", results);
+      //console.log("in", results);
       that.setData(
         {
           index_title: results[0].attributes.title,

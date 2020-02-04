@@ -33,9 +33,9 @@ Page({
     wx.request({
       url: 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx08d8f52ad361f6e8&secret=b635b95d8bda0e8dcb8cb9a989bdc4f0',
       success: function (res) {
-        console.log(res.data.access_token)
+        //console.log(res.data.access_token)
         app.globalData.access_token = res.data.access_token
-        console.log(app.globalData.access_token);
+        //console.log(app.globalData.access_token);
 
       }
     })

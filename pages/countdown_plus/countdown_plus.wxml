@@ -26,9 +26,7 @@
     data-day="{{item.day}}"
     data-info="{{item.info}}"
     data-id="{{item.id}}"
-    data-background='{{item.background}}
     data-tip="{{item.tip}}">
-    
       <view class="sen-title"> {{item.title}}</view>
       <view class="sen-day">{{item.day}}天</view>
     </view>

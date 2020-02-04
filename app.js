@@ -6,7 +6,7 @@ AV.init({
   appKey: APP_KEY,
 });
 
-const app = getApp()
+var app = getApp()
 
 //app.js
 const defaultTime = {
@@ -30,9 +30,7 @@ App({
       success: function (res) {
         if (res.data != undefined){
           app.globalData.userinfo = res.data;
-          app.globalData.userInfo = res.data;
-
-          console.log(globalData.userinfo)
+          console.log(app.globalData.userinfo)
         }
       }
     })

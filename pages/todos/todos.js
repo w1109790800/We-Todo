@@ -6,8 +6,8 @@ const app = getApp()
 
 
 Page({
-  
-onShareAppMessage: function () {
+
+  onShareAppMessage: function () {
     return {
       title: 'Todo-List',
       desc: '最简单高效的Todo-List',
@@ -23,24 +23,24 @@ onShareAppMessage: function () {
     draft: '',
     editDraft: null,
   },
-  login: function() {
+  login: function () {
     var _this = this;
     const user = AV.User.current();
     return AV.Promise.resolve(AV.User.current()).then(user =>
       user ? (user.isAuthenticated().then(authed => authed ? user : null)) : null
     ).then(user => user ? user : AV.User.loginWithWeapp()).catch(error => console.error(error.message));
 
-      
+
     setTimeout(function () {
       _this.setData({
         remind: ''
       });
-    
+
     }, 100);
   },
 
   fetchTodos: function (user) {
-    
+
     wx.showToast({
       title: '加载中',
       icon: 'loading'
@@ -70,18 +70,18 @@ onShareAppMessage: function () {
     }, 100);
     wx.hideToast();
   },
-  onReady: function() {
+  onReady: function () {
     console.log('page ready');
-    
+
     this.login().then(this.fetchTodos.bind(this)).catch(error => console.error(error.message));
-    
+
 
 
 
 
 
   },
-  onUnload: function() {
+  onUnload: function () {
     this.subscription.unsubscribe();
     this.unbind();
   },
@@ -97,6 +97,7 @@ onShareAppMessage: function () {
       todos,
       activeTodos,
     });
+    console.log(todos)
     return todos;
   },
   updateDraft: function ({
@@ -110,7 +111,7 @@ onShareAppMessage: function () {
       draft: value
     });
   },
-  formid:function (res){
+  formid: function (res) {
     console.log(res)
     this.data.formdata = res
     this.data.formid = res.detail.formId
@@ -147,11 +148,11 @@ onShareAppMessage: function () {
       user: AV.User.current(),
       formid: res.detail.formId,
       openid: user.attributes.authData.lc_weapp.openid,
-      sent:0,
+      sent: 0,
       formdata: res.detail,
       name: user.attributes.nickName,
-      name2: app.globalData.userinfo.nickName, 
-      userdata: app.globalData.userdata,   
+      name2: app.globalData.userinfo.nickName,
+      userdata: app.globalData.userdata,
     }).setACL(acl).save().then((todo) => {
       this.setTodos([todo, ...this.data.todos]);
     }).catch(error => console.error(error.message));
@@ -163,7 +164,7 @@ onShareAppMessage: function () {
     new Done({
       content: value,
       done: false,
-      sent:0,
+      sent: 0,
       user: AV.User.current(),
       formid: res.detail.formId,
       openid: user.attributes.authData.lc_weapp.openid,
@@ -171,16 +172,16 @@ onShareAppMessage: function () {
       name: user.attributes.nickName,
       name2: app.globalData.userinfo.nickName,
       userdata: app.globalData.userdata,
-    }).setACL(acl).save()//.then((todo) => {
+    }).setACL(acl).save() //.then((todo) => {
       //this.setTodos([todo, ...this.data.todos]);
-    //})
-    .catch(error => console.error(error.message));
+      //})
+      .catch(error => console.error(error.message));
 
     wx.hideToast();
   },
 
   toggleDone: function ({
-    
+
     target: {
       dataset: {
         id
@@ -191,7 +192,9 @@ onShareAppMessage: function () {
       title: '添加中……',
       icon: 'loading'
     });
-    const { todos } = this.data;
+    const {
+      todos
+    } = this.data;
     const currentTodo = todos.filter(todo => todo.id === id)[0];
     currentTodo.done = !currentTodo.done;
     currentTodo.save()
@@ -231,16 +234,19 @@ onShareAppMessage: function () {
       title: '添加中……',
       icon: 'loading'
     });
-    const { todos, editDraft } = this.data;
+    const {
+      todos,
+      editDraft
+    } = this.data;
     this.setData({
       editedTodo: {},
     });
-    
+
     if (editDraft === null) return;
     const currentTodo = todos.filter(todo => todo.id === id)[0];
     if (editDraft === currentTodo.content) return;
     currentTodo.content = editDraft;
-    
+
     currentTodo.save().then(() => {
       this.setTodos(todos);
     }).catch(error => console.error(error.message));
