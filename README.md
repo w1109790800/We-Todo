@@ -6,7 +6,7 @@
 
 你可以通过微信扫描以下二维码进入 小程序。
 
-<img src="![](https://photos-picgo.oss-cn-beijing.aliyuncs.com/img/logo.jpg)" alt="Weapp QR" width="250">
+![](https://photos-picgo.oss-cn-beijing.aliyuncs.com/img/logo.jpg)
 
 ## 已实现功能
 1. 任务清单
