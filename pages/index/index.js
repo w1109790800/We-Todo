@@ -4,14 +4,15 @@ const AV = require('../../utils/av-live-query-weapp-min');
 require('util.js');
 const weather = require('weather.js');
 const  app = getApp();
+var userinfo = null
 Page({
   onShow: function () { // 生命周期函数--监听页面加载
     var _this = this;
-    setTimeout(function () {
+    setTimeout(function () { //动画
       _this.setData({
         remind: ''
       });
-    }, 1000);
+    }, 300);
 
   },
   onLoad: function () { // 生命周期函数--监听页面加载
@@ -19,10 +20,9 @@ Page({
     wx.getUserInfo({
       withCredentials: false,
       success: function (res) {
+        userinfo = res.userInfo
         app.globalData.userinfo = res.userInfo;
         console.log(app.globalData.userinfo.nickName)
-        AV.login
-        
         
       }
     })
@@ -279,11 +279,20 @@ Page({
       wx.showToast({
         title: '请不要拒绝授权，否则服务器将无法存储数据',
         icon: 'loading',
-        duration: 2000
+        duration: 3000
+      })
+      wx.getUserInfo({
+        withCredentials: false,
+        success: function (res) {
+          app.globalData.userinfo = res.userInfo;
+          console.log(app.globalData.userinfo.nickName)
+        }
       })
       return 0
     }
+    
     console.log(res)
+    // 调用小程序 API，得到用户信息
     const user = AV.User.current();
     this.data.formdata = res
     this.data.formid = res.detail.formId
@@ -294,7 +303,7 @@ Page({
     acl.setWriteAccess(AV.User.current(), true);
     new weather({
       user: AV.User.current(),
-      username: app.globalData.userinfo.nickName,
+      username: userinfo,
       formid: res.detail.formId,
       openid: user.attributes.authData.lc_weapp.openid,
       sent: 0,
@@ -447,87 +456,6 @@ Page({
           angle: angle
         });
       }
-    });
-  },
-  bind: function () {
-    var _this = this;
-    if (app.g_status) {
-      app.showErrorModal(app.g_status, '绑定失败');
-      return;
-    }
-    if (!_this.data.userid || !_this.data.passwd) {
-      app.showErrorModal('账号及密码不能为空', '提醒');
-      return false;
-    }
-    if (!app._user.openid) {
-      app.showErrorModal('未能成功登录', '错误');
-      return false;
-    }
-    app.showLoadToast('绑定中');
-    wx.request({
-      method: 'POST',
-      url: app._server + '/api/users/bind.php',
-      data: app.key({
-        openid: app._user.openid,
-        yktid: _this.data.userid,
-        passwd: _this.data.passwd
-      }),
-      success: function (res) {
-        if (res.data && res.data.status === 200) {
-          app.showLoadToast('请稍候');
-          //清除缓存
-          app.cache = {};
-          wx.clearStorage();
-          app.getUser(function () {
-            wx.showToast({
-              title: '绑定成功',
-              icon: 'success',
-              duration: 1500
-            });
-            if (!app._user.teacher) {
-              setTimeout(function () {
-                wx.showModal({
-                  title: '提示',
-                  content: '部分功能需要完善信息才能正常使用，是否前往完善信息？',
-                  cancelText: '以后再说',
-                  confirmText: '完善信息',
-                  success: function (res) {
-                    if (res.confirm) {
-                      wx.redirectTo({
-                        url: 'append'
-                      });
-                    } else {
-                      wx.navigateBack();
-                    }
-                  }
-                });
-              }, 1500);
-            } else {
-              wx.navigateBack();
-            }
-          });
-        } else {
-          wx.hideToast();
-          app.showErrorModal(res.data.message, '绑定失败');
-        }
-      },
-      fail: function (res) {
-        wx.hideToast();
-        app.showErrorModal(res.errMsg, '绑定失败');
-      }
-    });
-  },
-  useridInput: function (e) {
-    this.setData({
-      userid: e.detail.value
-    });
-    if (e.detail.value.length >= 7) {
-      wx.hideKeyboard();
-    }
-  },
-  passwdInput: function (e) {
-    this.setData({
-      passwd: e.detail.value
     });
   },
   inputFocus: function (e) {

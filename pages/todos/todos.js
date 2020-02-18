@@ -120,7 +120,6 @@ Page({
     console.log(res)
     this.data.formdata = res
     this.data.formid = res.detail.formId
-    AV.login
     const user = AV.User.current();
     wx.showToast({
       title: '添加中……',
@@ -133,9 +132,7 @@ Page({
       })
       return;
     }
-    this.setData({
-      content: value
-    });
+
     value = value;
     var acl = new AV.ACL();
     acl.setPublicReadAccess(false);
@@ -155,7 +152,7 @@ Page({
       userdata: app.globalData.userdata,
     }).setACL(acl).save().then((todo) => {
       this.setTodos([todo, ...this.data.todos]);
-    }).catch(error => console.error(error.message));
+    })
     this.setData({
       draft: ''
     });
@@ -175,9 +172,11 @@ Page({
     }).setACL(acl).save() //.then((todo) => {
       //this.setTodos([todo, ...this.data.todos]);
       //})
-      .catch(error => console.error(error.message));
+      
 
     wx.hideToast();
+    if (!user) return wx.stopPullDownRefresh();
+    this.fetchTodos(user).catch(error => console.error(error.message)).then(wx.stopPullDownRefresh);
   },
 
   toggleDone: function ({
@@ -246,7 +245,6 @@ Page({
     const currentTodo = todos.filter(todo => todo.id === id)[0];
     if (editDraft === currentTodo.content) return;
     currentTodo.content = editDraft;
-
     currentTodo.save().then(() => {
       this.setTodos(todos);
     }).catch(error => console.error(error.message));
@@ -262,8 +260,6 @@ Page({
     }).catch(error => console.error(error.message));
     wx.hideToast();
   },
-
-
 
 
 

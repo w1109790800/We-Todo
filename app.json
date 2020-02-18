@@ -25,6 +25,11 @@
     "pages/Detect_Scene/Detect_Scene",
     "pages/yellow_bike/yellow_bike"
   ],
+  "permission": {
+      "scope.userLocation":{
+        "desc": "你的位置信息将用于小程序天气信息查询"
+      }
+  },
   "window": {
     "enablePullDownRefresh": true,
     "backgroundTextStyle": "dark",
