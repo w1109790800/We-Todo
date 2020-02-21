@@ -84,13 +84,6 @@ Page({
           },
         }).save().then(function (file) {
           file => console.log(file.url())
-          var bojid = wx.getStorageSync("objid");
-          console.log(bojid);
-          var img = AV.Object.createWithoutData('count', bojid);
-          // 修改属性
-          img.set('url', file.url());
-          img.save();
-          console.log(file.url())
           that.setData(
             {
               imgurl: file.url(),

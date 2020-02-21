@@ -1,7 +1,8 @@
 # Todo-List 微信小程序
 
 
-使用 LeanCloud 存储 SDK 在微信小程序平台上实现的 Todo-List 应用。
+使用 LeanCl
+oud 存储 SDK 在微信小程序平台上实现的 Todo-List 应用。
 
 
 你可以通过微信扫描以下二维码进入 小程序。

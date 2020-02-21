@@ -83,12 +83,6 @@ Page({
           },
         }).save().then(function (file) {
           file => console.log(file.url())
-          var bojid = wx.getStorageSync("objid");
-          console.log(bojid);
-          var img = AV.Object.createWithoutData('count', bojid);
-          // 修改属性
-          img.set('url', file.url());
-          img.save();
           console.log(file.url())
           that.setData(
             {
@@ -103,6 +97,7 @@ Page({
               'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
             },
             success: function (res) {
+              console.log(res)
               console.log(res.data.result.face_list)
               _this.setData({ listData: res.data.result.face_list });
         wx.hideLoading()

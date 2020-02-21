@@ -1,5 +1,5 @@
 
-<view style="  width: 100%;height: 700px;background:url('{{detail_background}}') no-repeat;background-size: 100% 100%;text-align: center;color: white;">
+<view class = "container"  style="width: 100%;height: 100%;background:url('{{detail_background}}') no-repeat;background-size: 100% 100%;text-align: center;color: white;">
 <view class= "con">
 
   <view class="title">

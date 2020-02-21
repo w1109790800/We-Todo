@@ -11,19 +11,26 @@ AV.init({
 //app.js
 
 App({
-
-  globalData: {
-    userdata:null,
-    userInfo: null,
-    access_token: null,
-    user:null
-
+  _user: {
+    wx:{
+    },
+    cloud:{
+    },
+    openid:null,
+    access_token:null
   },
 
   onLaunch: function () {
+    var _this = this
     AV.User.loginWithWeapp().then(user => {
-      this.globalData.user = user;
+      _this._user.openid = user.attributes.authData.lc_weapp.openid;
+      _this._user.cloud = user.attributes
     }).catch(console.error);
+    wx.getUserInfo({
+      success: function (res) {
+        _this._user.wx = res.userInfo
+      }
+    })
   },
   // 权限询问
 

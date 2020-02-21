@@ -21,7 +21,7 @@
         <button form-type='submit' open-type='getUserInfo' bindgetuserinfo="onGotUserInfo" class="cs_button" type="primary" >进入Todo-list</button>
         </view>
         </form>
-        <button class="cs_button2" type="primary" bindtap="nav2">进入  回忆日</button>
+        <button class="cs_button2" open-type='getUserInfo' type="primary" bindtap="nav2">进入  回忆日</button>
         <view class="ccc">
           <view class="body">
             <view class="details">
@@ -102,7 +102,8 @@
               </view>
    
           </view>
-          <button class="kf_button" open-type="contact" session-from="weapp">
+          
+          <button class="kf_button" open-type="feedback" session-from="weapp">
             <image class="kf_image" src="../../assets/kefu.png"></image>
           </button>
 

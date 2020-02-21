@@ -29,8 +29,6 @@ Page({
     return AV.Promise.resolve(AV.User.current()).then(user =>
       user ? (user.isAuthenticated().then(authed => authed ? user : null)) : null
     ).then(user => user ? user : AV.User.loginWithWeapp()).catch(error => console.error(error.message));
-
-
     setTimeout(function () {
       _this.setData({
         remind: ''
@@ -72,14 +70,7 @@ Page({
   },
   onReady: function () {
     console.log('page ready');
-
     this.login().then(this.fetchTodos.bind(this)).catch(error => console.error(error.message));
-
-
-
-
-
-
   },
   onUnload: function () {
     this.subscription.unsubscribe();
@@ -111,15 +102,9 @@ Page({
       draft: value
     });
   },
-  formid: function (res) {
-    console.log(res)
-    this.data.formdata = res
-    this.data.formid = res.detail.formId
-  },
+
   addTodo: function (res) {
     console.log(res)
-    this.data.formdata = res
-    this.data.formid = res.detail.formId
     const user = AV.User.current();
     wx.showToast({
       title: '添加中……',
@@ -132,8 +117,6 @@ Page({
       })
       return;
     }
-
-    value = value;
     var acl = new AV.ACL();
     acl.setPublicReadAccess(false);
     acl.setPublicWriteAccess(false);
@@ -143,44 +126,32 @@ Page({
       content: value,
       done: false,
       user: AV.User.current(),
-      formid: res.detail.formId,
-      openid: user.attributes.authData.lc_weapp.openid,
+      openid: app._user.openid,
       sent: 0,
-      formdata: res.detail,
-      name: user.attributes.nickName,
-      name2: app.globalData.userinfo.nickName,
-      userdata: app.globalData.userdata,
+      name2: app._user.wx.nickName,
+      userdata: app._user.wx,
     }).setACL(acl).save().then((todo) => {
       this.setTodos([todo, ...this.data.todos]);
     })
     this.setData({
       draft: ''
     });
-    console.log(user.attributes.nickName);
-    //console.log("fdfd");
+    if (!user) return wx.stopPullDownRefresh();
+    this.fetchTodos(user).catch(error => console.error(error.message)).then(wx.stopPullDownRefresh);
+    wx.hideToast();
     new Done({
       content: value,
       done: false,
-      sent: 0,
       user: AV.User.current(),
-      formid: res.detail.formId,
-      openid: user.attributes.authData.lc_weapp.openid,
-      formdata: res.detail,
-      name: user.attributes.nickName,
-      name2: app.globalData.userinfo.nickName,
-      userdata: app.globalData.userdata,
-    }).setACL(acl).save() //.then((todo) => {
-      //this.setTodos([todo, ...this.data.todos]);
-      //})
-      
+      openid: app._user.openid,
+      sent: 0,
+      name2: app._user.wx.nickName,
+      userdata: app._user.wx,
+    }).setACL(acl).save() 
 
-    wx.hideToast();
-    if (!user) return wx.stopPullDownRefresh();
-    this.fetchTodos(user).catch(error => console.error(error.message)).then(wx.stopPullDownRefresh);
   },
 
   toggleDone: function ({
-
     target: {
       dataset: {
         id
@@ -198,7 +169,7 @@ Page({
     currentTodo.done = !currentTodo.done;
     currentTodo.save()
       .then(() => this.setTodos(todos))
-      .catch(error => console.error(error.message));
+      ;
     wx.hideToast();
   },
   editTodo: function ({

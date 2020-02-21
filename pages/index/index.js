@@ -16,29 +16,12 @@ Page({
 
   },
   onLoad: function () { // 生命周期函数--监听页面加载
-    
-    wx.getUserInfo({
-      withCredentials: false,
-      success: function (res) {
-        userinfo = res.userInfo
-        app.globalData.userinfo = res.userInfo;
-        console.log(app.globalData.userinfo.nickName)
-        
-      }
-    })
+    var _this = this;
     this.getUserLocation()
     wx.showShareMenu({ // 转发
       withShareTicket: true
     })
-    wx.request({
-      url: 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx08d8f52ad361f6e8&secret=b635b95d8bda0e8dcb8cb9a989bdc4f0',
-      success: function (res) {
-        //console.log(res.data.access_token)
-        app.globalData.access_token = res.data.access_token
-        //console.log(app.globalData.access_token);
 
-      }
-    })
 
     
 
@@ -170,20 +153,20 @@ Page({
     angle: 0
   },
   getUserLocation: function () { // 获取用户当前经纬度
-    let self = this
+    var _this = this
     wx.getLocation({
       type: 'wgs84',
       success: function (res) {
         console.log(res)
-        self.decodingGps(res.longitude, res.latitude)
+        _this.decodingGps(res.longitude, res.latitude)
       },
       fail: function (res) {
-        self.decodingGps(116.3, 39.9)
+        _this.decodingGps(116.3, 39.9)
       }
     })
   },
   decodingGps: function (x, y) { // 解析经纬度到到地址
-    let self = this
+    var _this = this
     wx.request({
       url: 'https://restapi.amap.com/v3/geocode/regeo',
       data: {
@@ -193,21 +176,21 @@ Page({
       header: { 'content-type': 'application/json' },
       success: function (res) {
         console.log(res.data.regeocode.addressComponent.district)
-        self.setData({
+        _this.setData({
           location: res.data.regeocode.addressComponent.district
         })
-        self.getWeather()
+        _this.getWeather()
       },
       fail: function () {
-        self.add()
+        _this.add()
       }
     })
   },
   getWeather: function () { // 获取并解析天气
-    let self = this
+    var _this = this
     wx.request({
       url: 'https://free-api.heweather.com/v5/weather',
-      data: { city: self.data.location, key: '01a7798b060b468abdad006ea3de4713' },
+      data: { city: _this.data.location, key: '01a7798b060b468abdad006ea3de4713' },
       header: { 'content-type': 'application/json' },
       success: function (res) {
         // console.log(res)
@@ -236,7 +219,7 @@ Page({
         for (let i = 1; i < res.data.HeWeather5[0].daily_forecast.length - 1; i++) { // 天气预报forecast
           moreDaysTemp[i] = {
             time: moreDaysMap[new Date(res.data.HeWeather5[0].daily_forecast[i].date.split("-").join("/")).getDay()],
-            icon: self.data.conditionCode[res.data.HeWeather5[0].daily_forecast[i].cond.code_d],
+            icon: _this.data.conditionCode[res.data.HeWeather5[0].daily_forecast[i].cond.code_d],
             detail: res.data.HeWeather5[0].daily_forecast[i].cond.txt_d,
             minTemperature: res.data.HeWeather5[0].daily_forecast[i].tmp.min,
             maxTemperature: res.data.HeWeather5[0].daily_forecast[i].tmp.max
@@ -252,7 +235,7 @@ Page({
           trav: res.data.HeWeather5[0].suggestion.trav.brf,
           uv: res.data.HeWeather5[0].suggestion.uv.brf,
         }
-        self.setData({ // 更新数据
+        _this.setData({ // 更新数据
           city: res.data.HeWeather5[0].basic.city,
           summary: res.data.HeWeather5[0].now.cond.txt,
           localTemperature: res.data.HeWeather5[0].now.tmp,
@@ -265,65 +248,51 @@ Page({
       },
     });
   },
-  onGotUserInfo: function(res){
-
-    console.log(res.detail.userInfo)
-    app.globalData.userinfo = res.detail.userInfo
-    app.globalData.userdata = res
-
-
-  },
-
   nav: function (res) {
-    if (app.globalData.userinfo == null){
-      wx.showToast({
-        title: '请不要拒绝授权，否则服务器将无法存储数据',
-        icon: 'loading',
-        duration: 3000
-      })
-      wx.getUserInfo({
-        withCredentials: false,
-        success: function (res) {
-          app.globalData.userinfo = res.userInfo;
-          console.log(app.globalData.userinfo.nickName)
-        }
-      })
-      return 0
-    }
-    
-    console.log(res)
-    // 调用小程序 API，得到用户信息
-    const user = AV.User.current();
-    this.data.formdata = res
-    this.data.formid = res.detail.formId
-    var acl = new AV.ACL();
-    acl.setPublicReadAccess(false);
-    acl.setPublicWriteAccess(false);
-    acl.setReadAccess(AV.User.current(), true);
-    acl.setWriteAccess(AV.User.current(), true);
-    new weather({
-      user: AV.User.current(),
-      username: userinfo,
-      formid: res.detail.formId,
-      openid: user.attributes.authData.lc_weapp.openid,
-      sent: 0,
-      formdata: res.detail,
-      name: user.attributes.nickName
-    }).setACL(acl).save().catch(error => console.error(error.message));
     var _this = this;
-    setTimeout(function () {
-      _this.setData({
-        remind: '加载中'
-      });
-    }, 1000);
-    wx.navigateTo({
-      url: '../todos/todos',
+    wx.getUserInfo({
+      success:function(){
+        console.log(res)
+        var acl = new AV.ACL();
+        acl.setPublicReadAccess(false);
+        acl.setPublicWriteAccess(false);
+        acl.setReadAccess(AV.User.current(), true);
+        acl.setWriteAccess(AV.User.current(), true);
+        new weather({
+          user: AV.User.current(),
+          username: app._user.cloud.username,
+          openid: app._user.openid,
+          sent: 1,
+          formdata: res.detail,
+          name: app._user.wx.nickName
+        }).setACL(acl).save().catch(error => console.error(error.message));
+        setTimeout(function () {
+          _this.setData({
+            remind: '加载中'
+          });
+        }, 1000);
+        wx.navigateTo({
+          url: '../todos/todos',
+        })
+        setTimeout(function () {
+          _this.setData({
+            remind: ''
+          });
+        }, 100);
+      },
+      fail:function(){
+        wx.showToast({
+          title: '授权成功！',
+          icon: 'loading',
+          duration: 3000
+        })
+        wx.navigateTo({
+          url: '../todos/todos',
+        })
+
+      }
     })
-    setTimeout(function () {
-      _this.setData({
-        remind: ''
-      });
-    }, 100);
+
 
   },
   nav2: function () {
@@ -333,8 +302,6 @@ Page({
         remind: '加载中'
       });
     }, 1000);
-
-    const user = AV.User.current();
     wx.navigateTo({
       url: '../countdown/countdown',
     })
@@ -351,8 +318,6 @@ Page({
         remind: '加载中'
       });
     }, 1000);
-
-    const user = AV.User.current();
     wx.navigateTo({
       url: '../up/up',
     })
@@ -370,8 +335,6 @@ Page({
         remind: '加载中'
       });
     }, 1000);
-
-    const user = AV.User.current();
     wx.navigateTo({
       url: '../car_recog/car_recog',
     })
@@ -389,8 +352,6 @@ Page({
           remind: '加载中'
         });
       }, 1000);
-
-      const user = AV.User.current();
       wx.navigateTo({
         url: '../face/face',
       })
@@ -408,8 +369,6 @@ Page({
           remind: '加载中'
         });
       }, 1000);
-
-      const user = AV.User.current();
       wx.navigateTo({
         url: '../count_people/count_people',
       })
@@ -427,8 +386,6 @@ Page({
           remind: '加载中'
         });
       }, 1000);
-
-      const user = AV.User.current();
       wx.navigateTo({
         url: '../nav/nav',
       })
@@ -458,41 +415,5 @@ Page({
       }
     });
   },
-  inputFocus: function (e) {
-    if (e.target.id == 'userid') {
-      this.setData({
-        'userid_focus': true
-      });
-    } else if (e.target.id == 'passwd') {
-      this.setData({
-        'passwd_focus': true
-      });
-    }
-  },
-  inputBlur: function (e) {
-    if (e.target.id == 'userid') {
-      this.setData({
-        'userid_focus': false
-      });
-    } else if (e.target.id == 'passwd') {
-      this.setData({
-        'passwd_focus': false
-      });
-    }
-  },
-  tapHelp: function (e) {
-    if (e.target.id == 'help') {
-      this.hideHelp();
-    }
-  },
-  showHelp: function (e) {
-    this.setData({
-      'help_status': true
-    });
-  },
-  hideHelp: function (e) {
-    this.setData({
-      'help_status': false
-    });
-  }
+   
 });
