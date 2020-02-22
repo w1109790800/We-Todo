@@ -1,7 +1,7 @@
 //login.js
 //获取应用实例
 const AV = require('../../utils/av-live-query-weapp-min');
-require('util.js');
+require('../../utils/util.js');
 const weather = require('weather.js');
 const  app = getApp();
 var userinfo = null
@@ -157,7 +157,7 @@ Page({
     wx.getLocation({
       type: 'wgs84',
       success: function (res) {
-        console.log(res)
+        //console.log(res)
         _this.decodingGps(res.longitude, res.latitude)
       },
       fail: function (res) {
@@ -175,14 +175,16 @@ Page({
       },
       header: { 'content-type': 'application/json' },
       success: function (res) {
-        console.log(res.data.regeocode.addressComponent.district)
+        //console.log(res.data.regeocode.addressComponent.district)
         _this.setData({
           location: res.data.regeocode.addressComponent.district
         })
         _this.getWeather()
       },
       fail: function () {
-        _this.add()
+        _this.setData({
+          location: "海淀区"
+        })
       }
     })
   },
@@ -248,11 +250,10 @@ Page({
       },
     });
   },
-  nav: function (res) {
+  goto_todo: function () {
     var _this = this;
     wx.getUserInfo({
       success:function(){
-        console.log(res)
         var acl = new AV.ACL();
         acl.setPublicReadAccess(false);
         acl.setPublicWriteAccess(false);
@@ -263,7 +264,6 @@ Page({
           username: app._user.cloud.username,
           openid: app._user.openid,
           sent: 1,
-          formdata: res.detail,
           name: app._user.wx.nickName
         }).setACL(acl).save().catch(error => console.error(error.message));
         setTimeout(function () {
@@ -295,7 +295,7 @@ Page({
 
 
   },
-  nav2: function () {
+  godo_countdown: function () {
     var _this = this;
     setTimeout(function () {
       _this.setData({

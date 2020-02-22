@@ -17,7 +17,6 @@ App({
     cloud:{
     },
     openid:null,
-    access_token:null
   },
 
   onLaunch: function () {

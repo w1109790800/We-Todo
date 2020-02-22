@@ -15,8 +15,6 @@ Page({
     }
   },
   data: {
-    formid: null,
-    formdata: null,
     remind: '加载中',
     todos: [],
     editedTodo: {},
@@ -49,8 +47,8 @@ Page({
         remind: '加载中'
       });
     }, 100);
-    console.log('uid', user.id);
-    console.log('user', user);
+    //console.log('uid', user.id);
+    //console.log('user', user);
     const query = new AV.Query(Todo)
       .equalTo('user', AV.Object.createWithoutData('User', user.id))
       .descending('createdAt');
@@ -69,7 +67,7 @@ Page({
     wx.hideToast();
   },
   onReady: function () {
-    console.log('page ready');
+    //console.log('page ready');
     this.login().then(this.fetchTodos.bind(this)).catch(error => console.error(error.message));
   },
   onUnload: function () {
@@ -88,7 +86,7 @@ Page({
       todos,
       activeTodos,
     });
-    console.log(todos)
+    //console.log(todos)
     return todos;
   },
   updateDraft: function ({
@@ -103,8 +101,7 @@ Page({
     });
   },
 
-  addTodo: function (res) {
-    console.log(res)
+  addTodo: function () {
     const user = AV.User.current();
     wx.showToast({
       title: '添加中……',

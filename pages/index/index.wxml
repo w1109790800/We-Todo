@@ -16,12 +16,12 @@
       </view>
       <view class="bd">
         <text class="wenzi">💖时间有序，我们在路上💖</text>
-        <form bindsubmit='nav' report-submit>
+        <form bindsubmit='goto_todo' report-submit>
         <view>
-        <button form-type='submit' open-type='getUserInfo' bindgetuserinfo="onGotUserInfo" class="cs_button" type="primary" >进入Todo-list</button>
+        <button form-type='submit' open-type='getUserInfo' class="cs_button" type="primary" >进入Todo-list</button>
         </view>
         </form>
-        <button class="cs_button2" open-type='getUserInfo' type="primary" bindtap="nav2">进入  回忆日</button>
+        <button class="cs_button2" open-type='getUserInfo' type="primary" bindtap="godo_countdown">进入  回忆日</button>
         <view class="ccc">
           <view class="body">
             <view class="details">
