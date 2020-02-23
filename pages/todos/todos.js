@@ -128,14 +128,17 @@ Page({
       name2: app._user.wx.nickName,
       userdata: app._user.wx,
     }).setACL(acl).save().then((todo) => {
+      wx.hideToast();
       this.setTodos([todo, ...this.data.todos]);
-    })
-    this.setData({
+      this.setData({
       draft: ''
     });
-    if (!user) return wx.stopPullDownRefresh();
-    this.fetchTodos(user).catch(error => console.error(error.message)).then(wx.stopPullDownRefresh);
-    wx.hideToast();
+      
+      this.fetchTodos(user).catch(error => console.error(error.message)).then(wx.stopPullDownRefresh);
+      
+    })
+
+
     new Done({
       content: value,
       done: false,
